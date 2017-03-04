@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F52BCC501E6AEAF60036234E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC4F1E6AEAF60036234E /* main.m */; };
-		F52BCC531E6AEAF60036234E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC521E6AEAF60036234E /* AppDelegate.m */; };
-		F52BCC561E6AEAF60036234E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC551E6AEAF60036234E /* ViewController.m */; };
-		F52BCC591E6AEAF60036234E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52BCC571E6AEAF60036234E /* Main.storyboard */; };
 		F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52BCC5A1E6AEAF60036234E /* Assets.xcassets */; };
 		F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52BCC5C1E6AEAF60036234E /* LaunchScreen.storyboard */; };
 		F52BCC691E6AEAF60036234E /* MPTallyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC681E6AEAF60036234E /* MPTallyTests.m */; };
@@ -18,6 +15,15 @@
 		F52BCC8E1E6AECE60036234E /* MPConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC8D1E6AECE60036234E /* MPConst.m */; };
 		F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC911E6AEE1A0036234E /* UIView+MPExtension.m */; };
 		F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC931E6AEF530036234E /* Foundation+Log.m */; };
+		F52BCC9A1E6AF20F0036234E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC991E6AF20F0036234E /* AppDelegate.m */; };
+		F52BCC9E1E6AF2480036234E /* MPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC9D1E6AF2480036234E /* MPTabBarController.m */; };
+		F52BCCA11E6AF4740036234E /* MPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCA01E6AF4740036234E /* MPNavigationController.m */; };
+		F52BCCAA1E6AF6E90036234E /* MPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCA91E6AF6E90036234E /* MPTabBar.m */; };
+		F52BCCAD1E6AF8AA0036234E /* MPBillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCAC1E6AF8AA0036234E /* MPBillTableViewController.m */; };
+		F52BCCB01E6AF8F30036234E /* MPReportFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCAF1E6AF8F30036234E /* MPReportFormViewController.m */; };
+		F52BCCB31E6AF91E0036234E /* MPSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCB21E6AF91E0036234E /* MPSettingTableViewController.m */; };
+		F52BCCB61E6AF93C0036234E /* MPWalletTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCB51E6AF93C0036234E /* MPWalletTableViewController.m */; };
+		F52BCCB91E6AF95D0036234E /* MPCreateBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCB81E6AF95D0036234E /* MPCreateBillViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,11 +46,6 @@
 /* Begin PBXFileReference section */
 		F52BCC4B1E6AEAF60036234E /* MPTally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPTally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F52BCC4F1E6AEAF60036234E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F52BCC511E6AEAF60036234E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F52BCC521E6AEAF60036234E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F52BCC541E6AEAF60036234E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F52BCC551E6AEAF60036234E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F52BCC581E6AEAF60036234E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F52BCC5A1E6AEAF60036234E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F52BCC5D1E6AEAF60036234E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F52BCC5F1E6AEAF60036234E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +62,24 @@
 		F52BCC931E6AEF530036234E /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		F52BCC951E6AEF630036234E /* Foundation+Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Foundation+Log.h"; sourceTree = "<group>"; };
 		F52BCC961E6AF0E20036234E /* MPTally.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPTally.pch; sourceTree = "<group>"; };
+		F52BCC981E6AF20F0036234E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F52BCC991E6AF20F0036234E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F52BCC9C1E6AF2480036234E /* MPTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTabBarController.h; sourceTree = "<group>"; };
+		F52BCC9D1E6AF2480036234E /* MPTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTabBarController.m; sourceTree = "<group>"; };
+		F52BCC9F1E6AF4740036234E /* MPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPNavigationController.h; sourceTree = "<group>"; };
+		F52BCCA01E6AF4740036234E /* MPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPNavigationController.m; sourceTree = "<group>"; };
+		F52BCCA81E6AF6E90036234E /* MPTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTabBar.h; sourceTree = "<group>"; };
+		F52BCCA91E6AF6E90036234E /* MPTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTabBar.m; sourceTree = "<group>"; };
+		F52BCCAB1E6AF8AA0036234E /* MPBillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBillTableViewController.h; sourceTree = "<group>"; };
+		F52BCCAC1E6AF8AA0036234E /* MPBillTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBillTableViewController.m; sourceTree = "<group>"; };
+		F52BCCAE1E6AF8F30036234E /* MPReportFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPReportFormViewController.h; sourceTree = "<group>"; };
+		F52BCCAF1E6AF8F30036234E /* MPReportFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPReportFormViewController.m; sourceTree = "<group>"; };
+		F52BCCB11E6AF91E0036234E /* MPSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSettingTableViewController.h; sourceTree = "<group>"; };
+		F52BCCB21E6AF91E0036234E /* MPSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSettingTableViewController.m; sourceTree = "<group>"; };
+		F52BCCB41E6AF93C0036234E /* MPWalletTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPWalletTableViewController.h; sourceTree = "<group>"; };
+		F52BCCB51E6AF93C0036234E /* MPWalletTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPWalletTableViewController.m; sourceTree = "<group>"; };
+		F52BCCB71E6AF95D0036234E /* MPCreateBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCreateBillViewController.h; sourceTree = "<group>"; };
+		F52BCCB81E6AF95D0036234E /* MPCreateBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCreateBillViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,16 +130,12 @@
 		F52BCC4D1E6AEAF60036234E /* MPTally */ = {
 			isa = PBXGroup;
 			children = (
+				F52BCC971E6AF20F0036234E /* Application */,
 				F52BCC8B1E6AECB70036234E /* Controller */,
 				F52BCC861E6AECB10036234E /* Model */,
 				F52BCC871E6AECB10036234E /* Other */,
 				F52BCC891E6AECB10036234E /* Utils */,
 				F52BCC8A1E6AECB10036234E /* View */,
-				F52BCC511E6AEAF60036234E /* AppDelegate.h */,
-				F52BCC521E6AEAF60036234E /* AppDelegate.m */,
-				F52BCC541E6AEAF60036234E /* ViewController.h */,
-				F52BCC551E6AEAF60036234E /* ViewController.m */,
-				F52BCC571E6AEAF60036234E /* Main.storyboard */,
 				F52BCC5A1E6AEAF60036234E /* Assets.xcassets */,
 				F52BCC5C1E6AEAF60036234E /* LaunchScreen.storyboard */,
 				F52BCC5F1E6AEAF60036234E /* Info.plist */,
@@ -183,6 +198,7 @@
 		F52BCC8A1E6AECB10036234E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F52BCCA71E6AF57B0036234E /* Root */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -190,6 +206,12 @@
 		F52BCC8B1E6AECB70036234E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F52BCCA21E6AF5630036234E /* Bill */,
+				F52BCCA31E6AF5630036234E /* CreateBill */,
+				F52BCCA41E6AF5630036234E /* Forms */,
+				F52BCCA51E6AF5630036234E /* Setting */,
+				F52BCCA61E6AF5630036234E /* Wallet */,
+				F52BCC9B1E6AF2250036234E /* Root */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -203,6 +225,80 @@
 				F52BCC911E6AEE1A0036234E /* UIView+MPExtension.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		F52BCC971E6AF20F0036234E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCC981E6AF20F0036234E /* AppDelegate.h */,
+				F52BCC991E6AF20F0036234E /* AppDelegate.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		F52BCC9B1E6AF2250036234E /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCC9C1E6AF2480036234E /* MPTabBarController.h */,
+				F52BCC9D1E6AF2480036234E /* MPTabBarController.m */,
+				F52BCC9F1E6AF4740036234E /* MPNavigationController.h */,
+				F52BCCA01E6AF4740036234E /* MPNavigationController.m */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		F52BCCA21E6AF5630036234E /* Bill */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCCAB1E6AF8AA0036234E /* MPBillTableViewController.h */,
+				F52BCCAC1E6AF8AA0036234E /* MPBillTableViewController.m */,
+			);
+			path = Bill;
+			sourceTree = "<group>";
+		};
+		F52BCCA31E6AF5630036234E /* CreateBill */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCCB71E6AF95D0036234E /* MPCreateBillViewController.h */,
+				F52BCCB81E6AF95D0036234E /* MPCreateBillViewController.m */,
+			);
+			path = CreateBill;
+			sourceTree = "<group>";
+		};
+		F52BCCA41E6AF5630036234E /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCCAE1E6AF8F30036234E /* MPReportFormViewController.h */,
+				F52BCCAF1E6AF8F30036234E /* MPReportFormViewController.m */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		F52BCCA51E6AF5630036234E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCCB11E6AF91E0036234E /* MPSettingTableViewController.h */,
+				F52BCCB21E6AF91E0036234E /* MPSettingTableViewController.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		F52BCCA61E6AF5630036234E /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCCB41E6AF93C0036234E /* MPWalletTableViewController.h */,
+				F52BCCB51E6AF93C0036234E /* MPWalletTableViewController.m */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		F52BCCA71E6AF57B0036234E /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCCA81E6AF6E90036234E /* MPTabBar.h */,
+				F52BCCA91E6AF6E90036234E /* MPTabBar.m */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,7 +413,6 @@
 			files = (
 				F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */,
 				F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */,
-				F52BCC591E6AEAF60036234E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,11 +438,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F52BCC8E1E6AECE60036234E /* MPConst.m in Sources */,
-				F52BCC561E6AEAF60036234E /* ViewController.m in Sources */,
+				F52BCCB31E6AF91E0036234E /* MPSettingTableViewController.m in Sources */,
+				F52BCCB01E6AF8F30036234E /* MPReportFormViewController.m in Sources */,
+				F52BCC9E1E6AF2480036234E /* MPTabBarController.m in Sources */,
+				F52BCCA11E6AF4740036234E /* MPNavigationController.m in Sources */,
+				F52BCCB91E6AF95D0036234E /* MPCreateBillViewController.m in Sources */,
+				F52BCCB61E6AF93C0036234E /* MPWalletTableViewController.m in Sources */,
+				F52BCCAD1E6AF8AA0036234E /* MPBillTableViewController.m in Sources */,
 				F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */,
-				F52BCC531E6AEAF60036234E /* AppDelegate.m in Sources */,
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
+				F52BCCAA1E6AF6E90036234E /* MPTabBar.m in Sources */,
+				F52BCC9A1E6AF20F0036234E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,14 +485,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F52BCC571E6AEAF60036234E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F52BCC581E6AEAF60036234E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F52BCC5C1E6AEAF60036234E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

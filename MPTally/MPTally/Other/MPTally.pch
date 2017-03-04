@@ -15,5 +15,6 @@
 
 /*************** Macro ********************/
 #define kFuncLog NSLog(@"%s", __func__); // 打印当前函数名
+#define kRandomColor [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1]
 
 #endif /* MPTally_pch */
