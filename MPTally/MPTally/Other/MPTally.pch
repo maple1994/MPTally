@@ -1,0 +1,19 @@
+//
+//  MPTally.pch
+//  MPTally
+//
+//  Created by Maple on 2017/3/4.
+//  Copyright © 2017年 Maple. All rights reserved.
+//
+
+#ifndef MPTally_pch
+#define MPTally_pch
+
+/*************** Header ********************/
+#import "MPConst.h"
+#import "UIView+MPExtension.h"
+
+/*************** Macro ********************/
+#define kFuncLog NSLog(@"%s", __func__); // 打印当前函数名
+
+#endif /* MPTally_pch */
