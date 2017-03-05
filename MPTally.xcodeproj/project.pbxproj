@@ -29,6 +29,8 @@
 		F52BCCB91E6AF95D0036234E /* MPCreateBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCB81E6AF95D0036234E /* MPCreateBillViewController.m */; };
 		F52BCCBC1E6BE9F10036234E /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCBB1E6BE9F10036234E /* category.plist */; };
 		F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCBD1E6BE9FC0036234E /* addCategory.plist */; };
+		F52BCCC41E6BEF1C0036234E /* MPCreateBillHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCC31E6BEF1C0036234E /* MPCreateBillHeaderView.xib */; };
+		F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCC61E6BEF670036234E /* MPCreateBillHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,9 @@
 		F52BCCB81E6AF95D0036234E /* MPCreateBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCreateBillViewController.m; sourceTree = "<group>"; };
 		F52BCCBB1E6BE9F10036234E /* category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
 		F52BCCBD1E6BE9FC0036234E /* addCategory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = addCategory.plist; sourceTree = "<group>"; };
+		F52BCCC31E6BEF1C0036234E /* MPCreateBillHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCreateBillHeaderView.xib; sourceTree = "<group>"; };
+		F52BCCC51E6BEF670036234E /* MPCreateBillHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCreateBillHeaderView.h; sourceTree = "<group>"; };
+		F52BCCC61E6BEF670036234E /* MPCreateBillHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCreateBillHeaderView.m; sourceTree = "<group>"; };
 		FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -243,6 +248,7 @@
 		F52BCC8A1E6AECB10036234E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F52BCCBF1E6BEEA70036234E /* CreateBill */,
 				F52BCCA71E6AF57B0036234E /* Root */,
 			);
 			path = View;
@@ -353,6 +359,16 @@
 				F52BCCBB1E6BE9F10036234E /* category.plist */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		F52BCCBF1E6BEEA70036234E /* CreateBill */ = {
+			isa = PBXGroup;
+			children = (
+				F52BCCC31E6BEF1C0036234E /* MPCreateBillHeaderView.xib */,
+				F52BCCC51E6BEF670036234E /* MPCreateBillHeaderView.h */,
+				F52BCCC61E6BEF670036234E /* MPCreateBillHeaderView.m */,
+			);
+			path = CreateBill;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F52BCCBC1E6BE9F10036234E /* category.plist in Resources */,
+				F52BCCC41E6BEF1C0036234E /* MPCreateBillHeaderView.xib in Resources */,
 				F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */,
 				F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */,
 				F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */,
@@ -635,6 +652,7 @@
 				F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */,
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
+				F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */,
 				F52BCCAA1E6AF6E90036234E /* MPTabBar.m in Sources */,
 				F52BCC9A1E6AF20F0036234E /* AppDelegate.m in Sources */,
 			);
@@ -701,6 +719,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -750,6 +769,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

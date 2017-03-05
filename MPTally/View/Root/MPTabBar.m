@@ -7,6 +7,8 @@
 //
 
 #import "MPTabBar.h"
+#import "MPCreateBillViewController.h"
+#import "MPNavigationController.h"
 
 @interface MPTabBar ()
 /// 中间创建账单按钮
@@ -60,7 +62,10 @@
 
 - (void)create
 {
-  kFuncNameLog
+  MPCreateBillViewController *vc = [[MPCreateBillViewController alloc] init];
+  MPNavigationController *nav = [[MPNavigationController alloc] initWithRootViewController:vc];
+  UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+  [rootVC presentViewController:nav animated:YES completion:nil];
 }
 
 @end
