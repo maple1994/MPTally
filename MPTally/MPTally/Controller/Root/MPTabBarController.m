@@ -25,6 +25,7 @@
     [super viewDidLoad];
   MPTabBar *myTabBar = [[MPTabBar alloc] init];
   [self setValue:myTabBar forKey:@"tabBar"];
+  [self addChildController];
 }
 
 /// 添加子控制器
@@ -34,16 +35,16 @@
   MPWalletTableViewController *walletVC = [[MPWalletTableViewController alloc] init];
   MPReportFormViewController *formVC = [[MPReportFormViewController alloc] init];
   MPSettingTableViewController *settingVC = [[MPSettingTableViewController alloc] init];
-  
   [self setupChildController:billVC title:@"明细" imageName:@""];
   [self setupChildController:walletVC title:@"钱包" imageName:@""];
   [self setupChildController:formVC title:@"报表" imageName:@""];
-  [self setupChildController:settingVC title:@"明细" imageName:@""];
+  [self setupChildController:settingVC title:@"设置" imageName:@""];
 }
 
 
 - (void)setupChildController:(UIViewController *)controller title:(NSString *)title imageName:(NSString *)imageName
 {
+  controller.view.backgroundColor = kRandomColor;
   NSString *selectedImageName = [imageName stringByAppendingString:@"_selected"];
   controller.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
   controller.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

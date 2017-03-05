@@ -60,7 +60,7 @@
 
 - (void)create
 {
-  kFuncLog;
+  kFuncNameLog
 }
 
 @end
