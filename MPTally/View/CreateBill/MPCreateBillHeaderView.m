@@ -8,6 +8,13 @@
 
 #import "MPCreateBillHeaderView.h"
 
+@interface MPCreateBillHeaderView ()
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *categoryNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *NumLabel;
+
+@end
+
 @implementation MPCreateBillHeaderView
 
 /*

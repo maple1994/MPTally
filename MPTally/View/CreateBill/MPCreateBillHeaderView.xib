@@ -12,11 +12,46 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MPCreateBillHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="278" height="85"/>
+            <rect key="frame" x="0.0" y="0.0" width="369" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="84r-wN-2i9">
+                    <rect key="frame" x="10" y="10" width="40" height="40"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="B9i-Sf-2TI"/>
+                        <constraint firstAttribute="width" constant="40" id="IC7-cI-xGk"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFG-oH-bAE">
+                    <rect key="frame" x="60" y="20" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWC-SZ-Y0D">
+                    <rect key="frame" x="317" y="19.5" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="84r-wN-2i9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="1aY-aE-g5c"/>
+                <constraint firstAttribute="trailing" secondItem="nWC-SZ-Y0D" secondAttribute="trailing" constant="10" id="Kk9-GY-YE2"/>
+                <constraint firstItem="84r-wN-2i9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Whi-OO-hFb"/>
+                <constraint firstItem="nWC-SZ-Y0D" firstAttribute="centerY" secondItem="84r-wN-2i9" secondAttribute="centerY" id="r1l-aR-bhN"/>
+                <constraint firstItem="JFG-oH-bAE" firstAttribute="centerY" secondItem="84r-wN-2i9" secondAttribute="centerY" id="tOO-Wz-RgX"/>
+                <constraint firstItem="JFG-oH-bAE" firstAttribute="leading" secondItem="84r-wN-2i9" secondAttribute="trailing" constant="10" id="zfb-Sa-Ugg"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-244" y="-436"/>
+            <connections>
+                <outlet property="NumLabel" destination="nWC-SZ-Y0D" id="U7H-La-US8"/>
+                <outlet property="categoryNameLabel" destination="JFG-oH-bAE" id="t0y-xW-N6c"/>
+                <outlet property="iconImageView" destination="84r-wN-2i9" id="iN1-El-x3R"/>
+            </connections>
+            <point key="canvasLocation" x="-320.5" y="-461"/>
         </view>
     </objects>
 </document>
