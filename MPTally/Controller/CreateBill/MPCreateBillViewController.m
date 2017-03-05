@@ -7,27 +7,19 @@
 //
 
 #import "MPCreateBillViewController.h"
-#import "MPCategoryCollectionViewCell.h"
-#import "MPCreateBillHeaderView.h"
-#import "MPCategoryModel.h"
-#define kColumnCount 5
+#import "MPIncomeCategoryViewController.h"
+#import "MPOutcomeCategoryViewController.h"
 
-@interface MPCreateBillViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MPCreateBillViewController ()<UIScrollViewDelegate>
 
-/// 存放账单类型的collectionView
-@property (nonatomic, weak) UICollectionView *collectionView;
-/// 头部显示编辑结果的View
-@property (nonatomic, weak) MPCreateBillHeaderView *resultView;
-/// 收入类型模型数组
-@property (nonatomic, strong) NSArray *incomeCategoryArray;
-/// 支出类型模型数组
-@property (nonatomic, strong) NSArray *outComeCategoryArray;
+/// 水平滚动容器
+@property (nonatomic, weak) UIScrollView *contentView;
+/// 导航栏分栏
+@property (nonatomic, weak) UISegmentedControl *segCrt;
 
 @end
 
 @implementation MPCreateBillViewController
-
-static NSString *CategoryCellID = @"CategoryCellID";
 
 - (void)viewDidLoad
 {
@@ -35,7 +27,7 @@ static NSString *CategoryCellID = @"CategoryCellID";
   self.automaticallyAdjustsScrollViewInsets = NO;
   [self setupNavigationBar];
   [self setupUI];
-  [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(MPCategoryCollectionViewCell.class) bundle:nil] forCellWithReuseIdentifier:CategoryCellID];
+  self.segCrt.selectedSegmentIndex = 1;
 }
 
 /// 设置导航栏
@@ -44,7 +36,7 @@ static NSString *CategoryCellID = @"CategoryCellID";
   UISegmentedControl *segCtr = [[UISegmentedControl alloc] initWithItems:@[@"收入", @"支出"]];
   [segCtr addTarget:self action:@selector(segChange:) forControlEvents:UIControlEventValueChanged];
   self.navigationItem.titleView = segCtr;
-  segCtr.selectedSegmentIndex = 1;
+  self.segCrt = segCtr;
   
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"X" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
   self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
@@ -52,21 +44,25 @@ static NSString *CategoryCellID = @"CategoryCellID";
 
 - (void)setupUI
 {
-  [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.edges.equalTo(self.view);
-  }];
-  [self.resultView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.height.mas_equalTo(60);
-    make.leading.trailing.equalTo(self.view);
-    make.top.equalTo(self.view).offset(64);
-  }];
+  self.contentView.frame = CGRectMake(0, 0, kScreenW, kScreenH);
+  MPIncomeCategoryViewController *incomeVC = [[MPIncomeCategoryViewController alloc] init];
+  MPOutcomeCategoryViewController *outcomeVC = [[MPOutcomeCategoryViewController alloc] init];
+  [self addChildViewController:incomeVC];
+  [self addChildViewController:outcomeVC];
+  
+  incomeVC.view.frame = CGRectMake(0, 0, kScreenW, kScreenH);
+  outcomeVC.view.frame = CGRectMake(kScreenW, 0, kScreenW, kScreenH);
+  [self.contentView addSubview:incomeVC.view];
+  [self.contentView addSubview:outcomeVC.view];
+  
+  self.contentView.contentSize = CGSizeMake(kScreenW * 2, kScreenH);
 }
 
 #pragma mark - Action
 /// 切换收入 / 支出
 - (void)segChange:(UISegmentedControl *)segCrt
 {
-  NSLog(@"%zd", segCrt.selectedSegmentIndex);
+  [self.contentView setContentOffset:CGPointMake(kScreenW * segCrt.selectedSegmentIndex, 0) animated:YES];
 }
 
 /// 退出
@@ -75,74 +71,30 @@ static NSString *CategoryCellID = @"CategoryCellID";
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - UICollectionViewDataSource
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-  return self.outComeCategoryArray.count;
+  //设置标题栏的位置
+  NSInteger index = scrollView.contentOffset.x / self.view.mp_width;
+  self.segCrt.selectedSegmentIndex = index;
 }
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-  MPCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCellID forIndexPath:indexPath];
-  cell.categoryModel = self.outComeCategoryArray[indexPath.row];
-  return cell;
-}
-
 
 #pragma mark - getter
-- (UICollectionView *)collectionView
+- (UIScrollView *)contentView
 {
-  if(_collectionView == nil)
+  if(_contentView == nil)
   {
-    // 创建布局layout
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    CGFloat itemW = kScreenW / kColumnCount;
-    CGFloat itemH = itemW;
-    flowLayout.itemSize = CGSizeMake(itemW, itemH);
-    flowLayout.minimumLineSpacing = 10;
-    flowLayout.minimumInteritemSpacing = 0;
-    
-    UICollectionView *view = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+    UIScrollView *view = [[UIScrollView alloc] init];
+    view.showsHorizontalScrollIndicator = NO;
     view.delegate = self;
-    view.dataSource = self;
-    view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
-    // 设置偏移量
-    view.contentInset = UIEdgeInsetsMake(134, 0, 0, 0);
+    view.backgroundColor = [UIColor whiteColor];
     view.bounces = YES;
-    view.alwaysBounceVertical = YES;
-    _collectionView = view;
+    view.alwaysBounceHorizontal = YES;
+    _contentView = view;
+    view.pagingEnabled = YES;
     [self.view addSubview:view];
   }
-  return _collectionView;
-}
-
-- (MPCreateBillHeaderView *)resultView
-{
-  if(_resultView == nil)
-  {
-    MPCreateBillHeaderView *view = [MPCreateBillHeaderView viewFromNib];
-    _resultView = view;
-    [self.view addSubview:view];
-  }
-  return _resultView;
-}
-
-- (NSArray *)incomeCategoryArray
-{
-  if(_incomeCategoryArray == nil)
-  {
-    _incomeCategoryArray = [MPCategoryModel getIncomeCategoryArray];
-  }
-  return _incomeCategoryArray;
-}
-
-- (NSArray *)outComeCategoryArray
-{
-  if(_outComeCategoryArray == nil)
-  {
-    _outComeCategoryArray = [MPCategoryModel getOutcomeCategoryArray];
-  }
-  return _outComeCategoryArray;
+  return _contentView;
 }
 
 @end
