@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MPCategoryModel;
 
 /// 账单类型Cell / 用在创建账单页面
 @interface MPCategoryCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) MPCategoryModel *categoryModel;
 
 @end

@@ -9,6 +9,7 @@
 #import "MPCreateBillViewController.h"
 #import "MPCategoryCollectionViewCell.h"
 #import "MPCreateBillHeaderView.h"
+#import "MPCategoryModel.h"
 #define kColumnCount 5
 
 @interface MPCreateBillViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -17,6 +18,10 @@
 @property (nonatomic, weak) UICollectionView *collectionView;
 /// 头部显示编辑结果的View
 @property (nonatomic, weak) MPCreateBillHeaderView *resultView;
+/// 收入类型模型数组
+@property (nonatomic, strong) NSArray *incomeCategoryArray;
+/// 支出类型模型数组
+@property (nonatomic, strong) NSArray *outComeCategoryArray;
 
 @end
 
@@ -73,15 +78,16 @@ static NSString *CategoryCellID = @"CategoryCellID";
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  return 50;
+  return self.outComeCategoryArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
   MPCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCellID forIndexPath:indexPath];
-//  cell.backgroundColor = kRandomColor;
+  cell.categoryModel = self.outComeCategoryArray[indexPath.row];
   return cell;
 }
+
 
 #pragma mark - getter
 - (UICollectionView *)collectionView
@@ -102,6 +108,8 @@ static NSString *CategoryCellID = @"CategoryCellID";
     view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
     // 设置偏移量
     view.contentInset = UIEdgeInsetsMake(134, 0, 0, 0);
+    view.bounces = YES;
+    view.alwaysBounceVertical = YES;
     _collectionView = view;
     [self.view addSubview:view];
   }
@@ -117,6 +125,24 @@ static NSString *CategoryCellID = @"CategoryCellID";
     [self.view addSubview:view];
   }
   return _resultView;
+}
+
+- (NSArray *)incomeCategoryArray
+{
+  if(_incomeCategoryArray == nil)
+  {
+    _incomeCategoryArray = [MPCategoryModel getIncomeCategoryArray];
+  }
+  return _incomeCategoryArray;
+}
+
+- (NSArray *)outComeCategoryArray
+{
+  if(_outComeCategoryArray == nil)
+  {
+    _outComeCategoryArray = [MPCategoryModel getOutcomeCategoryArray];
+  }
+  return _outComeCategoryArray;
 }
 
 @end

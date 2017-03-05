@@ -33,6 +33,7 @@
 		F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCC61E6BEF670036234E /* MPCreateBillHeaderView.m */; };
 		F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCCF1E6BF66F0036234E /* MPCategoryCollectionViewCell.m */; };
 		F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */; };
+		F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCD41E6C08430036234E /* MPCategoryModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		F52BCCCE1E6BF66F0036234E /* MPCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		F52BCCCF1E6BF66F0036234E /* MPCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		F52BCCD31E6C08430036234E /* MPCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCategoryModel.h; sourceTree = "<group>"; };
+		F52BCCD41E6C08430036234E /* MPCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCategoryModel.m; sourceTree = "<group>"; };
 		FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -228,6 +231,8 @@
 		F52BCC861E6AECB10036234E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F52BCCD31E6C08430036234E /* MPCategoryModel.h */,
+				F52BCCD41E6C08430036234E /* MPCategoryModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -658,6 +663,7 @@
 				F52BCCB91E6AF95D0036234E /* MPCreateBillViewController.m in Sources */,
 				F52BCCB61E6AF93C0036234E /* MPWalletTableViewController.m in Sources */,
 				F52BCCAD1E6AF8AA0036234E /* MPBillTableViewController.m in Sources */,
+				F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */,
 				F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */,
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
