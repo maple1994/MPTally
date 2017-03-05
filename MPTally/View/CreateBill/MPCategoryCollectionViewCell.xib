@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fDs-kK-oXh" customClass="MPCategoryCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="188"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="188"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXn-hg-vMp">
+                        <rect key="frame" x="79" y="55" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vwn-ZI-56k">
+                        <rect key="frame" x="75" y="0.0" width="50" height="50"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="uwv-Ki-PVR"/>
+                            <constraint firstAttribute="height" constant="50" id="zZU-Dw-F3B"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="vXn-hg-vMp" firstAttribute="top" secondItem="Vwn-ZI-56k" secondAttribute="bottom" constant="5" id="AI8-6e-R6B"/>
+                <constraint firstItem="Vwn-ZI-56k" firstAttribute="top" secondItem="fDs-kK-oXh" secondAttribute="top" id="UOq-9Q-tCI"/>
+                <constraint firstItem="Vwn-ZI-56k" firstAttribute="centerX" secondItem="fDs-kK-oXh" secondAttribute="centerX" id="Vo2-Vb-lUi"/>
+                <constraint firstItem="vXn-hg-vMp" firstAttribute="centerX" secondItem="Vwn-ZI-56k" secondAttribute="centerX" id="ZTX-Zc-9Lo"/>
+            </constraints>
+            <size key="customSize" width="200" height="188"/>
+            <connections>
+                <outlet property="categoryLabel" destination="vXn-hg-vMp" id="QO1-zR-wpQ"/>
+                <outlet property="iconImageView" destination="Vwn-ZI-56k" id="f4M-17-TXQ"/>
+            </connections>
+            <point key="canvasLocation" x="-162" y="-191"/>
+        </collectionViewCell>
+    </objects>
+</document>

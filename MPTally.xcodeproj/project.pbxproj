@@ -31,6 +31,8 @@
 		F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCBD1E6BE9FC0036234E /* addCategory.plist */; };
 		F52BCCC41E6BEF1C0036234E /* MPCreateBillHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCC31E6BEF1C0036234E /* MPCreateBillHeaderView.xib */; };
 		F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCC61E6BEF670036234E /* MPCreateBillHeaderView.m */; };
+		F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCCF1E6BF66F0036234E /* MPCategoryCollectionViewCell.m */; };
+		F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,9 @@
 		F52BCCC31E6BEF1C0036234E /* MPCreateBillHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCreateBillHeaderView.xib; sourceTree = "<group>"; };
 		F52BCCC51E6BEF670036234E /* MPCreateBillHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCreateBillHeaderView.h; sourceTree = "<group>"; };
 		F52BCCC61E6BEF670036234E /* MPCreateBillHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCreateBillHeaderView.m; sourceTree = "<group>"; };
+		F52BCCCE1E6BF66F0036234E /* MPCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		F52BCCCF1E6BF66F0036234E /* MPCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCategoryCollectionViewCell.m; sourceTree = "<group>"; };
+		F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -367,6 +372,9 @@
 				F52BCCC31E6BEF1C0036234E /* MPCreateBillHeaderView.xib */,
 				F52BCCC51E6BEF670036234E /* MPCreateBillHeaderView.h */,
 				F52BCCC61E6BEF670036234E /* MPCreateBillHeaderView.m */,
+				F52BCCCE1E6BF66F0036234E /* MPCategoryCollectionViewCell.h */,
+				F52BCCCF1E6BF66F0036234E /* MPCategoryCollectionViewCell.m */,
+				F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */,
 			);
 			path = CreateBill;
 			sourceTree = "<group>";
@@ -493,6 +501,7 @@
 				F52BCCC41E6BEF1C0036234E /* MPCreateBillHeaderView.xib in Resources */,
 				F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */,
 				F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */,
+				F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */,
 				F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,6 +662,7 @@
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
 				F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */,
+				F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */,
 				F52BCCAA1E6AF6E90036234E /* MPTabBar.m in Sources */,
 				F52BCC9A1E6AF20F0036234E /* AppDelegate.m in Sources */,
 			);

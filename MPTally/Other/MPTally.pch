@@ -12,6 +12,7 @@
 /*************** Header ********************/
 #import "MPConst.h"
 #import "UIView+MPExtension.h"
+#import <Masonry.h>
 
 /*************** Macro ********************/
 #define kFuncNameLog NSLog(@"%s", __func__); // 打印当前函数名

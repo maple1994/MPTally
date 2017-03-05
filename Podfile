@@ -7,6 +7,7 @@ target 'MPTally' do
 
   # Pods for MPTally
 pod 'Realm'
+pod 'Masonry'
   target 'MPTallyTests' do
     inherit! :search_paths
     # Pods for testing
