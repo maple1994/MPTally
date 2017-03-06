@@ -7,7 +7,6 @@
 //
 
 #import "MPOutcomeCategoryViewController.h"
-#import "MPCreateBillHeaderView.h"
 #import "MPCategoryModel.h"
 #import "MPCategoryCollectionViewCell.h"
 #define kColumnCount 5
@@ -16,8 +15,6 @@
 
 /// 存放账单类型的collectionView
 @property (nonatomic, weak) UICollectionView *collectionView;
-/// 头部显示编辑结果的View
-@property (nonatomic, weak) MPCreateBillHeaderView *resultView;
 /// 支出类型模型数组
 @property (nonatomic, strong) NSArray *outcomeCategoryArray;
 
@@ -39,11 +36,6 @@ static NSString *CategoryCellID = @"CategoryCellID";
 {
   [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.edges.equalTo(self.view);
-  }];
-  [self.resultView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.height.mas_equalTo(60);
-    make.leading.trailing.equalTo(self.view);
-    make.top.equalTo(self.view).offset(64);
   }];
 }
 
@@ -78,8 +70,11 @@ static NSString *CategoryCellID = @"CategoryCellID";
     view.delegate = self;
     view.dataSource = self;
     view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
+    // 计算一共有几行
+    NSInteger row = (self.outcomeCategoryArray.count + kColumnCount - 1) / kColumnCount;
+    CGFloat contentH = row * itemH + (row - 1) * 10;
     // 设置偏移量
-    view.contentInset = UIEdgeInsetsMake(134, 0, 0, 0);
+    view.contentInset = UIEdgeInsetsMake(134, 0, kScreenH - contentH, 0);
     view.bounces = YES;
     view.alwaysBounceVertical = YES;
     _collectionView = view;
@@ -88,16 +83,6 @@ static NSString *CategoryCellID = @"CategoryCellID";
   return _collectionView;
 }
 
-- (MPCreateBillHeaderView *)resultView
-{
-  if(_resultView == nil)
-  {
-    MPCreateBillHeaderView *view = [MPCreateBillHeaderView viewFromNib];
-    _resultView = view;
-    [self.view addSubview:view];
-  }
-  return _resultView;
-}
 
 - (NSArray *)outcomeCategoryArray
 {

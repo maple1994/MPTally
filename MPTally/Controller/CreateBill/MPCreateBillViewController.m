@@ -9,6 +9,7 @@
 #import "MPCreateBillViewController.h"
 #import "MPIncomeCategoryViewController.h"
 #import "MPOutcomeCategoryViewController.h"
+#import "MPCreateBillHeaderView.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate>
 
@@ -16,6 +17,8 @@
 @property (nonatomic, weak) UIScrollView *contentView;
 /// 导航栏分栏
 @property (nonatomic, weak) UISegmentedControl *segCrt;
+/// 头部显示编辑结果的View
+@property (nonatomic, weak) MPCreateBillHeaderView *resultView;
 
 @end
 
@@ -28,6 +31,7 @@
   [self setupNavigationBar];
   [self setupUI];
   self.segCrt.selectedSegmentIndex = 1;
+  [self segChange:self.segCrt];
 }
 
 /// 设置导航栏
@@ -45,6 +49,7 @@
 - (void)setupUI
 {
   self.contentView.frame = CGRectMake(0, 0, kScreenW, kScreenH);
+  self.resultView.frame = CGRectMake(0, 64, kScreenW, 60);
   MPIncomeCategoryViewController *incomeVC = [[MPIncomeCategoryViewController alloc] init];
   MPOutcomeCategoryViewController *outcomeVC = [[MPOutcomeCategoryViewController alloc] init];
   [self addChildViewController:incomeVC];
@@ -95,6 +100,17 @@
     [self.view addSubview:view];
   }
   return _contentView;
+}
+
+- (MPCreateBillHeaderView *)resultView
+{
+  if(_resultView == nil)
+  {
+    MPCreateBillHeaderView *view = [MPCreateBillHeaderView viewFromNib];
+    _resultView = view;
+    [self.view addSubview:view];
+  }
+  return _resultView;
 }
 
 @end
