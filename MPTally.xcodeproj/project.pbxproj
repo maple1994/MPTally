@@ -39,6 +39,12 @@
 		F5ECA9A91E6EB36700007969 /* MPBaseCategoryCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9A81E6EB36700007969 /* MPBaseCategoryCollectionViewController.m */; };
 		F5ECA9AC1E6EEB9300007969 /* MPCalculatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9AB1E6EEB9300007969 /* MPCalculatorView.m */; };
 		F5ECA9AE1E6EEEEB00007969 /* MPCalculatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5ECA9AD1E6EEEEB00007969 /* MPCalculatorView.xib */; };
+		F5ECA9BB1E6F066800007969 /* bt_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5ECA9B21E6F066800007969 /* bt_next@2x.png */; };
+		F5ECA9BC1E6F066800007969 /* bt_previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5ECA9B31E6F066800007969 /* bt_previous@2x.png */; };
+		F5ECA9BD1E6F066800007969 /* SZCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9B51E6F066800007969 /* SZCalendarCell.m */; };
+		F5ECA9BE1E6F066800007969 /* SZCalendarPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9B71E6F066800007969 /* SZCalendarPicker.m */; };
+		F5ECA9BF1E6F066800007969 /* SZCalendarPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5ECA9B81E6F066800007969 /* SZCalendarPicker.xib */; };
+		F5ECA9C01E6F066800007969 /* UIColor+ZXLazy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9BA1E6F066800007969 /* UIColor+ZXLazy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +128,15 @@
 		F5ECA9AA1E6EEB9300007969 /* MPCalculatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCalculatorView.h; sourceTree = "<group>"; };
 		F5ECA9AB1E6EEB9300007969 /* MPCalculatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCalculatorView.m; sourceTree = "<group>"; };
 		F5ECA9AD1E6EEEEB00007969 /* MPCalculatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCalculatorView.xib; sourceTree = "<group>"; };
+		F5ECA9B21E6F066800007969 /* bt_next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_next@2x.png"; sourceTree = "<group>"; };
+		F5ECA9B31E6F066800007969 /* bt_previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_previous@2x.png"; sourceTree = "<group>"; };
+		F5ECA9B41E6F066800007969 /* SZCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZCalendarCell.h; sourceTree = "<group>"; };
+		F5ECA9B51E6F066800007969 /* SZCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCalendarCell.m; sourceTree = "<group>"; };
+		F5ECA9B61E6F066800007969 /* SZCalendarPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZCalendarPicker.h; sourceTree = "<group>"; };
+		F5ECA9B71E6F066800007969 /* SZCalendarPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCalendarPicker.m; sourceTree = "<group>"; };
+		F5ECA9B81E6F066800007969 /* SZCalendarPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SZCalendarPicker.xib; sourceTree = "<group>"; };
+		F5ECA9B91E6F066800007969 /* UIColor+ZXLazy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZXLazy.h"; sourceTree = "<group>"; };
+		F5ECA9BA1E6F066800007969 /* UIColor+ZXLazy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZXLazy.m"; sourceTree = "<group>"; };
 		FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -201,6 +216,7 @@
 		F52BCC4D1E6AEAF60036234E /* MPTally */ = {
 			isa = PBXGroup;
 			children = (
+				F5ECA9AF1E6F063400007969 /* Lib */,
 				F52BCCBA1E6BE9E50036234E /* Resource */,
 				F52BCC971E6AF20F0036234E /* Application */,
 				F52BCC8B1E6AECB70036234E /* Controller */,
@@ -407,6 +423,38 @@
 			path = CreateBill;
 			sourceTree = "<group>";
 		};
+		F5ECA9AF1E6F063400007969 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				F5ECA9B01E6F066800007969 /* SZCalendarPicker */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		F5ECA9B01E6F066800007969 /* SZCalendarPicker */ = {
+			isa = PBXGroup;
+			children = (
+				F5ECA9B11E6F066800007969 /* Resource */,
+				F5ECA9B41E6F066800007969 /* SZCalendarCell.h */,
+				F5ECA9B51E6F066800007969 /* SZCalendarCell.m */,
+				F5ECA9B61E6F066800007969 /* SZCalendarPicker.h */,
+				F5ECA9B71E6F066800007969 /* SZCalendarPicker.m */,
+				F5ECA9B81E6F066800007969 /* SZCalendarPicker.xib */,
+				F5ECA9B91E6F066800007969 /* UIColor+ZXLazy.h */,
+				F5ECA9BA1E6F066800007969 /* UIColor+ZXLazy.m */,
+			);
+			path = SZCalendarPicker;
+			sourceTree = "<group>";
+		};
+		F5ECA9B11E6F066800007969 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F5ECA9B21E6F066800007969 /* bt_next@2x.png */,
+				F5ECA9B31E6F066800007969 /* bt_previous@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -528,11 +576,14 @@
 			files = (
 				F52BCCBC1E6BE9F10036234E /* category.plist in Resources */,
 				F52BCCC41E6BEF1C0036234E /* MPCreateBillHeaderView.xib in Resources */,
+				F5ECA9BC1E6F066800007969 /* bt_previous@2x.png in Resources */,
 				F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */,
 				F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */,
 				F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */,
+				F5ECA9BF1E6F066800007969 /* SZCalendarPicker.xib in Resources */,
 				F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */,
 				F5ECA9AE1E6EEEEB00007969 /* MPCalculatorView.xib in Resources */,
+				F5ECA9BB1E6F066800007969 /* bt_next@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +750,7 @@
 				F5ECA9A91E6EB36700007969 /* MPBaseCategoryCollectionViewController.m in Sources */,
 				F52BCCB31E6AF91E0036234E /* MPSettingTableViewController.m in Sources */,
 				F5ECA9AC1E6EEB9300007969 /* MPCalculatorView.m in Sources */,
+				F5ECA9BD1E6F066800007969 /* SZCalendarCell.m in Sources */,
 				F52BCCB01E6AF8F30036234E /* MPReportFormViewController.m in Sources */,
 				F52BCC9E1E6AF2480036234E /* MPTabBarController.m in Sources */,
 				F52BCCA11E6AF4740036234E /* MPNavigationController.m in Sources */,
@@ -714,7 +766,9 @@
 				F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */,
 				F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */,
 				F52BCCAA1E6AF6E90036234E /* MPTabBar.m in Sources */,
+				F5ECA9BE1E6F066800007969 /* SZCalendarPicker.m in Sources */,
 				F52BCC9A1E6AF20F0036234E /* AppDelegate.m in Sources */,
+				F5ECA9C01E6F066800007969 /* UIColor+ZXLazy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

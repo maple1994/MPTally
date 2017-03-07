@@ -14,9 +14,52 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MPCalculatorView">
             <rect key="frame" x="0.0" y="0.0" width="360" height="279"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Obn-a4-A5D">
+                    <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-PS-ilT">
+                            <rect key="frame" x="10" y="7" width="31" height="30"/>
+                            <state key="normal" title="账号"/>
+                            <connections>
+                                <action selector="selectAccount:" destination="iN0-l3-epB" eventType="touchUpInside" id="mUH-uE-hSY"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqd-Aq-bTr">
+                            <rect key="frame" x="319" y="7" width="31" height="30"/>
+                            <state key="normal" title="备注"/>
+                            <connections>
+                                <action selector="mark:" destination="iN0-l3-epB" eventType="touchUpInside" id="eBU-1S-p2m"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEP-MM-gFm">
+                            <rect key="frame" x="51" y="7" width="31" height="30"/>
+                            <state key="normal" title="日期"/>
+                            <connections>
+                                <action selector="selectDate:" destination="iN0-l3-epB" eventType="touchUpInside" id="gvl-gO-Pre"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.60784313729999995" green="0.84705882349999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="9zW-A2-H2Y"/>
+                        <constraint firstItem="pEP-MM-gFm" firstAttribute="leading" secondItem="4PR-PS-ilT" secondAttribute="trailing" constant="10" id="Pse-kK-4Pd"/>
+                        <constraint firstItem="aqd-Aq-bTr" firstAttribute="centerY" secondItem="pEP-MM-gFm" secondAttribute="centerY" id="Z8x-3l-W8B"/>
+                        <constraint firstItem="4PR-PS-ilT" firstAttribute="centerY" secondItem="Obn-a4-A5D" secondAttribute="centerY" id="cDj-fw-1mA"/>
+                        <constraint firstItem="pEP-MM-gFm" firstAttribute="centerY" secondItem="4PR-PS-ilT" secondAttribute="centerY" id="dYk-Iu-9ru"/>
+                        <constraint firstAttribute="trailing" secondItem="aqd-Aq-bTr" secondAttribute="trailing" constant="10" id="dbt-6J-bzb"/>
+                        <constraint firstItem="4PR-PS-ilT" firstAttribute="leading" secondItem="Obn-a4-A5D" secondAttribute="leading" constant="10" id="zhH-iw-8cc"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Obn-a4-A5D" secondAttribute="trailing" id="HZu-u4-zKv"/>
+                <constraint firstItem="Obn-a4-A5D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dhA-J7-pz5"/>
+                <constraint firstItem="Obn-a4-A5D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qYm-24-4H9"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-89" y="-165"/>
+            <point key="canvasLocation" x="-200" y="-199"/>
         </view>
     </objects>
 </document>

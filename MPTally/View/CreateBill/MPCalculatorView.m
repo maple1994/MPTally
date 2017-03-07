@@ -7,15 +7,32 @@
 //
 
 #import "MPCalculatorView.h"
+#import "SZCalendarPicker.h"
 
 @implementation MPCalculatorView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (IBAction)selectAccount:(UIButton *)sender
+{
+  kFuncNameLog;
 }
-*/
+
+- (IBAction)selectDate:(UIButton *)sender
+{
+  kFuncNameLog;
+  SZCalendarPicker *calendarPicker = [SZCalendarPicker showOnView:self];
+  calendarPicker.today = [NSDate date];
+  calendarPicker.date = calendarPicker.today;
+  calendarPicker.frame = CGRectMake(0, 0, self.mp_width, self.mp_height);
+  calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
+    
+    NSLog(@"%zd-%zd-%zd", year,month,day);
+  };
+}
+
+- (IBAction)mark:(UIButton *)sender
+{
+  kFuncNameLog;
+}
+
 
 @end
