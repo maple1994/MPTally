@@ -36,6 +36,7 @@
 		F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCD41E6C08430036234E /* MPCategoryModel.m */; };
 		F554FCE01E6C35A20032A60F /* MPIncomeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FCDF1E6C35A20032A60F /* MPIncomeCategoryViewController.m */; };
 		F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FCE21E6C35B50032A60F /* MPOutcomeCategoryViewController.m */; };
+		F5ECA9A91E6EB36700007969 /* MPBaseCategoryCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9A81E6EB36700007969 /* MPBaseCategoryCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,8 @@
 		F554FCDF1E6C35A20032A60F /* MPIncomeCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPIncomeCategoryViewController.m; sourceTree = "<group>"; };
 		F554FCE11E6C35B50032A60F /* MPOutcomeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOutcomeCategoryViewController.h; sourceTree = "<group>"; };
 		F554FCE21E6C35B50032A60F /* MPOutcomeCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOutcomeCategoryViewController.m; sourceTree = "<group>"; };
+		F5ECA9A71E6EB36700007969 /* MPBaseCategoryCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBaseCategoryCollectionViewController.h; sourceTree = "<group>"; };
+		F5ECA9A81E6EB36700007969 /* MPBaseCategoryCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBaseCategoryCollectionViewController.m; sourceTree = "<group>"; };
 		FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -332,6 +335,8 @@
 				F554FCDF1E6C35A20032A60F /* MPIncomeCategoryViewController.m */,
 				F554FCE11E6C35B50032A60F /* MPOutcomeCategoryViewController.h */,
 				F554FCE21E6C35B50032A60F /* MPOutcomeCategoryViewController.m */,
+				F5ECA9A71E6EB36700007969 /* MPBaseCategoryCollectionViewController.h */,
+				F5ECA9A81E6EB36700007969 /* MPBaseCategoryCollectionViewController.m */,
 			);
 			path = CreateBill;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				F52BCC6C1E6AEAF60036234E /* Frameworks */,
 				F52BCC6D1E6AEAF60036234E /* Resources */,
 				3E29672C17FD7CBB0A047B80 /* [CP] Copy Pods Resources */,
+				48D49E7D981D8EA8546D4441 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -550,7 +556,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3AC6CB17505CB91D35CC9F94 /* [CP] Embed Pods Frameworks */ = {
@@ -598,6 +604,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MPTallyTests/Pods-MPTallyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		48D49E7D981D8EA8546D4441 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MPTallyUITests/Pods-MPTallyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		577F14C5D69E6E9302DA3134 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,7 +631,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8DB2EF2CF5D8E6162F646CB2 /* [CP] Embed Pods Frameworks */ = {
@@ -655,7 +676,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -666,6 +687,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F52BCC8E1E6AECE60036234E /* MPConst.m in Sources */,
+				F5ECA9A91E6EB36700007969 /* MPBaseCategoryCollectionViewController.m in Sources */,
 				F52BCCB31E6AF91E0036234E /* MPSettingTableViewController.m in Sources */,
 				F52BCCB01E6AF8F30036234E /* MPReportFormViewController.m in Sources */,
 				F52BCC9E1E6AF2480036234E /* MPTabBarController.m in Sources */,

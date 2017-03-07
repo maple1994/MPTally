@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPBaseCategoryCollectionViewController.h"
 
-@interface MPIncomeCategoryViewController : UIViewController
+@interface MPIncomeCategoryViewController : MPBaseCategoryCollectionViewController
 
 @end

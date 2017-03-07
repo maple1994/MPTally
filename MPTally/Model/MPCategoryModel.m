@@ -51,4 +51,10 @@
   return tempArray;
 }
 
+- (NSString *)description
+{
+  NSString *desc = [NSString stringWithFormat:@"name:%@, imageName:%@, isIncome:%zd", _categoryName, _categoryImageFileName, _isIncome];
+  return desc;
+}
+
 @end

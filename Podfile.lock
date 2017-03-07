@@ -1,17 +1,20 @@
 PODS:
   - Masonry (1.0.2)
-  - Realm (2.1.2):
-    - Realm/Headers (= 2.1.2)
-  - Realm/Headers (2.1.2)
+  - Realm (2.4.3):
+    - Realm/Headers (= 2.4.3)
+  - Realm/Headers (2.4.3)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - Masonry
   - Realm
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
-  Realm: efe855f4d977c8ce5a82d3116d9f1ff155a6550c
+  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 60f8940f389138c2afaa5f107fb12e24708d34a9
+PODFILE CHECKSUM: 548baed852ac7040c6eb54d97d9e640945409cd2
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0
