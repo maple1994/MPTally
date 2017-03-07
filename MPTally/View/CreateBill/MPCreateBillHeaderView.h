@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class MPCategoryModel;
 @interface MPCreateBillHeaderView : UIView
+
+@property (nonatomic, strong) MPCategoryModel *categoryModel;
 
 @end

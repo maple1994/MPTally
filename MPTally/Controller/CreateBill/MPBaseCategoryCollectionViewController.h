@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class MPCategoryCollectionViewCell;
+
 @protocol CategoryCollectionViewControllerDelegate <NSObject>
 
+@optional
+/// 点击了Cell
+- (void)categoryCollectionView:(UICollectionView *)collectionView didSelectCell:(MPCategoryCollectionViewCell *)cell;
 
 @end
 
@@ -19,5 +24,8 @@
 @property (nonatomic, weak) id<CategoryCollectionViewControllerDelegate> cateDelegate;
 /// category模型数组
 @property (nonatomic, strong) NSArray *categotyModelArray;
+
+/// 选中第一项
+- (void)selectFirstItem;
 
 @end

@@ -15,13 +15,18 @@
 
 @implementation MPIncomeCategoryViewController
 
-static NSString *CategoryCellID = @"CategoryCellID";
-
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   self.categotyModelArray = [MPCategoryModel getIncomeCategoryArray];
+  [self.collectionView reloadData];
 }
+
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//  [super viewDidAppear:animated];
+//  [self selectFirstItem];
+//}
 
 
 @end

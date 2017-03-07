@@ -10,8 +10,10 @@
 #import "MPIncomeCategoryViewController.h"
 #import "MPOutcomeCategoryViewController.h"
 #import "MPCreateBillHeaderView.h"
+#import "MPCategoryCollectionViewCell.h"
+#import "MPCategoryModel.h"
 
-@interface MPCreateBillViewController ()<UIScrollViewDelegate>
+@interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate>
 
 /// 水平滚动容器
 @property (nonatomic, weak) UIScrollView *contentView;
@@ -52,6 +54,8 @@
   self.resultView.frame = CGRectMake(0, 64, kScreenW, 60);
   MPIncomeCategoryViewController *incomeVC = [[MPIncomeCategoryViewController alloc] init];
   MPOutcomeCategoryViewController *outcomeVC = [[MPOutcomeCategoryViewController alloc] init];
+  incomeVC.cateDelegate = self;
+  outcomeVC.cateDelegate = self;
   [self addChildViewController:incomeVC];
   [self addChildViewController:outcomeVC];
   
@@ -82,6 +86,19 @@
   //设置标题栏的位置
   NSInteger index = scrollView.contentOffset.x / self.view.mp_width;
   self.segCrt.selectedSegmentIndex = index;
+  MPBaseCategoryCollectionViewController *vc = self.childViewControllers[index];
+  self.resultView.categoryModel = vc.categotyModelArray.firstObject;
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+  [self scrollViewDidEndDecelerating:scrollView];
+}
+
+#pragma mark - CategoryCollectionViewControllerDelegate
+- (void)categoryCollectionView:(UICollectionView *)collectionView didSelectCell:(MPCategoryCollectionViewCell *)cell
+{
+  self.resultView.categoryModel = cell.categoryModel;
 }
 
 #pragma mark - getter

@@ -7,6 +7,7 @@
 //
 
 #import "MPCreateBillHeaderView.h"
+#import "MPCategoryModel.h"
 
 @interface MPCreateBillHeaderView ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
@@ -17,12 +18,11 @@
 
 @implementation MPCreateBillHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)setCategoryModel:(MPCategoryModel *)categoryModel
+{
+  _categoryModel = categoryModel;
+  self.iconImageView.image = [UIImage imageNamed:categoryModel.categoryImageFileName];
+  self.categoryNameLabel.text = categoryModel.categoryName;
 }
-*/
 
 @end

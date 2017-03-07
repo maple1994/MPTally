@@ -22,5 +22,11 @@
   [self.collectionView reloadData];
 }
 
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//  [super viewDidAppear:animated];
+//  [self selectFirstItem];
+//}
+
 
 @end

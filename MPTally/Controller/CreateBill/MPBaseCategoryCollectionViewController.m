@@ -40,6 +40,13 @@ static NSString *CategoryCellID = @"CategoryCellID";
   self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
+/// 选中第一项
+- (void)selectFirstItem
+{
+  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+  [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+}
+
 - (void)setCategotyModelArray:(NSArray *)categotyModelArray
 {
   _categotyModelArray = categotyModelArray;
@@ -63,7 +70,6 @@ static NSString *CategoryCellID = @"CategoryCellID";
 {
   MPCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCellID forIndexPath:indexPath];
   cell.categoryModel = self.categotyModelArray[indexPath.row];
-//  cell.backgroundColor = kRandomColor;
   return cell;
 }
 
@@ -71,7 +77,10 @@ static NSString *CategoryCellID = @"CategoryCellID";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
   MPCategoryCollectionViewCell *cell = (MPCategoryCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-  NSLog(@"%@", cell.categoryModel);
+  if([self.cateDelegate respondsToSelector:@selector(categoryCollectionView:didSelectCell:)])
+  {
+    [self.cateDelegate categoryCollectionView:collectionView didSelectCell:cell];
+  }
 }
 
 @end
