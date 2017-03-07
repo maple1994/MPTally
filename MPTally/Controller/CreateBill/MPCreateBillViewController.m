@@ -12,6 +12,7 @@
 #import "MPCreateBillHeaderView.h"
 #import "MPCategoryCollectionViewCell.h"
 #import "MPCategoryModel.h"
+#import "MPCalculatorView.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate>
 
@@ -21,6 +22,8 @@
 @property (nonatomic, weak) UISegmentedControl *segCrt;
 /// 头部显示编辑结果的View
 @property (nonatomic, weak) MPCreateBillHeaderView *resultView;
+/// 计算器
+@property (nonatomic, weak) MPCalculatorView *calculatorView;
 
 @end
 
@@ -65,6 +68,24 @@
   [self.contentView addSubview:outcomeVC.view];
   
   self.contentView.contentSize = CGSizeMake(kScreenW * 2, kScreenH);
+  
+  [self showCalcultor];
+}
+
+#pragma mark - Private
+/// 显示计算器
+- (void)showCalcultor
+{
+  [self.calculatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.leading.trailing.bottom.equalTo(self.view);
+    make.height.mas_equalTo(kScreenH * 0.4);
+  }];
+}
+
+/// 隐藏计算器
+- (void)hideCalcultor
+{
+  
 }
 
 #pragma mark - Action
@@ -101,6 +122,16 @@
   self.resultView.categoryModel = cell.categoryModel;
 }
 
+- (void)categoryCollectionViewDidScrollUp:(UICollectionView *)collectionView
+{
+  NSLog(@"隐藏");
+}
+
+- (void)categoryCollectionViewDidScrollDown:(UICollectionView *)collectionView
+{
+  NSLog(@"显示");
+}
+
 #pragma mark - getter
 - (UIScrollView *)contentView
 {
@@ -128,6 +159,18 @@
     [self.view addSubview:view];
   }
   return _resultView;
+}
+
+- (MPCalculatorView *)calculatorView
+{
+  if(_calculatorView == nil)
+  {
+    MPCalculatorView *view = [MPCalculatorView viewFromNib];
+    _calculatorView = view;
+    _calculatorView.backgroundColor = kRandomColor;
+    [self.view addSubview:_calculatorView];
+  }
+  return _calculatorView;
 }
 
 @end

@@ -15,6 +15,10 @@
 @optional
 /// 点击了Cell
 - (void)categoryCollectionView:(UICollectionView *)collectionView didSelectCell:(MPCategoryCollectionViewCell *)cell;
+/// 向上滚动
+- (void)categoryCollectionViewDidScrollUp:(UICollectionView *)collectionView;
+/// 向下滚动
+- (void)categoryCollectionViewDidScrollDown:(UICollectionView *)collectionView;
 
 @end
 
@@ -25,7 +29,5 @@
 /// category模型数组
 @property (nonatomic, strong) NSArray *categotyModelArray;
 
-/// 选中第一项
-- (void)selectFirstItem;
 
 @end

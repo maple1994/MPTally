@@ -15,6 +15,8 @@
 
 @interface MPBaseCategoryCollectionViewController ()
 
+@property (nonatomic, assign) CGFloat lastPosition;
+
 @end
 
 @implementation MPBaseCategoryCollectionViewController
@@ -81,6 +83,39 @@ static NSString *CategoryCellID = @"CategoryCellID";
   {
     [self.cateDelegate categoryCollectionView:collectionView didSelectCell:cell];
   }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+  int currentPostion = scrollView.contentOffset.y;
+  // 去除bounce效果的影响
+  if(scrollView.contentOffset.y <= -134 || scrollView.contentOffset.y >= 0)
+  {
+    _lastPosition = currentPostion;
+    return;
+  }
+  if (currentPostion - _lastPosition > 25) {
+    _lastPosition = currentPostion;
+    // 上滚
+    if([self.cateDelegate respondsToSelector:@selector(categoryCollectionViewDidScrollUp:)])
+    {
+      [self.cateDelegate categoryCollectionViewDidScrollUp:self.collectionView];
+    }
+  }
+  else if (_lastPosition - currentPostion > 25)
+  {
+    // 下滚
+    if([self.cateDelegate respondsToSelector:@selector(categoryCollectionViewDidScrollDown:)])
+    {
+      [self.cateDelegate categoryCollectionViewDidScrollDown:self.collectionView];
+    }
+    _lastPosition = currentPostion;
+  }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+  
 }
 
 @end
