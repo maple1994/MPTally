@@ -24,6 +24,8 @@
 @property (nonatomic, weak) MPCreateBillHeaderView *resultView;
 /// 计算器
 @property (nonatomic, weak) MPCalculatorView *calculatorView;
+/// 是否已经显示计算器
+@property (nonatomic, assign, getter=isShowCalculator) BOOL showCalculator;
 
 @end
 
@@ -76,16 +78,25 @@
 /// 显示计算器
 - (void)showCalcultor
 {
-  [self.calculatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.leading.trailing.bottom.equalTo(self.view);
-    make.height.mas_equalTo(kScreenH * 0.4);
-  }];
+  if(!self.isShowCalculator)
+  {
+    self.showCalculator = YES;
+    [UIView animateWithDuration:0.25 animations:^{
+      self.calculatorView.frame = CGRectMake(0, kScreenH * 0.6, kScreenW, kScreenH * 0.4);
+    }];
+  }
 }
 
 /// 隐藏计算器
 - (void)hideCalcultor
 {
-  
+  if(self.isShowCalculator)
+  {
+    self.showCalculator = NO;
+    [UIView animateWithDuration:0.25 animations:^{
+      self.calculatorView.frame = CGRectMake(0, kScreenH, kScreenW, kScreenH * 0.4);
+    }];
+  }
 }
 
 #pragma mark - Action
@@ -120,16 +131,17 @@
 - (void)categoryCollectionView:(UICollectionView *)collectionView didSelectCell:(MPCategoryCollectionViewCell *)cell
 {
   self.resultView.categoryModel = cell.categoryModel;
+  [self showCalcultor];
 }
 
 - (void)categoryCollectionViewDidScrollUp:(UICollectionView *)collectionView
 {
-  NSLog(@"隐藏");
+    [self hideCalcultor];
 }
 
 - (void)categoryCollectionViewDidScrollDown:(UICollectionView *)collectionView
 {
-  NSLog(@"显示");
+    [self showCalcultor];
 }
 
 #pragma mark - getter

@@ -88,13 +88,14 @@ static NSString *CategoryCellID = @"CategoryCellID";
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
   int currentPostion = scrollView.contentOffset.y;
-  // 去除bounce效果的影响
-  if(scrollView.contentOffset.y <= -134 || scrollView.contentOffset.y >= 0)
+  // 去除下拉bounce效果的影响
+  if(scrollView.contentOffset.y <= -134)
   {
     _lastPosition = currentPostion;
     return;
   }
-  if (currentPostion - _lastPosition > 25) {
+  // 判断offset > y是去除上拉bounce的效果
+  if (currentPostion - _lastPosition > 25 || scrollView.contentOffset.y >= 0) {
     _lastPosition = currentPostion;
     // 上滚
     if([self.cateDelegate respondsToSelector:@selector(categoryCollectionViewDidScrollUp:)])
@@ -113,9 +114,5 @@ static NSString *CategoryCellID = @"CategoryCellID";
   }
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-  
-}
 
 @end
