@@ -14,6 +14,7 @@
 #import "MPCategoryModel.h"
 #import "MPCalculatorView.h"
 #import "MPCalendarView.h"
+#import "MPAccountPickerView.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate>
 
@@ -121,6 +122,14 @@
   [self.view addSubview:self.calendarView];
 }
 
+/// 显示账户选择器
+- (void)showAccountPicker
+{
+  MPAccountPickerView *picker = [[MPAccountPickerView alloc] initWithAccountModelArray:@[@"", @"", @"", @"", @"", @"", @""]];
+  picker.frame = self.view.bounds;
+  [self.view addSubview:picker];
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
@@ -164,6 +173,12 @@
   self.resultView.results = result;
 }
 
+- (void)calculatorViewDidClickAccount:(MPCalculatorView *)view
+{
+  [self showAccountPicker];
+}
+
+#pragma mark - FSCalendarDelegate
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
   self.calculatorView.selectedDate = date;
