@@ -10,5 +10,10 @@
 
 @implementation MPAccountModel
 
+- (NSString *)description
+{
+  NSString *desc = [NSString stringWithFormat:@"name:%@, money:%lf", _accountName, _money];
+  return desc;
+}
 
 @end

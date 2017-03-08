@@ -15,8 +15,9 @@
 #import "MPCalculatorView.h"
 #import "MPCalendarView.h"
 #import "MPAccountPickerView.h"
+#import "MPAccountModel.h"
 
-@interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate>
+@interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate, AccountPickerViewDelegate>
 
 /// 水平滚动容器
 @property (nonatomic, weak) UIScrollView *contentView;
@@ -30,6 +31,8 @@
 @property (nonatomic, assign, getter=isShowCalculator) BOOL showCalculator;
 /// 日历View
 @property (nonatomic, strong) MPCalendarView *calendarView;
+/// 账户模型数组
+@property (nonatomic, strong) NSArray *accoutModelArray;
 
 @end
 
@@ -125,7 +128,8 @@
 /// 显示账户选择器
 - (void)showAccountPicker
 {
-  MPAccountPickerView *picker = [[MPAccountPickerView alloc] initWithAccountModelArray:@[@"", @"", @"", @"", @"", @"", @""]];
+  MPAccountPickerView *picker = [[MPAccountPickerView alloc] initWithAccountModelArray:self.accoutModelArray];
+  picker.delegate = self;
   picker.frame = self.view.bounds;
   [self.view addSubview:picker];
 }
@@ -185,7 +189,30 @@
   [self.calendarView dismiss];
 }
 
+#pragma mark - AccountPickerViewDelegate
+- (void)accountPickerView:(MPAccountPickerView *)pickerView didSelectAccount:(MPAccountModel *)accountModel
+{
+  NSLog(@"%@", accountModel);
+}
+
 #pragma mark - getter
+- (NSArray *)accoutModelArray
+{
+  if(_accoutModelArray == nil)
+  {
+    NSMutableArray *temp = [NSMutableArray array];
+    for(int i = 1; i <= 6; i++)
+    {
+      MPAccountModel *model = [[MPAccountModel alloc] init];
+      model.accountName = [NSString stringWithFormat:@"钱包%zd", i];
+      model.money = 666.54;
+      [temp addObject:model];
+    }
+    _accoutModelArray = temp;
+  }
+  return _accoutModelArray;
+}
+
 - (MPCalendarView *)calendarView
 {
   if(_calendarView == nil)

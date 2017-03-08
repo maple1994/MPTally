@@ -7,6 +7,7 @@
 //
 
 #import "MPAccountPickerView.h"
+#import "MPAccountPickerTableViewCell.h"
 #define kRowHeight 50 // 行高
 #define kMaxRowCount 5 // 最多显示5个账户
 #define kTableViewH kMaxRowCount * kRowHeight + kRowHeight // 5个Cell高+title的高度
@@ -19,6 +20,8 @@
 @property (nonatomic, strong) NSArray *accountModelArray;
 /// 标题栏
 @property (nonatomic, strong) UIView *titleView;
+/// 当前选中的indexPath
+@property (nonatomic, weak) NSIndexPath *selectedIndexPath;
 
 @end
 
@@ -50,7 +53,8 @@ static NSString *CellID = @"CellID";
   }];
   
   // 注册Cell
-  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellID];
+  [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MPAccountPickerTableViewCell class]) bundle:nil] forCellReuseIdentifier:CellID];
+  _selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
 /// 底部弹出动画
@@ -88,8 +92,10 @@ static NSString *CellID = @"CellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
-  cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
+  MPAccountPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
+  cell.accountModel = self.accountModelArray[indexPath.row];
+  if(_selectedIndexPath == indexPath)
+    cell.showSelectedMark = YES;
   return cell;
 }
 
@@ -101,6 +107,24 @@ static NSString *CellID = @"CellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
   return kRowHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if([self.delegate respondsToSelector:@selector(accountPickerView:didSelectAccount:)])
+  {
+    [self.delegate accountPickerView:self didSelectAccount:self.accountModelArray[indexPath.row]];
+  }
+  self.selectedIndexPath = indexPath;
+}
+
+- (void)setSelectedIndexPath:(NSIndexPath *)selectedIndexPath
+{
+  MPAccountPickerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:_selectedIndexPath];
+  cell.showSelectedMark = NO;
+  MPAccountPickerTableViewCell *cell1 = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
+  cell1.showSelectedMark = YES;
+  _selectedIndexPath = selectedIndexPath;
 }
 
 #pragma mark - getter
