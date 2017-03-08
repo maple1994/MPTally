@@ -7,12 +7,9 @@
 //
 
 #import "MPCalendarView.h"
-#import "FSCalendar.h"
 
-@interface MPCalendarView()<FSCalendarDataSource, FSCalendarDelegate>
+@interface MPCalendarView()<FSCalendarDataSource>
 
-/// 日历View
-@property (nonatomic, weak) FSCalendar *calendarView;
 /// 下个月button
 @property (nonatomic, weak) UIButton *nextButton;
 /// 上个月button
@@ -66,6 +63,7 @@ static CGFloat ToolViewH = 50;
   }];
 }
 
+/// 底部弹出动画
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {
   [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -73,7 +71,7 @@ static CGFloat ToolViewH = 50;
   }];
   [self layoutIfNeeded];
   [super willMoveToSuperview:newSuperview];
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
       make.bottom.equalTo(self).offset(0);
     }];
@@ -83,6 +81,7 @@ static CGFloat ToolViewH = 50;
   });
 }
 
+/// 界面退去
 - (void)dismiss
 {
   [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -95,13 +94,7 @@ static CGFloat ToolViewH = 50;
   }];
 }
 
-- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
-{
-  NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-  fmt.dateFormat = @"yyyy-MM-dd";
-  NSLog(@"%@", [fmt stringFromDate:date]);
-}
-
+/// 点击上个月
 - (void)previousClicked:(id)sender
 {
   NSDate *currentMonth = self.calendarView.currentPage;
@@ -109,6 +102,7 @@ static CGFloat ToolViewH = 50;
   [self.calendarView setCurrentPage:previousMonth animated:YES];
 }
 
+/// 点击下个月
 - (void)nextClicked:(id)sender
 {
   NSDate *currentMonth = self.calendarView.currentPage;
@@ -175,7 +169,6 @@ static CGFloat ToolViewH = 50;
     FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectZero];
     calendar.locale = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
     calendar.dataSource = self;
-    calendar.delegate = self;
     calendar.backgroundColor = [UIColor whiteColor];
     calendar.appearance.headerMinimumDissolvedAlpha = 0;
     calendar.appearance.caseOptions = FSCalendarCaseOptionsHeaderUsesUpperCase;

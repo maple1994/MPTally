@@ -26,5 +26,6 @@
 @interface MPCalculatorView : UIView
 
 @property (nonatomic, weak) id<MPCalculatorViewDelegate> delegate;
+@property (nonatomic, strong) NSDate *selectedDate;
 
 @end

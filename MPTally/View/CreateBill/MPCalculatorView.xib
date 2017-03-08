@@ -18,23 +18,32 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Obn-a4-A5D">
                     <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-PS-ilT">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-PS-ilT">
                             <rect key="frame" x="10" y="7" width="31" height="30"/>
-                            <state key="normal" title="账号"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="账号">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="selectAccount:" destination="iN0-l3-epB" eventType="touchUpInside" id="mUH-uE-hSY"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqd-Aq-bTr">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqd-Aq-bTr">
                             <rect key="frame" x="319" y="7" width="31" height="30"/>
-                            <state key="normal" title="备注"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="备注">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="mark:" destination="iN0-l3-epB" eventType="touchUpInside" id="eBU-1S-p2m"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEP-MM-gFm">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEP-MM-gFm">
                             <rect key="frame" x="51" y="7" width="31" height="30"/>
-                            <state key="normal" title="日期"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="日期">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="selectDate:" destination="iN0-l3-epB" eventType="touchUpInside" id="gvl-gO-Pre"/>
                             </connections>
@@ -59,7 +68,12 @@
                 <constraint firstItem="Obn-a4-A5D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qYm-24-4H9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-200" y="-199"/>
+            <connections>
+                <outlet property="accountButton" destination="4PR-PS-ilT" id="Ykf-ze-zbM"/>
+                <outlet property="dateButton" destination="pEP-MM-gFm" id="wrL-Ne-PHP"/>
+                <outlet property="remarkButton" destination="aqd-Aq-bTr" id="INX-6u-KgY"/>
+            </connections>
+            <point key="canvasLocation" x="-459" y="-267"/>
         </view>
     </objects>
 </document>

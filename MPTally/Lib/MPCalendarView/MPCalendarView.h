@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSCalendar.h"
 
 @interface MPCalendarView : UIView
+
+/// 日历View
+@property (nonatomic, weak) FSCalendar *calendarView;
+
+/// 界面退去
+- (void)dismiss;
 
 @end

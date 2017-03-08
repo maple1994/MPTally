@@ -15,7 +15,7 @@
 #import "MPCalculatorView.h"
 #import "MPCalendarView.h"
 
-@interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate>
+@interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate>
 
 /// 水平滚动容器
 @property (nonatomic, weak) UIScrollView *contentView;
@@ -159,12 +159,19 @@
   [self showCalendarPicker];
 }
 
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
+{
+  self.calculatorView.selectedDate = date;
+  [self.calendarView dismiss];
+}
+
 #pragma mark - getter
 - (MPCalendarView *)calendarView
 {
   if(_calendarView == nil)
   {
     _calendarView = [[MPCalendarView alloc] init];
+    _calendarView.calendarView.delegate = self;
     _calendarView.frame = self.view.bounds;
   }
   return _calendarView;

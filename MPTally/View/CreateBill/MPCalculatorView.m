@@ -8,8 +8,22 @@
 
 #import "MPCalculatorView.h"
 
+@interface MPCalculatorView ()
+
+@property (weak, nonatomic) IBOutlet UIButton *accountButton;
+@property (weak, nonatomic) IBOutlet UIButton *remarkButton;
+@property (weak, nonatomic) IBOutlet UIButton *dateButton;
+@end
+
 @implementation MPCalculatorView
 
+- (void)awakeFromNib
+{
+  [super awakeFromNib];
+  self.selectedDate = [NSDate date];
+}
+
+#pragma mark - Action
 - (IBAction)selectAccount:(UIButton *)sender
 {
   if([self.delegate respondsToSelector:@selector(calculatorViewDidClickAccount:)])
@@ -34,6 +48,15 @@
     [self.delegate calculatorViewDidClickRemark:self];
   }
   kFuncNameLog;
+}
+
+#pragma mark - setter
+- (void)setSelectedDate:(NSDate *)selectedDate
+{
+  _selectedDate = selectedDate;
+  NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+  fmt.dateFormat = @"M月d日";
+  [self.dateButton setTitle:[fmt stringFromDate:selectedDate] forState:UIControlStateNormal];
 }
 
 
