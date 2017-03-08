@@ -13,8 +13,9 @@
 #import "MPCategoryCollectionViewCell.h"
 #import "MPCategoryModel.h"
 #import "MPCalculatorView.h"
+#import "SZCalendarPicker.h"
 
-@interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate>
+@interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate>
 
 /// 水平滚动容器
 @property (nonatomic, weak) UIScrollView *contentView;
@@ -112,6 +113,19 @@
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+/// 显示日期选择器
+- (void)showCalendarPicker{
+  SZCalendarPicker *calendarPicker = [SZCalendarPicker showOnView:self.view];
+  calendarPicker.today = [NSDate date];
+  calendarPicker.date = calendarPicker.today;
+  calendarPicker.frame = CGRectMake(0, kScreenH - (self.calculatorView.bounds.size.height + 50), kScreenW, self.calculatorView.bounds.size.height + 50);
+  
+  calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
+    NSString *time = [NSString stringWithFormat:@"%02zd-%02zd-%02zd", year, month, day];
+    MPLog(@" %@", time);
+  };
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
@@ -142,6 +156,12 @@
 - (void)categoryCollectionViewDidScrollDown:(UICollectionView *)collectionView
 {
     [self showCalcultor];
+}
+
+#pragma mark - MPCalculatorViewDelegate
+- (void)calculatorViewDidClickCalendar:(MPCalculatorView *)view
+{
+  [self showCalendarPicker];
 }
 
 #pragma mark - getter
@@ -179,6 +199,7 @@
   {
     MPCalculatorView *view = [MPCalculatorView viewFromNib];
     _calculatorView = view;
+    _calculatorView.delegate = self;
     _calculatorView.backgroundColor = kRandomColor;
     [self.view addSubview:_calculatorView];
   }

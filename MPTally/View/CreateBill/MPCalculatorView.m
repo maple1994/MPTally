@@ -13,24 +13,27 @@
 
 - (IBAction)selectAccount:(UIButton *)sender
 {
+  if([self.delegate respondsToSelector:@selector(calculatorViewDidClickAccount:)])
+  {
+    [self.delegate calculatorViewDidClickAccount:self];
+  }
   kFuncNameLog;
 }
 
 - (IBAction)selectDate:(UIButton *)sender
 {
-  kFuncNameLog;
-  SZCalendarPicker *calendarPicker = [SZCalendarPicker showOnView:self];
-  calendarPicker.today = [NSDate date];
-  calendarPicker.date = calendarPicker.today;
-  calendarPicker.frame = CGRectMake(0, 0, self.mp_width, self.mp_height);
-  calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
-    
-    NSLog(@"%zd-%zd-%zd", year,month,day);
-  };
+  if([self.delegate respondsToSelector:@selector(calculatorViewDidClickCalendar:)])
+  {
+    [self.delegate calculatorViewDidClickCalendar:self];
+  }
 }
 
 - (IBAction)mark:(UIButton *)sender
 {
+  if([self.delegate respondsToSelector:@selector(calculatorViewDidClickRemark:)])
+  {
+    [self.delegate calculatorViewDidClickRemark:self];
+  }
   kFuncNameLog;
 }
 

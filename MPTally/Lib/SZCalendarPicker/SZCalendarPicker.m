@@ -35,8 +35,9 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     [_collectionView registerClass:[SZCalendarCell class] forCellWithReuseIdentifier:SZCalendarCellIdentifier];
-     _weekDayArray = @[@"日",@"一",@"二",@"三",@"四",@"五",@"六"];
+     _weekDayArray = @[@"周日",@"周一",@"周二",@"周三",@"周四",@"周五",@"周六"];
 }
 
 - (void)customInterface
@@ -49,7 +50,7 @@ NSString *const SZCalendarCellIdentifier = @"cell";
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
-    [_collectionView setCollectionViewLayout:layout animated:YES];
+    [_collectionView setCollectionViewLayout:layout animated:NO];
     
     
 }
@@ -57,7 +58,7 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 - (void)setDate:(NSDate *)date
 {
     _date = date;
-    [_monthLabel setText:[NSString stringWithFormat:@"%.2d-%i",[self month:date],[self year:date]]];
+    [_monthLabel setText:[NSString stringWithFormat:@"%.2ld月%li",[self month:date],[self year:date]]];
     [_collectionView reloadData];
 }
 
@@ -136,7 +137,7 @@ NSString *const SZCalendarCellIdentifier = @"cell";
     SZCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SZCalendarCellIdentifier forIndexPath:indexPath];
     if (indexPath.section == 0) {
         [cell.dateLabel setText:_weekDayArray[indexPath.row]];
-        [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#15cc9c"]];
+        [cell.dateLabel setTextColor:LineColor];
     } else {
         NSInteger daysInThisMonth = [self totaldaysInMonth:_date];
         NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];
@@ -151,13 +152,13 @@ NSString *const SZCalendarCellIdentifier = @"cell";
             [cell.dateLabel setText:@""];
         }else{
             day = i - firstWeekday + 1;
-            [cell.dateLabel setText:[NSString stringWithFormat:@"%i",day]];
+            [cell.dateLabel setText:[NSString stringWithFormat:@"%li",day]];
             [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#6f6f6f"]];
             
             //this month
             if ([_today isEqualToDate:_date]) {
                 if (day == [self day:_date]) {
-                    [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#4898eb"]];
+                    [cell.dateLabel setTextColor:kSelectColor];
                 } else if (day > [self day:_date]) {
                     [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#cbcbcb"]];
                 }
@@ -211,16 +212,16 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 
 - (IBAction)previouseAction:(UIButton *)sender
 {
-    [UIView transitionWithView:self duration:0.5 options:UIViewAnimationOptionTransitionCurlDown animations:^(void) {
+//    [UIView transitionWithView:self duration:0.5 options:UIViewAnimationOptionTransitionCurlDown animations:^(void) {
         self.date = [self lastMonth:self.date];
-    } completion:nil];
+//    } completion:nil];
 }
 
 - (IBAction)nexAction:(UIButton *)sender
 {
-    [UIView transitionWithView:self duration:0.5 options:UIViewAnimationOptionTransitionCurlUp animations:^(void) {
+//    [UIView transitionWithView:self duration:0.5 options:UIViewAnimationOptionTransitionCurlUp animations:^(void) {
         self.date = [self nextMonth:self.date];
-    } completion:nil];
+//    } completion:nil];
 }
 
 + (instancetype)showOnView:(UIView *)view
@@ -228,7 +229,7 @@ NSString *const SZCalendarCellIdentifier = @"cell";
     SZCalendarPicker *calendarPicker = [[[NSBundle mainBundle] loadNibNamed:@"SZCalendarPicker" owner:self options:nil] firstObject];
     calendarPicker.mask = [[UIView alloc] initWithFrame:view.bounds];
     calendarPicker.mask.backgroundColor = [UIColor blackColor];
-    calendarPicker.mask.alpha = 0.3;
+    calendarPicker.mask.alpha = 0.0;
     [view addSubview:calendarPicker.mask];
     [view addSubview:calendarPicker];
     return calendarPicker;
@@ -236,8 +237,9 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 
 - (void)show
 {
-    self.transform = CGAffineTransformTranslate(self.transform, 0, - self.frame.size.height);
+    self.transform = CGAffineTransformTranslate(self.transform, 0, kScreenH + self.frame.size.height);
     [UIView animateWithDuration:0.5 animations:^(void) {
+        self.mask.alpha = 0.2;
         self.transform = CGAffineTransformIdentity;
     } completion:^(BOOL isFinished) {
         [self customInterface];
@@ -247,7 +249,7 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 - (void)hide
 {
     [UIView animateWithDuration:0.5 animations:^(void) {
-        self.transform = CGAffineTransformTranslate(self.transform, 0, - self.frame.size.height);
+        self.transform = CGAffineTransformTranslate(self.transform, 0,  kScreenH + self.frame.size.height);
         self.mask.alpha = 0;
     } completion:^(BOOL isFinished) {
         [self.mask removeFromSuperview];

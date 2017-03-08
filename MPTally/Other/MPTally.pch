@@ -15,9 +15,17 @@
 #import <Masonry.h>
 
 /*************** Macro ********************/
-#define kFuncNameLog NSLog(@"%s", __func__); // 打印当前函数名
+#ifdef DEBUG
+# define MPLog(fmt, ...) NSLog((@"func:%s" "line:%d" fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+# define MPLog(...);
+#endif
+
+#define kFuncNameLog MPLog(@"%s", __func__); // 打印当前函数名
 #define kRandomColor [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1]
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
+#define kSelectColor [UIColor colorWithRed:0.907 green:0.454 blue:0.000 alpha:1.000]
+#define LineColor [UIColor colorWithWhite:0.800 alpha:1.000]
 
 #endif /* MPTally_pch */
