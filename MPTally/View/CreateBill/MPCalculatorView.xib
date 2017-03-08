@@ -20,8 +20,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-PS-ilT">
-                            <rect key="frame" x="10" y="7" width="31" height="30"/>
+                            <rect key="frame" x="10" y="8" width="41" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                             <state key="normal" title="账号">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -40,8 +41,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEP-MM-gFm">
-                            <rect key="frame" x="51" y="7" width="31" height="30"/>
+                            <rect key="frame" x="61" y="8" width="41" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                             <state key="normal" title="日期">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>

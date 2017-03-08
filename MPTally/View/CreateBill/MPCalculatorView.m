@@ -43,6 +43,16 @@
   [super awakeFromNib];
   self.selectedDate = [NSDate date];
   [self initializesWithPreparation];
+  [self addBorder:self.dateButton];
+  [self addBorder:self.accountButton];
+}
+
+- (void)addBorder:(UIButton *)button
+{
+  button.layer.borderWidth = 1;
+  button.layer.borderColor = colorWithRGB(220, 220, 220).CGColor;
+  button.layer.cornerRadius = 3;
+  button.clipsToBounds = YES;
 }
 
 /** 初始化准备 */
@@ -93,9 +103,7 @@
   } else if (sender.tag == 115) // 归零
   {
     [self initializesWithPreparation];
-    NSLog(@"results = %@",self.currentString);
     _results = self.currentString;
-//    return;
   }
   else if (sender.tag == 113 || sender.tag == 114)
   {
@@ -114,13 +122,11 @@
       self.selectedPlusOperation = NO;
     }
     _results = self.currentString;
-    NSLog(@"results = %@",self.currentString);
     self.previousString = self.currentString;
     self.beforSting = @"0";
     self.afterString = @"00";
     self.selectedPoint = NO;
     self.selectedOperation = YES;
-//    return;
   }
   else if (sender.tag == 112) // =
   {//* ------------------------------------- */
@@ -135,8 +141,6 @@
         self.currentString = [NSString stringWithFormat:@"%.2f",poor];
       }
     }
-    //* 传值 */
-    NSLog(@"OK results = %@",self.currentString);
     _results = self.currentString;
     [self initializesWithPreparation];
     if([self.delegate respondsToSelector:@selector(calculatorView:passTheResult:)])
@@ -147,8 +151,20 @@
   }
   else if (self.isSelectedPoint)
   {
-    //小数点后
-    self.afterString = [NSString stringWithFormat:@"%@0",text];
+    //小数点后字符
+    if([self.afterString isEqualToString:@"00"])
+    {
+      self.afterString = [NSString stringWithFormat:@"%@0",text];
+    }
+    else if([[self.afterString substringFromIndex:1] isEqualToString:@"0"])
+    {
+      NSString *firstText = [self.afterString substringWithRange:NSMakeRange(0, 1)];
+      self.afterString = [NSString stringWithFormat:@"%@%@", firstText, text];
+    }
+    else
+    {
+      return;
+    }
   }
   else
   {
@@ -163,7 +179,6 @@
     }
   }
   self.currentString = [NSString stringWithFormat:@"%@.%@",self.beforSting,self.afterString];
-  NSLog(@"results = %@",self.currentString);
   _results = self.currentString;
   
   if([self.delegate respondsToSelector:@selector(calculatorView:passTheResult:)])
@@ -172,121 +187,6 @@
   }
 
 }
-
-- (void)test2:(UIButton *)button
-{
-  // 100 ~ 109 = 0 ~ 9
-  if(button.tag >= 100 && button.tag <= 109)
-  {
-    // 识别0的情况
-    if(self.resultString.length == 0 && button.tag == 100)
-    {
-      return;
-    }
-    [self.resultString appendString:[NSString stringWithFormat:@"%zd", button.tag - 100]];
-    
-    NSLog(@"%@", _resultString);
-  }
-  else if(button.tag == 110) // C归零
-  {
-    self.resultString = nil;
-  }
-  else if(button.tag == 111) // 小数点
-  {
-    NSLog(@"小数点");
-  }
-  else if(button.tag == 112) // =
-  {
-    NSLog(@"=");
-  }
-  else if(button.tag == 113)
-  {
-    NSLog(@"-");
-  }
-  else if(button.tag == 114)
-  {
-    NSLog(@"+");
-  }
-  else if(button.tag == 115)
-  {
-    NSLog(@"删除");
-  }
-}
-
-- (void)test:(UIButton *)sender
-{
-  NSString *text = sender.currentTitle;
-  
-  if ([text isEqualToString:@"."])
-  {
-    self.selectedPoint = YES;
-    return;
-  } else if ([text isEqualToString:@"清零"])
-  {
-    [self initializesWithPreparation];
-    NSLog(@"results = %@",self.currentString);
-  } else if ([text isEqualToString:@"+"] || [text isEqualToString:@"-"] )
-  {
-    if ([text isEqualToString:@"+"])
-    {
-      //加号
-      self.selectedPlusOperation = YES;
-      //* 和 */
-      float sum = self.previousString.floatValue + self.currentString.floatValue;
-      self.currentString = [NSString stringWithFormat:@"%.2f",sum];
-    } else {
-      //减号
-      //* 差 */
-      if (self.previousString.floatValue != 0) {
-        float poor = self.previousString.floatValue - self.currentString.floatValue;
-        self.currentString = [NSString stringWithFormat:@"%.2f",poor];
-      }
-      self.selectedPlusOperation = NO;
-    }
-    NSLog(@"results = %@",self.currentString);
-    self.previousString = self.currentString;
-    self.beforSting = @"0";
-    self.afterString = @"00";
-    self.selectedPoint = NO;
-    self.selectedOperation = YES;
-    return;
-  } else if ([text isEqualToString:@"OK"])
-  {//* ------------------------------------- */
-    if (self.isSelectedOperation) {//当用户选择了运输操作符则进行运算,没有则直接输出
-      if (self.isSelectedPlusOperation) {
-        float sum = self.previousString.floatValue + self.currentString.floatValue;
-        self.currentString = [NSString stringWithFormat:@"%.2f",sum];
-      } else {
-        float poor = self.previousString.floatValue - self.currentString.floatValue;
-        self.currentString = [NSString stringWithFormat:@"%.2f",poor];
-      }
-    }
-    //* 传值 */
-    NSLog(@"OK results = %@",self.currentString);
-
-    [self initializesWithPreparation];
-    return;
-  }
-  if (self.isSelectedPoint)
-  {
-    //小数点后
-    self.afterString = [NSString stringWithFormat:@"%@0",text];
-  } else
-  {
-    //小数点前
-    if ([self.beforSting isEqualToString:@"0"])
-    {
-      //第一次输入或者用户输入为0
-      self.beforSting = text;
-    } else
-    {
-      self.beforSting = [NSString stringWithFormat:@"%@%@",self.beforSting,text];
-    }
-  }
-  self.currentString = [NSString stringWithFormat:@"%@.%@",self.beforSting,self.afterString];
-  NSLog(@"results = %@",self.currentString);
-}
-
 #pragma mark - setter
 - (void)setSelectedDate:(NSDate *)selectedDate
 {
