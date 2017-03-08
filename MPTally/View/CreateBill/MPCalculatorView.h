@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MPCalculatorView;
+@class MPAccountModel;
 
 @protocol MPCalculatorViewDelegate <NSObject>
 
@@ -29,5 +30,6 @@
 
 @property (nonatomic, weak) id<MPCalculatorViewDelegate> delegate;
 @property (nonatomic, strong) NSDate *selectedDate;
+@property (nonatomic, strong) MPAccountModel *selectedAccount;
 
 @end

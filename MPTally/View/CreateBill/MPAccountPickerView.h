@@ -24,5 +24,7 @@
 @property (nonatomic, weak) id<AccountPickerViewDelegate> delegate;
 /// 根据账户模型创建界面
 - (instancetype)initWithAccountModelArray:(NSArray *)accountModelArray;
+/// 退出
+- (void)dismiss;
 
 @end

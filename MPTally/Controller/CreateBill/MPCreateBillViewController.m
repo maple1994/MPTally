@@ -192,7 +192,8 @@
 #pragma mark - AccountPickerViewDelegate
 - (void)accountPickerView:(MPAccountPickerView *)pickerView didSelectAccount:(MPAccountModel *)accountModel
 {
-  NSLog(@"%@", accountModel);
+  self.calculatorView.selectedAccount = accountModel;
+  [pickerView dismiss];
 }
 
 #pragma mark - getter

@@ -71,7 +71,7 @@ static NSString *CellID = @"CellID";
   });
 }
 
-
+/// 退出
 - (void)dismiss
 {
   [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {

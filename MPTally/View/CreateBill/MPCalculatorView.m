@@ -7,6 +7,7 @@
 //
 
 #import "MPCalculatorView.h"
+#import "MPAccountModel.h"
 
 @interface MPCalculatorView ()
 
@@ -42,11 +43,16 @@
 {
   [super awakeFromNib];
   self.selectedDate = [NSDate date];
+  MPAccountModel *model = [[MPAccountModel alloc] init];
+  model.accountName = @"钱包1";
+  model.money = 666;
+  self.selectedAccount = model;
   [self initializesWithPreparation];
   [self addBorder:self.dateButton];
   [self addBorder:self.accountButton];
 }
 
+/// 给button添加边框
 - (void)addBorder:(UIButton *)button
 {
   button.layer.borderWidth = 1;
@@ -188,6 +194,12 @@
 
 }
 #pragma mark - setter
+- (void)setSelectedAccount:(MPAccountModel *)selectedAccount
+{
+  _selectedAccount = selectedAccount;
+  [self.accountButton setTitle:selectedAccount.accountName forState:UIControlStateNormal];
+}
+
 - (void)setSelectedDate:(NSDate *)selectedDate
 {
   _selectedDate = selectedDate;
