@@ -159,6 +159,11 @@
   [self showCalendarPicker];
 }
 
+- (void)calculatorView:(MPCalculatorView *)view passTheResult:(NSString *)result
+{
+  self.resultView.results = result;
+}
+
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
   self.calculatorView.selectedDate = date;

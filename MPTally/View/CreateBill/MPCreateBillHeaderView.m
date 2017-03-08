@@ -25,4 +25,10 @@
   self.categoryNameLabel.text = categoryModel.categoryName;
 }
 
+- (void)setResults:(NSString *)results
+{
+  _results = results;
+  self.NumLabel.text = results;
+}
+
 @end

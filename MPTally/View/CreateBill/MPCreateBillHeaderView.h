@@ -12,5 +12,7 @@
 @interface MPCreateBillHeaderView : UIView
 
 @property (nonatomic, strong) MPCategoryModel *categoryModel;
+/// 计算结果值
+@property (nonatomic, copy) NSString *results;
 
 @end

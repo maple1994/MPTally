@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -63,36 +64,48 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8KO-mH-SSO">
                     <rect key="frame" x="0.0" y="44" width="360" height="235"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-Xa-oSD">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-Xa-oSD" userLabel="row1">
                             <rect key="frame" x="0.0" y="0.0" width="360" height="58"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7b1-hG-uHF">
+                                <button opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7b1-hG-uHF">
                                     <rect key="frame" x="90.5" y="0.0" width="89" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="8">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="XZU-kA-mJ6"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3p-5I-zId">
+                                <button opaque="NO" tag="109" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3p-5I-zId">
                                     <rect key="frame" x="180.5" y="0.0" width="89" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="9">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="m3j-4D-ymq"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRD-pG-uFD">
+                                <button opaque="NO" tag="115" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRD-pG-uFD">
                                     <rect key="frame" x="271" y="0.0" width="89" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="删除">
+                                    <state key="normal" title="归零">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="OYN-TD-LKi"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPL-OS-Ycy">
+                                <button opaque="NO" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPL-OS-Ycy">
                                     <rect key="frame" x="0.0" y="0.0" width="89.5" height="58"/>
                                     <color key="backgroundColor" red="0.38823529410000002" green="0.29803921570000003" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="7">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="1Me-vb-XBs"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -114,36 +127,48 @@
                                 <constraint firstItem="u3p-5I-zId" firstAttribute="leading" secondItem="7b1-hG-uHF" secondAttribute="trailing" constant="1" id="u16-7e-cGn"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-Gi-2hj">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-Gi-2hj" userLabel="row2">
                             <rect key="frame" x="0.0" y="59" width="360" height="58"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVF-65-63m">
+                                <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVF-65-63m">
                                     <rect key="frame" x="0.0" y="0.0" width="89.5" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="4">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Bbk-mQ-RVF"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j8-kh-27K">
+                                <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j8-kh-27K">
                                     <rect key="frame" x="90.5" y="0.0" width="89" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="5">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="1cn-Rc-BIk"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyG-3h-13J">
-                                    <rect key="frame" x="180.5" y="0.0" width="89.5" height="58"/>
-                                    <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="6">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uee-RB-Py0">
+                                <button opaque="NO" tag="114" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uee-RB-Py0">
                                     <rect key="frame" x="271" y="0.0" width="89" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="+">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="R8W-kA-AOo"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyG-3h-13J">
+                                    <rect key="frame" x="180" y="0.0" width="89.5" height="58"/>
+                                    <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="6">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="gBF-HX-gTw"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -165,36 +190,48 @@
                                 <constraint firstItem="Uee-RB-Py0" firstAttribute="width" secondItem="LVF-65-63m" secondAttribute="width" id="l0x-wa-wwG"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-T6-FHV">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-T6-FHV" userLabel="row3">
                             <rect key="frame" x="0.0" y="118" width="360" height="58"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgZ-sN-TK5">
+                                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgZ-sN-TK5">
                                     <rect key="frame" x="0.0" y="0.0" width="89.5" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="1">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gus-GW-Vra"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-Mi-sFc">
+                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-Mi-sFc">
                                     <rect key="frame" x="90.5" y="0.0" width="89" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="2">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="4fv-ZR-xwD"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-uU-v8o">
+                                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-uU-v8o">
                                     <rect key="frame" x="180.5" y="0.0" width="89.5" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="3">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="J6i-ud-WEo"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFM-qI-h7i">
+                                <button opaque="NO" tag="113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFM-qI-h7i">
                                     <rect key="frame" x="271" y="0.0" width="89" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="-">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="vhr-eA-TSN"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -216,55 +253,53 @@
                                 <constraint firstItem="aPb-Mi-sFc" firstAttribute="top" secondItem="Ldk-T6-FHV" secondAttribute="top" id="ufd-GE-bQK"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kE6-8r-1bG">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kE6-8r-1bG" userLabel="row4">
                             <rect key="frame" x="0.0" y="177" width="360" height="58"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiT-WH-vaM">
-                                    <rect key="frame" x="0.0" y="0.0" width="89.5" height="58"/>
-                                    <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="C">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycG-YL-kJd">
-                                    <rect key="frame" x="90.5" y="0.0" width="89" height="58"/>
+                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycG-YL-kJd">
+                                    <rect key="frame" x="0.0" y="0.0" width="179" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="0">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="nZu-tK-P8d"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hq5-hk-Wsh">
-                                    <rect key="frame" x="180.5" y="0.0" width="89.5" height="58"/>
+                                <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hq5-hk-Wsh">
+                                    <rect key="frame" x="180" y="0.0" width="89.5" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title=".">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="cVC-Bl-rDz"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHx-OB-pOl">
-                                    <rect key="frame" x="271" y="0.0" width="89" height="58"/>
+                                <button opaque="NO" tag="112" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHx-OB-pOl">
+                                    <rect key="frame" x="270.5" y="0.0" width="89.5" height="58"/>
                                     <color key="backgroundColor" red="0.38823529411764707" green="0.29803921568627451" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="=">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="calculatorClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Wk-W1-Xz7"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="hq5-hk-Wsh" firstAttribute="width" secondItem="jiT-WH-vaM" secondAttribute="width" id="0Df-gQ-YPD"/>
-                                <constraint firstItem="jiT-WH-vaM" firstAttribute="leading" secondItem="kE6-8r-1bG" secondAttribute="leading" id="0cd-Pm-tEP"/>
                                 <constraint firstItem="hq5-hk-Wsh" firstAttribute="top" secondItem="kE6-8r-1bG" secondAttribute="top" id="GPm-pA-tac"/>
                                 <constraint firstAttribute="trailing" secondItem="LHx-OB-pOl" secondAttribute="trailing" id="HBK-iA-l0t"/>
                                 <constraint firstItem="ycG-YL-kJd" firstAttribute="top" secondItem="kE6-8r-1bG" secondAttribute="top" id="IDE-qO-Xyk"/>
                                 <constraint firstItem="hq5-hk-Wsh" firstAttribute="leading" secondItem="ycG-YL-kJd" secondAttribute="trailing" constant="1" id="JyX-o0-ilY"/>
-                                <constraint firstItem="jiT-WH-vaM" firstAttribute="top" secondItem="kE6-8r-1bG" secondAttribute="top" id="KM1-v7-ZKq"/>
                                 <constraint firstAttribute="bottom" secondItem="ycG-YL-kJd" secondAttribute="bottom" id="MSA-Hc-QBY"/>
-                                <constraint firstItem="ycG-YL-kJd" firstAttribute="leading" secondItem="jiT-WH-vaM" secondAttribute="trailing" constant="1" id="NA3-Fp-uw1"/>
                                 <constraint firstAttribute="bottom" secondItem="hq5-hk-Wsh" secondAttribute="bottom" id="OvC-mP-utx"/>
-                                <constraint firstAttribute="bottom" secondItem="jiT-WH-vaM" secondAttribute="bottom" id="c0A-Fy-uxL"/>
+                                <constraint firstItem="ycG-YL-kJd" firstAttribute="leading" secondItem="kE6-8r-1bG" secondAttribute="leading" id="RNF-mC-iqI"/>
+                                <constraint firstItem="hq5-hk-Wsh" firstAttribute="width" secondItem="ycG-YL-kJd" secondAttribute="width" multiplier="0.5" id="UQx-ho-ce1"/>
                                 <constraint firstItem="LHx-OB-pOl" firstAttribute="leading" secondItem="hq5-hk-Wsh" secondAttribute="trailing" constant="1" id="czr-Tl-2aY"/>
-                                <constraint firstItem="LHx-OB-pOl" firstAttribute="width" secondItem="jiT-WH-vaM" secondAttribute="width" id="e57-q9-Kue"/>
+                                <constraint firstItem="LHx-OB-pOl" firstAttribute="width" secondItem="ycG-YL-kJd" secondAttribute="width" multiplier="0.5" id="dKS-VR-X1b"/>
                                 <constraint firstAttribute="bottom" secondItem="LHx-OB-pOl" secondAttribute="bottom" id="oWS-CS-dw3"/>
                                 <constraint firstItem="LHx-OB-pOl" firstAttribute="top" secondItem="kE6-8r-1bG" secondAttribute="top" id="r9X-H6-YBy"/>
-                                <constraint firstItem="ycG-YL-kJd" firstAttribute="width" secondItem="jiT-WH-vaM" secondAttribute="width" id="tqi-kb-4pi"/>
                             </constraints>
                         </view>
                     </subviews>
