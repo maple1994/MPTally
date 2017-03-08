@@ -1,4 +1,5 @@
 PODS:
+  - FSCalendar (2.7.3)
   - Masonry (1.0.2)
   - Realm (2.4.3):
     - Realm/Headers (= 2.4.3)
@@ -6,15 +7,17 @@ PODS:
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
+  - FSCalendar
   - Masonry
   - Realm
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  FSCalendar: 574388d70778c22719eed9341653e1743b345573
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 548baed852ac7040c6eb54d97d9e640945409cd2
+PODFILE CHECKSUM: 932099eb41c3e1266ae56f7e39831ee83de9ad19
 
 COCOAPODS: 1.2.0

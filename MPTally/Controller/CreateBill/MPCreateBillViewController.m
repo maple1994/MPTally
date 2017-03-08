@@ -13,7 +13,7 @@
 #import "MPCategoryCollectionViewCell.h"
 #import "MPCategoryModel.h"
 #import "MPCalculatorView.h"
-#import "SZCalendarPicker.h"
+#import "MPCalendarView.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate>
 
@@ -27,6 +27,8 @@
 @property (nonatomic, weak) MPCalculatorView *calculatorView;
 /// 是否已经显示计算器
 @property (nonatomic, assign, getter=isShowCalculator) BOOL showCalculator;
+/// 日历View
+@property (nonatomic, strong) MPCalendarView *calendarView;
 
 @end
 
@@ -114,16 +116,9 @@
 }
 
 /// 显示日期选择器
-- (void)showCalendarPicker{
-  SZCalendarPicker *calendarPicker = [SZCalendarPicker showOnView:self.view];
-  calendarPicker.today = [NSDate date];
-  calendarPicker.date = calendarPicker.today;
-  calendarPicker.frame = CGRectMake(0, kScreenH - (self.calculatorView.bounds.size.height + 50), kScreenW, self.calculatorView.bounds.size.height + 50);
-  
-  calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
-    NSString *time = [NSString stringWithFormat:@"%02zd-%02zd-%02zd", year, month, day];
-    MPLog(@" %@", time);
-  };
+- (void)showCalendarPicker
+{
+  [self.view addSubview:self.calendarView];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -165,6 +160,16 @@
 }
 
 #pragma mark - getter
+- (MPCalendarView *)calendarView
+{
+  if(_calendarView == nil)
+  {
+    _calendarView = [[MPCalendarView alloc] init];
+    _calendarView.frame = self.view.bounds;
+  }
+  return _calendarView;
+}
+
 - (UIScrollView *)contentView
 {
   if(_contentView == nil)

@@ -9,6 +9,7 @@ target 'MPTally' do
 pod 'Realm'
 pod 'Masonry'
 pod 'SVProgressHUD'
+pod 'FSCalendar'
   target 'MPTallyTests' do
     inherit! :search_paths
     # Pods for testing
