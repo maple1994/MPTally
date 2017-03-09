@@ -15,4 +15,10 @@
   return @"bookID";
 }
 
+- (NSString *)description
+{
+  NSString *desc = [NSString stringWithFormat:@"name:%@", _bookName];
+  return desc;
+}
+
 @end
