@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/// 账单管理者，负责数据库的管理
 @interface MPBillManager : NSObject
+
++ (instancetype)sharedManager;
 
 @end

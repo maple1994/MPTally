@@ -10,4 +10,15 @@
 
 @implementation MPBillManager
 
+static MPBillManager *instance;
+
++ (instancetype)sharedManager
+{
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    instance = [[self alloc] init];
+  });
+  return instance;
+}
+
 @end

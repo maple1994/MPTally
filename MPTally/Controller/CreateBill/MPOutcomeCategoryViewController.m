@@ -7,8 +7,6 @@
 //
 
 #import "MPOutcomeCategoryViewController.h"
-#import "MPCategoryModel.h"
-
 @interface MPOutcomeCategoryViewController ()
 
 @end

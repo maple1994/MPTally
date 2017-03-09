@@ -13,6 +13,9 @@
 #import "MPConst.h"
 #import "UIView+MPExtension.h"
 #import <Masonry.h>
+#import <Realm.h>
+#import "MPCategoryModel.h"
+#import "MPAccountModel.h"
 
 /*************** Macro ********************/
 #ifdef DEBUG

@@ -7,7 +7,6 @@
 //
 
 #import "MPBaseCategoryCollectionViewController.h"
-#import "MPCategoryModel.h"
 #import "MPCategoryCollectionViewCell.h"
 
 #define kColumnCount 5

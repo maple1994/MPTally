@@ -7,7 +7,6 @@
 //
 
 #import "MPCreateBillHeaderView.h"
-#import "MPCategoryModel.h"
 
 @interface MPCreateBillHeaderView ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;

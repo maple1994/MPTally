@@ -7,7 +7,6 @@
 //
 
 #import "MPCategoryCollectionViewCell.h"
-#import "MPCategoryModel.h"
 
 @interface MPCategoryCollectionViewCell()
 

@@ -11,11 +11,9 @@
 #import "MPOutcomeCategoryViewController.h"
 #import "MPCreateBillHeaderView.h"
 #import "MPCategoryCollectionViewCell.h"
-#import "MPCategoryModel.h"
 #import "MPCalculatorView.h"
 #import "MPCalendarView.h"
 #import "MPAccountPickerView.h"
-#import "MPAccountModel.h"
 #import "MPEditRemarkViewController.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate, AccountPickerViewDelegate>

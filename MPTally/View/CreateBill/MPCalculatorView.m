@@ -7,7 +7,6 @@
 //
 
 #import "MPCalculatorView.h"
-#import "MPAccountModel.h"
 
 @interface MPCalculatorView ()
 

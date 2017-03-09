@@ -7,7 +7,6 @@
 //
 
 #import "MPIncomeCategoryViewController.h"
-#import "MPCategoryModel.h"
 
 @interface MPIncomeCategoryViewController ()
 

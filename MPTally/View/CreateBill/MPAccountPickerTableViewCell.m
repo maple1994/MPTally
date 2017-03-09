@@ -7,7 +7,6 @@
 //
 
 #import "MPAccountPickerTableViewCell.h"
-#import "MPAccountModel.h"
 
 @interface MPAccountPickerTableViewCell ()
 
