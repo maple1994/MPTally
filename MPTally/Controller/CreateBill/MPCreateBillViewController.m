@@ -16,6 +16,7 @@
 #import "MPCalendarView.h"
 #import "MPAccountPickerView.h"
 #import "MPAccountModel.h"
+#import "MPEditRemarkViewController.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate, AccountPickerViewDelegate>
 
@@ -180,6 +181,13 @@
 - (void)calculatorViewDidClickAccount:(MPCalculatorView *)view
 {
   [self showAccountPicker];
+}
+
+- (void)calculatorViewDidClickRemark:(MPCalculatorView *)view
+{
+  MPEditRemarkViewController *vc = [[MPEditRemarkViewController alloc] init];
+  UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+  [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - FSCalendarDelegate
