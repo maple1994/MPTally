@@ -6,9 +6,9 @@
 //  Copyright © 2017年 Maple. All rights reserved.
 //
 
-#import "MPUtils.h"
+#import "MyUtils.h"
 
-@implementation MPUtils
+@implementation MyUtils
 
 /**
  创建主键

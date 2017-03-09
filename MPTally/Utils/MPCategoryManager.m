@@ -54,7 +54,7 @@ static MPCategoryManager *instance;
 - (void)insertCategory:(MPCategoryModel *)category
 {
   [kRealm transactionWithBlock:^{
-    category.cateID = [MPUtils createKey];
+    category.cateID = [MyUtils createKey];
     [MPCategoryModel createInDefaultRealmWithValue:category];
   }];
 }

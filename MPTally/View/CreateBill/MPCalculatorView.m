@@ -7,6 +7,7 @@
 //
 
 #import "MPCalculatorView.h"
+#import "MPAccountManager.h"
 
 @interface MPCalculatorView ()
 
@@ -44,10 +45,7 @@
 {
   [super awakeFromNib];
   self.selectedDate = [NSDate date];
-  MPAccountModel *model = [[MPAccountModel alloc] init];
-  model.accountName = @"钱包1";
-  model.money = 666;
-  self.selectedAccount = model;
+  self.selectedAccount = [[MPAccountManager shareManager] getDefaultAccount];
   [self initializesWithPreparation];
   [self addBorder:self.dateButton];
   [self addBorder:self.accountButton];
@@ -80,7 +78,6 @@
   {
     [self.delegate calculatorViewDidClickAccount:self];
   }
-  kFuncNameLog;
 }
 
 - (IBAction)selectDate:(UIButton *)sender
@@ -97,7 +94,6 @@
   {
     [self.delegate calculatorViewDidClickRemark:self];
   }
-  kFuncNameLog;
 }
 
 - (IBAction)calculatorClick:(UIButton *)sender

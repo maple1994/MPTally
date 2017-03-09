@@ -37,6 +37,7 @@ static NSString *CategoryCellID = @"CategoryCellID";
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  self.collectionView.showsVerticalScrollIndicator = NO;
   [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MPCategoryCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:CategoryCellID];
   self.automaticallyAdjustsScrollViewInsets = NO;
 }

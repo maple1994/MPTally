@@ -17,6 +17,9 @@
 /// 账户余额
 @property (nonatomic, assign) double money;
 
+/// 返回默认的账户列表
++ (NSArray *)defaultAccountList;
+
 @end
 
 RLM_ARRAY_TYPE(MPAccountModel)

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /// 存放一些常用的方法
-@interface MPUtils : NSObject
+@interface MyUtils : NSObject
 
 /**
  创建主键

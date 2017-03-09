@@ -17,7 +17,7 @@
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UIView *backgroundView;
 /// accountModel模型数组
-@property (nonatomic, strong) NSArray *accountModelArray;
+@property (nonatomic, strong) RLMResults *accountModelArray;
 /// 标题栏
 @property (nonatomic, strong) UIView *titleView;
 /// 当前选中的indexPath
@@ -29,7 +29,7 @@
 
 static NSString *CellID = @"CellID";
 
-- (instancetype)initWithAccountModelArray:(NSArray *)accountModelArray
+- (instancetype)initWithAccountModelArray:(RLMResults *)accountModelArray
 {
   if(self = [super init])
   {

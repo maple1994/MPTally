@@ -16,6 +16,7 @@
 #import "MPAccountPickerView.h"
 #import "MPEditRemarkViewController.h"
 #import "MPCategoryManager.h"
+#import "MPAccountManager.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate, AccountPickerViewDelegate>
 
@@ -130,7 +131,10 @@
 /// 显示账户选择器
 - (void)showAccountPicker
 {
-  MPAccountPickerView *picker = [[MPAccountPickerView alloc] initWithAccountModelArray:self.accoutModelArray];
+  // 获取所有Account
+  RLMResults *accountList = [[MPAccountManager shareManager] getAccountList];
+  // 创建picker
+  MPAccountPickerView *picker = [[MPAccountPickerView alloc] initWithAccountModelArray:accountList];
   picker.delegate = self;
   picker.frame = self.view.bounds;
   [self.view addSubview:picker];
