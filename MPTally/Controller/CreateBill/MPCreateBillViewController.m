@@ -34,6 +34,8 @@
 @property (nonatomic, strong) MPCalendarView *calendarView;
 /// 账户模型数组
 @property (nonatomic, strong) NSArray *accoutModelArray;
+/// 备注
+@property (nonatomic, copy) NSString *remark;
 
 @end
 
@@ -186,8 +188,14 @@
 - (void)calculatorViewDidClickRemark:(MPCalculatorView *)view
 {
   MPEditRemarkViewController *vc = [[MPEditRemarkViewController alloc] init];
+  vc.remark = self.remark;
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
   [self presentViewController:nav animated:YES completion:nil];
+  
+  // 设置回调
+  [vc setCompleteBlock:^(NSString *remark) {
+    self.remark = remark;
+  }];
 }
 
 #pragma mark - FSCalendarDelegate
@@ -243,6 +251,7 @@
     view.backgroundColor = [UIColor whiteColor];
     view.bounces = YES;
     view.alwaysBounceHorizontal = YES;
+    view.alwaysBounceHorizontal = NO;
     _contentView = view;
     view.pagingEnabled = YES;
     [self.view addSubview:view];

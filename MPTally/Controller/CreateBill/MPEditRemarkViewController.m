@@ -20,6 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  // 设置为上次保存的备注
+  self.textView.text = self.remark;
   [self setupNav];
   [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.view).offset(0);
@@ -65,7 +67,9 @@
 /// 完成
 - (void)complete
 {
-  
+  if(self.completeBlock)
+    self.completeBlock(self.textView.text);
+  [self cancel];
 }
 
 #pragma mark - getter
