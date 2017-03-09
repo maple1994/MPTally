@@ -12,6 +12,8 @@
 
 static id instance;
 
+#pragma mark - Public
+#pragma mark Get
 + (instancetype)shareManager
 {
   static dispatch_once_t onceToken;
@@ -20,5 +22,22 @@ static id instance;
   });
   return instance;
 }
+
+#pragma mark Write
+/**
+ 插入一条账单
+ 
+ @param bill MPBillModel
+ */
+- (void)insertBill:(MPBillModel *)bill
+{
+  bill.billID = [MyUtils createKey];
+  bill.recordDate = [NSDate date];
+  [kRealm transactionWithBlock:^{
+    [MPBillModel createInDefaultRealmWithValue:bill];
+  }];
+}
+
+#pragma mark - Private
 
 @end

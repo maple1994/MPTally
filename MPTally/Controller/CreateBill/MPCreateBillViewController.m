@@ -18,6 +18,7 @@
 #import "MPCategoryManager.h"
 #import "MPAccountManager.h"
 #import "MPBookManager.h"
+#import "MPBillManager.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate, AccountPickerViewDelegate>
 
@@ -207,8 +208,12 @@
   MPBillModel *bill = [[MPBillModel alloc] init];
   bill.account = self.calculatorView.selectedAccount;
   bill.dateStr = [self.calculatorView.selectedDate dateFormattrString];
-  MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
-  NSLog(@"%@", book.bookName);
+  bill.book = [[MPBookManager shareManager] getCurrentBook];
+  bill.category = self.resultView.categoryModel;
+  bill.remark = self.remark;
+  bill.isIncome = self.resultView.categoryModel.isIncome;
+  bill.money = [self.resultView.results doubleValue];
+  [[MPBillManager shareManager] insertBill:bill];
 }
 
 #pragma mark - FSCalendarDelegate
