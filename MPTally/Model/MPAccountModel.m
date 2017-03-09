@@ -10,6 +10,11 @@
 
 @implementation MPAccountModel
 
++ (NSString *)primaryKey
+{
+  return @"accountID";
+}
+
 - (NSString *)description
 {
   NSString *desc = [NSString stringWithFormat:@"name:%@, money:%lf", _accountName, _money];

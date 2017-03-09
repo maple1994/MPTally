@@ -1,5 +1,5 @@
 //
-//  MPBillManager.h
+//  MPAccountManager.h
 //  MPTally
 //
 //  Created by Maple on 2017/3/9.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-/// 账单管理者
-@interface MPBillManager : NSObject
+/// 账户管理者
+@interface MPAccountManager : NSObject
 
 + (instancetype)shareManager;
 

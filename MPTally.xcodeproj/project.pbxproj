@@ -38,7 +38,12 @@
 		F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FCE21E6C35B50032A60F /* MPOutcomeCategoryViewController.m */; };
 		F560E7811E70D852007068CC /* MPEditRemarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7801E70D852007068CC /* MPEditRemarkViewController.m */; };
 		F560E7841E70DDF3007068CC /* FQPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7831E70DDF3007068CC /* FQPlaceholderTextView.m */; };
-		F560E7871E70E1F7007068CC /* MPBillManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7861E70E1F7007068CC /* MPBillManager.m */; };
+		F560E78A1E70EADC007068CC /* MPBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7891E70EADC007068CC /* MPBillModel.m */; };
+		F560E78D1E70EB2D007068CC /* MPBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E78C1E70EB2D007068CC /* MPBookModel.m */; };
+		F560E7901E70EC84007068CC /* MPBillManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E78F1E70EC84007068CC /* MPBillManager.m */; };
+		F560E7931E70ECA9007068CC /* MPCategoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7921E70ECA9007068CC /* MPCategoryManager.m */; };
+		F560E7961E70ECC2007068CC /* MPAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7951E70ECC2007068CC /* MPAccountManager.m */; };
+		F560E7991E70ECD7007068CC /* MPBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7981E70ECD7007068CC /* MPBookManager.m */; };
 		F5AD3B0B1E6FB1AF003F7B69 /* MPCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AD3B0A1E6FB1AF003F7B69 /* MPCalendarView.m */; };
 		F5AD3B181E702B9C003F7B69 /* MPAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AD3B171E702B9C003F7B69 /* MPAccountModel.m */; };
 		F5AD3B1B1E702C56003F7B69 /* MPAccountPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AD3B1A1E702C56003F7B69 /* MPAccountPickerView.m */; };
@@ -129,8 +134,18 @@
 		F560E7801E70D852007068CC /* MPEditRemarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPEditRemarkViewController.m; sourceTree = "<group>"; };
 		F560E7821E70DDF3007068CC /* FQPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FQPlaceholderTextView.h; sourceTree = "<group>"; };
 		F560E7831E70DDF3007068CC /* FQPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FQPlaceholderTextView.m; sourceTree = "<group>"; };
-		F560E7851E70E1F7007068CC /* MPBillManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBillManager.h; sourceTree = "<group>"; };
-		F560E7861E70E1F7007068CC /* MPBillManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBillManager.m; sourceTree = "<group>"; };
+		F560E7881E70EADC007068CC /* MPBillModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBillModel.h; sourceTree = "<group>"; };
+		F560E7891E70EADC007068CC /* MPBillModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBillModel.m; sourceTree = "<group>"; };
+		F560E78B1E70EB2D007068CC /* MPBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBookModel.h; sourceTree = "<group>"; };
+		F560E78C1E70EB2D007068CC /* MPBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBookModel.m; sourceTree = "<group>"; };
+		F560E78E1E70EC84007068CC /* MPBillManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBillManager.h; sourceTree = "<group>"; };
+		F560E78F1E70EC84007068CC /* MPBillManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBillManager.m; sourceTree = "<group>"; };
+		F560E7911E70ECA9007068CC /* MPCategoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCategoryManager.h; sourceTree = "<group>"; };
+		F560E7921E70ECA9007068CC /* MPCategoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCategoryManager.m; sourceTree = "<group>"; };
+		F560E7941E70ECC2007068CC /* MPAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountManager.h; sourceTree = "<group>"; };
+		F560E7951E70ECC2007068CC /* MPAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAccountManager.m; sourceTree = "<group>"; };
+		F560E7971E70ECD7007068CC /* MPBookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBookManager.h; sourceTree = "<group>"; };
+		F560E7981E70ECD7007068CC /* MPBookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBookManager.m; sourceTree = "<group>"; };
 		F5AD3B091E6FB1AF003F7B69 /* MPCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCalendarView.h; sourceTree = "<group>"; };
 		F5AD3B0A1E6FB1AF003F7B69 /* MPCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCalendarView.m; sourceTree = "<group>"; };
 		F5AD3B161E702B9C003F7B69 /* MPAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountModel.h; sourceTree = "<group>"; };
@@ -273,6 +288,10 @@
 				F52BCCD41E6C08430036234E /* MPCategoryModel.m */,
 				F5AD3B161E702B9C003F7B69 /* MPAccountModel.h */,
 				F5AD3B171E702B9C003F7B69 /* MPAccountModel.m */,
+				F560E7881E70EADC007068CC /* MPBillModel.h */,
+				F560E7891E70EADC007068CC /* MPBillModel.m */,
+				F560E78B1E70EB2D007068CC /* MPBookModel.h */,
+				F560E78C1E70EB2D007068CC /* MPBookModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,8 +310,14 @@
 		F52BCC891E6AECB10036234E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				F560E7851E70E1F7007068CC /* MPBillManager.h */,
-				F560E7861E70E1F7007068CC /* MPBillManager.m */,
+				F560E78E1E70EC84007068CC /* MPBillManager.h */,
+				F560E78F1E70EC84007068CC /* MPBillManager.m */,
+				F560E7911E70ECA9007068CC /* MPCategoryManager.h */,
+				F560E7921E70ECA9007068CC /* MPCategoryManager.m */,
+				F560E7941E70ECC2007068CC /* MPAccountManager.h */,
+				F560E7951E70ECC2007068CC /* MPAccountManager.m */,
+				F560E7971E70ECD7007068CC /* MPBookManager.h */,
+				F560E7981E70ECD7007068CC /* MPBookManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -751,6 +776,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F52BCC8E1E6AECE60036234E /* MPConst.m in Sources */,
+				F560E7991E70ECD7007068CC /* MPBookManager.m in Sources */,
 				F5AD3B1B1E702C56003F7B69 /* MPAccountPickerView.m in Sources */,
 				F5ECA9A91E6EB36700007969 /* MPBaseCategoryCollectionViewController.m in Sources */,
 				F52BCCB31E6AF91E0036234E /* MPSettingTableViewController.m in Sources */,
@@ -760,23 +786,27 @@
 				F52BCC9E1E6AF2480036234E /* MPTabBarController.m in Sources */,
 				F52BCCA11E6AF4740036234E /* MPNavigationController.m in Sources */,
 				F5AD3B0B1E6FB1AF003F7B69 /* MPCalendarView.m in Sources */,
+				F560E78D1E70EB2D007068CC /* MPBookModel.m in Sources */,
 				F52BCCB91E6AF95D0036234E /* MPCreateBillViewController.m in Sources */,
 				F52BCCB61E6AF93C0036234E /* MPWalletTableViewController.m in Sources */,
 				F554FCE01E6C35A20032A60F /* MPIncomeCategoryViewController.m in Sources */,
 				F52BCCAD1E6AF8AA0036234E /* MPBillTableViewController.m in Sources */,
+				F560E7931E70ECA9007068CC /* MPCategoryManager.m in Sources */,
 				F560E7811E70D852007068CC /* MPEditRemarkViewController.m in Sources */,
 				F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */,
+				F560E7961E70ECC2007068CC /* MPAccountManager.m in Sources */,
 				F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */,
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
 				F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
 				F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */,
+				F560E78A1E70EADC007068CC /* MPBillModel.m in Sources */,
 				F5AD3B181E702B9C003F7B69 /* MPAccountModel.m in Sources */,
 				F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */,
 				F52BCCAA1E6AF6E90036234E /* MPTabBar.m in Sources */,
 				F560E7841E70DDF3007068CC /* FQPlaceholderTextView.m in Sources */,
 				F52BCC9A1E6AF20F0036234E /* AppDelegate.m in Sources */,
-				F560E7871E70E1F7007068CC /* MPBillManager.m in Sources */,
+				F560E7901E70EC84007068CC /* MPBillManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

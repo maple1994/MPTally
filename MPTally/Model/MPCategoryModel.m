@@ -10,6 +10,11 @@
 
 @implementation MPCategoryModel
 
++ (NSString *)primaryKey
+{
+  return @"cateID";
+}
+
 - (instancetype)initWithDic:(NSDictionary *)dic
 {
   if (self = [super init])

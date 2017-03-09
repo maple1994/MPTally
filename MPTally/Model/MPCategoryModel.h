@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 /// 账单类型模型
-@interface MPCategoryModel : NSObject
+@interface MPCategoryModel : RLMObject
 
+/// 类别ID
+@property (nonatomic, copy)  NSString *cateID;
 /// 类型名称
 @property (nonatomic, copy) NSString *categoryName;
 /// 类型图片名
@@ -24,3 +26,5 @@
 + (NSArray *)getOutcomeCategoryArray;
 
 @end
+
+RLM_ARRAY_TYPE(MPCategoryModel)

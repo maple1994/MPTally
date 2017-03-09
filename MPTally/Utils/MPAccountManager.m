@@ -1,14 +1,14 @@
 //
-//  MPBillManager.m
+//  MPAccountManager.m
 //  MPTally
 //
 //  Created by Maple on 2017/3/9.
 //  Copyright © 2017年 Maple. All rights reserved.
 //
 
-#import "MPBillManager.h"
+#import "MPAccountManager.h"
 
-@implementation MPBillManager
+@implementation MPAccountManager
 
 static id instance;
 
