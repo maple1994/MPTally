@@ -15,7 +15,7 @@
 /// 账户名字
 @property (nonatomic, copy) NSString *accountName;
 /// 账户余额
-@property (nonatomic, assign) CGFloat money;
+@property (nonatomic, assign) double money;
 
 @end
 

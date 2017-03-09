@@ -24,6 +24,8 @@
 + (NSArray *)getIncomeCategoryArray;
 /// 获得“支出”类型模型数组
 + (NSArray *)getOutcomeCategoryArray;
+/// 获得账单类型模型数组
++ (NSArray *)getCategoryArray;
 
 @end
 

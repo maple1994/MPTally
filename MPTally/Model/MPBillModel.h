@@ -22,7 +22,7 @@
 /// 备注
 @property (nonatomic, copy) NSString *remark;
 /// 金额
-@property (nonatomic, assign) float money;
+@property (nonatomic, assign) double money;
 /// 账单类别
 @property (nonatomic, strong) MPCategoryModel *category;
 /// 账户

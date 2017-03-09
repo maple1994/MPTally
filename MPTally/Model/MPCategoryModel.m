@@ -24,6 +24,25 @@
   return self;
 }
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{  
+}
+
+/// 获得账单类型模型数组
++ (NSArray *)getCategoryArray
+{
+  NSString *path = [[NSBundle mainBundle]pathForResource:@"category" ofType:@"plist"];
+  NSArray *dicArray = [NSArray arrayWithContentsOfFile:path];
+  NSMutableArray *tempArray = [NSMutableArray array];
+  
+  for (NSDictionary *dic in dicArray)
+  {
+    MPCategoryModel *category = [[MPCategoryModel alloc] initWithDic:dic];
+    [tempArray addObject:category];
+  }
+  return tempArray;
+}
+
 /// 获得“收入”类型模型数组
 + (NSArray *)getIncomeCategoryArray
 {

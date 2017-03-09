@@ -13,4 +13,25 @@
 
 + (instancetype)shareManager;
 
+/**
+ 获得收入类型列表
+
+ @return MPCategory模型数组
+ */
+- (RLMResults *)getIncomeCategoryList;
+
+/**
+ 获得支出类型列表
+
+ @return MPCategory模型数组
+ */
+- (RLMResults *)getOutcomeCategoryList;
+
+/**
+ 插入一条类型
+
+ @param category 要插入的类型模型
+ */
+- (void)insertCategory:(MPCategoryModel *)category;
+
 @end
