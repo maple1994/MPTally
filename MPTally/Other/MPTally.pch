@@ -19,6 +19,7 @@
 #import "MPBookModel.h"
 #import "MPBillModel.h"
 #import "MPUtils.h"
+#import "NSDate+MPPrint.h"
 
 /*************** Macro ********************/
 #ifdef DEBUG

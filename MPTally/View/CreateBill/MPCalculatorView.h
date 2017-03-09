@@ -22,6 +22,8 @@
 - (void)calculatorViewDidClickRemark:(MPCalculatorView *)view;
 /// 点击了计算器按钮时，传递结果值
 - (void)calculatorView:(MPCalculatorView *)view passTheResult:(NSString *)result;
+/// 点击了确定
+- (void)calculatorViewDidClickConfirm:(MPCalculatorView *)view;
 
 @end
 

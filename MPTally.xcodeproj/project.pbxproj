@@ -45,6 +45,7 @@
 		F560E7961E70ECC2007068CC /* MPAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7951E70ECC2007068CC /* MPAccountManager.m */; };
 		F560E7991E70ECD7007068CC /* MPBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7981E70ECD7007068CC /* MPBookManager.m */; };
 		F560E79C1E70F518007068CC /* MPUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E79B1E70F518007068CC /* MPUtils.m */; };
+		F560E79F1E7103CA007068CC /* NSDate+MPPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E79E1E7103CA007068CC /* NSDate+MPPrint.m */; };
 		F5AD3B0B1E6FB1AF003F7B69 /* MPCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AD3B0A1E6FB1AF003F7B69 /* MPCalendarView.m */; };
 		F5AD3B181E702B9C003F7B69 /* MPAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AD3B171E702B9C003F7B69 /* MPAccountModel.m */; };
 		F5AD3B1B1E702C56003F7B69 /* MPAccountPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AD3B1A1E702C56003F7B69 /* MPAccountPickerView.m */; };
@@ -149,6 +150,8 @@
 		F560E7981E70ECD7007068CC /* MPBookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBookManager.m; sourceTree = "<group>"; };
 		F560E79A1E70F518007068CC /* MPUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPUtils.h; sourceTree = "<group>"; };
 		F560E79B1E70F518007068CC /* MPUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPUtils.m; sourceTree = "<group>"; };
+		F560E79D1E7103CA007068CC /* NSDate+MPPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MPPrint.h"; sourceTree = "<group>"; };
+		F560E79E1E7103CA007068CC /* NSDate+MPPrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MPPrint.m"; sourceTree = "<group>"; };
 		F5AD3B091E6FB1AF003F7B69 /* MPCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCalendarView.h; sourceTree = "<group>"; };
 		F5AD3B0A1E6FB1AF003F7B69 /* MPCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCalendarView.m; sourceTree = "<group>"; };
 		F5AD3B161E702B9C003F7B69 /* MPAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountModel.h; sourceTree = "<group>"; };
@@ -356,6 +359,8 @@
 				F52BCC931E6AEF530036234E /* Foundation+Log.m */,
 				F52BCC901E6AEE1A0036234E /* UIView+MPExtension.h */,
 				F52BCC911E6AEE1A0036234E /* UIView+MPExtension.m */,
+				F560E79D1E7103CA007068CC /* NSDate+MPPrint.h */,
+				F560E79E1E7103CA007068CC /* NSDate+MPPrint.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -809,6 +814,7 @@
 				F560E78A1E70EADC007068CC /* MPBillModel.m in Sources */,
 				F5AD3B181E702B9C003F7B69 /* MPAccountModel.m in Sources */,
 				F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */,
+				F560E79F1E7103CA007068CC /* NSDate+MPPrint.m in Sources */,
 				F52BCCAA1E6AF6E90036234E /* MPTabBar.m in Sources */,
 				F560E7841E70DDF3007068CC /* FQPlaceholderTextView.m in Sources */,
 				F52BCC9A1E6AF20F0036234E /* AppDelegate.m in Sources */,

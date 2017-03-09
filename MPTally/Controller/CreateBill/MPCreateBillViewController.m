@@ -197,6 +197,13 @@
   }];
 }
 
+- (void)calculatorViewDidClickConfirm:(MPCalculatorView *)view
+{
+  MPBillModel *bill = [[MPBillModel alloc] init];
+  bill.account = self.calculatorView.selectedAccount;
+  bill.dateStr = [self.calculatorView.selectedDate dateFormattrString];
+}
+
 #pragma mark - FSCalendarDelegate
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {

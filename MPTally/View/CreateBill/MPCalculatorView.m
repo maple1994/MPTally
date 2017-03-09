@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *remarkButton;
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
 @property (nonatomic, copy) NSMutableString *resultString;
+/// 确定button
+@property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 
 /** 小数点前的字符串 */
 @property (nonatomic, copy) NSString *beforSting;
@@ -135,7 +137,9 @@
   }
   else if (sender.tag == 112) // =
   {//* ------------------------------------- */
-    if (self.isSelectedOperation) {//当用户选择了运输操作符则进行运算,没有则直接输出
+    if (self.isSelectedOperation)
+    {
+      //当用户选择了运输操作符则进行运算,没有则直接输出
       if (self.isSelectedPlusOperation)
       {
         float sum = self.previousString.floatValue + self.currentString.floatValue;
@@ -145,13 +149,22 @@
         float poor = self.previousString.floatValue - self.currentString.floatValue;
         self.currentString = [NSString stringWithFormat:@"%.2f",poor];
       }
+      _results = self.currentString;
+      // 计算结果回调
+      if([self.delegate respondsToSelector:@selector(calculatorView:passTheResult:)])
+      {
+        [self.delegate calculatorView:self passTheResult:_results];
+      }
     }
-    _results = self.currentString;
-    [self initializesWithPreparation];
-    if([self.delegate respondsToSelector:@selector(calculatorView:passTheResult:)])
+    else
     {
-      [self.delegate calculatorView:self passTheResult:_results];
+      // 确定事件回调
+      if([self.delegate respondsToSelector:@selector(calculatorViewDidClickConfirm:)])
+      {
+        [self.delegate calculatorViewDidClickConfirm:self];
+      }
     }
+    [self initializesWithPreparation];
     return;
   }
   else if (self.isSelectedPoint)
@@ -214,6 +227,15 @@
     _resultString = [[NSMutableString alloc] initWithString:@"00.00"];
   }
   return _resultString;
+}
+
+- (void)setSelectedOperation:(BOOL)selectedOperation
+{
+  _selectedOperation = selectedOperation;
+  if(selectedOperation)
+    [self.confirmButton setTitle:@"=" forState:UIControlStateNormal];
+  else
+    [self.confirmButton setTitle:@"确定" forState:UIControlStateNormal];
 }
 
 
