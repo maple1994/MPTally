@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  [MPCategoryManager shareManager];
 }
 
 - (void)didReceiveMemoryWarning {

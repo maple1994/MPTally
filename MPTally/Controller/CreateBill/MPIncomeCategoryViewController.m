@@ -7,6 +7,7 @@
 //
 
 #import "MPIncomeCategoryViewController.h"
+#import "MPCategoryManager.h"
 
 @interface MPIncomeCategoryViewController ()
 
@@ -17,7 +18,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  self.categotyModelArray = [MPCategoryModel getIncomeCategoryArray];
+  self.categotyModelArray = [[MPCategoryManager shareManager] getIncomeCategoryList];
   [self.collectionView reloadData];
 }
 

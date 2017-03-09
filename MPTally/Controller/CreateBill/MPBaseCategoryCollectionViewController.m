@@ -48,7 +48,7 @@ static NSString *CategoryCellID = @"CategoryCellID";
   [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
 }
 
-- (void)setCategotyModelArray:(NSArray *)categotyModelArray
+- (void)setCategotyModelArray:(RLMResults *)categotyModelArray
 {
   _categotyModelArray = categotyModelArray;
   self.collectionView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];

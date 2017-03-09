@@ -31,7 +31,8 @@ static MPCategoryManager *instance;
  */
 - (RLMResults *)getIncomeCategoryList
 {
-  return nil;
+  RLMResults *results = [MPCategoryModel objectsWhere:@"isIncome = YES"];
+  return results;
 }
 
 /**
@@ -41,7 +42,8 @@ static MPCategoryManager *instance;
  */
 - (RLMResults *)getOutcomeCategoryList
 {
-  return nil;
+  RLMResults *results = [MPCategoryModel objectsWhere:@"isIncome = NO"];
+  return results;
 }
 
 /**

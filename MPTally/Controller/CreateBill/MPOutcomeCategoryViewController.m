@@ -7,6 +7,7 @@
 //
 
 #import "MPOutcomeCategoryViewController.h"
+#import "MPCategoryManager.h"
 @interface MPOutcomeCategoryViewController ()
 
 @end
@@ -16,7 +17,8 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  self.categotyModelArray = [MPCategoryModel getOutcomeCategoryArray];
+//  self.categotyModelArray = [MPCategoryModel getOutcomeCategoryArray];
+  self.categotyModelArray = [[MPCategoryManager shareManager] getOutcomeCategoryList];
   [self.collectionView reloadData];
 }
 

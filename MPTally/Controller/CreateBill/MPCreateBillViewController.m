@@ -15,6 +15,7 @@
 #import "MPCalendarView.h"
 #import "MPAccountPickerView.h"
 #import "MPEditRemarkViewController.h"
+#import "MPCategoryManager.h"
 
 @interface MPCreateBillViewController ()<UIScrollViewDelegate, CategoryCollectionViewControllerDelegate, MPCalculatorViewDelegate, FSCalendarDelegate, AccountPickerViewDelegate>
 

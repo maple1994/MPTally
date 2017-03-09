@@ -27,7 +27,7 @@
 
 @property (nonatomic, weak) id<CategoryCollectionViewControllerDelegate> cateDelegate;
 /// category模型数组
-@property (nonatomic, strong) NSArray *categotyModelArray;
+@property (nonatomic, strong) RLMResults *categotyModelArray;
 
 
 @end
