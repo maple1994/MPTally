@@ -26,6 +26,7 @@ static NSString *ItemCellID = @"ItemCellID";
     [super viewDidLoad];
   self.tableView.rowHeight = 75;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  self.tableView.showsVerticalScrollIndicator = NO;
   [self.tableView registerClass:MPTimeLineItemTableViewCell.class forCellReuseIdentifier:ItemCellID];
 }
 
