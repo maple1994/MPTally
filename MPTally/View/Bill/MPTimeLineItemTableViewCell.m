@@ -7,6 +7,7 @@
 //
 
 #import "MPTimeLineItemTableViewCell.h"
+#import "MPTimeLineYearMonthMarkView.h"
 
 @interface MPTimeLineItemTableViewCell ()
 
@@ -24,6 +25,8 @@
 @property (nonatomic, weak) UILabel *inComeNumLabel;
 /// 支出
 @property (nonatomic, weak) UILabel *outComeNumLabel;
+/// 时间线
+@property (nonatomic, weak) MPTimeLineYearMonthMarkView *lineView;
 
 @end
 
@@ -74,6 +77,12 @@
     make.trailing.equalTo(self.inComeCateTitleLabel);
     make.leading.equalTo(self.contentView).offset(10);
   }];
+  [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.categoryButton.mas_bottom);
+    make.bottom.equalTo(self.contentView);
+    make.centerX.equalTo(self.contentView);
+    make.width.mas_equalTo(1);
+  }];
 }
 
 - (void)setBill:(MPBillModel *)bill
@@ -89,6 +98,17 @@
 }
 
 #pragma mark - getter
+- (MPTimeLineYearMonthMarkView *)lineView
+{
+  if(_lineView == nil)
+  {
+    MPTimeLineYearMonthMarkView *view = [[MPTimeLineYearMonthMarkView alloc] init];
+    _lineView = view;
+    [self.contentView addSubview:view];
+  }
+  return _lineView;
+}
+
 - (UIButton *)categoryButton
 {
   if(_categoryButton == nil)

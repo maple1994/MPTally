@@ -22,6 +22,8 @@ static NSString *ItemCellID = @"ItemCellID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  self.tableView.rowHeight = 75;
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [self.tableView registerClass:MPTimeLineItemTableViewCell.class forCellReuseIdentifier:ItemCellID];
 }
 
