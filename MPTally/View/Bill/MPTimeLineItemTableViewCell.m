@@ -89,12 +89,40 @@
 {
   _bill = bill;
   [self.categoryButton setImage:[UIImage imageNamed:bill.category.categoryImageFileName] forState:UIControlStateNormal];
+  if(bill.isIncome)
+    [self showIncome:bill];
+  else
+    [self showOutCome:bill];
+}
+
+/// 显示支出视图
+- (void)showOutCome:(MPBillModel *)bill
+{
   self.outComeCateTitleLabel.text = bill.category.categoryName;
   self.outComeNumLabel.text = [NSString stringWithFormat:@"%.02lf", bill.money];
   self.outComeRemarkLabel.text = bill.remark;
+  
+  self.outComeCateTitleLabel.hidden = NO;
+  self.outComeNumLabel.hidden = NO;
+  self.outComeRemarkLabel.hidden = NO;
+  self.inComeCateTitleLabel.hidden = YES;
+  self.inComeNumLabel.hidden = YES;
+  self.inComeRemarkLabel.hidden = YES;
+}
+
+/// 显示收入视图
+- (void)showIncome:(MPBillModel *)bill
+{
   self.inComeCateTitleLabel.text = bill.category.categoryName;
   self.inComeNumLabel.text = [NSString stringWithFormat:@"%.02lf", bill.money];
   self.inComeRemarkLabel.text = bill.remark;
+  
+  self.outComeCateTitleLabel.hidden = YES;
+  self.outComeNumLabel.hidden = YES;
+  self.outComeRemarkLabel.hidden = YES;
+  self.inComeCateTitleLabel.hidden = NO;
+  self.inComeNumLabel.hidden = NO;
+  self.inComeRemarkLabel.hidden = NO;
 }
 
 #pragma mark - getter

@@ -47,6 +47,7 @@
   if(_dotView == nil)
   {
     UIView *view = [[UIView alloc] init];
+    view.hidden = YES;
     view.layer.cornerRadius = 3;
     view.layer.masksToBounds = YES;
     view.backgroundColor = [UIColor lightGrayColor];
@@ -61,6 +62,7 @@
   if(_timeLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    label.hidden = YES;
     _timeLabel = label;
     label.text = @"2月";
     [self addSubview:label];
