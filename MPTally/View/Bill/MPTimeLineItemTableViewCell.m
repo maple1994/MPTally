@@ -28,6 +28,9 @@
 /// 时间线
 @property (nonatomic, weak) MPTimeLineYearMonthMarkView *lineView;
 
+/// 测试时间Label
+@property (nonatomic, weak) UILabel *testLabel;
+
 @end
 
 @implementation MPTimeLineItemTableViewCell
@@ -43,6 +46,7 @@
 
 - (void)setup
 {
+  self.selectionStyle = UITableViewCellSelectionStyleNone;
   [self.categoryButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.equalTo(self.contentView);
     make.top.equalTo(self.contentView);
@@ -83,11 +87,16 @@
     make.centerX.equalTo(self.contentView);
     make.width.mas_equalTo(1);
   }];
+  [self.testLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerX.equalTo(self.contentView);
+    make.top.equalTo(self.categoryButton.mas_bottom);
+  }];
 }
 
 - (void)setBill:(MPBillModel *)bill
 {
   _bill = bill;
+  self.testLabel.text = bill.dateStr;
   [self.categoryButton setImage:[UIImage imageNamed:bill.category.categoryImageFileName] forState:UIControlStateNormal];
   if(bill.isIncome)
     [self showIncome:bill];
@@ -126,6 +135,17 @@
 }
 
 #pragma mark - getter
+- (UILabel *)testLabel
+{
+  if(_testLabel == nil)
+  {
+    UILabel *label = [[UILabel alloc] init];
+    _testLabel = label;
+    [self.contentView addSubview:label];
+  }
+  return _testLabel;
+}
+
 - (MPTimeLineYearMonthMarkView *)lineView
 {
   if(_lineView == nil)
