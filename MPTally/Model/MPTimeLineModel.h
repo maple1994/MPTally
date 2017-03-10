@@ -19,5 +19,15 @@ typedef NS_ENUM(NSInteger, TimeLineType)
 /// 模型的类型
 @property (nonatomic, assign) TimeLineType type;
 /// 账单模型
+@property (nonatomic, strong) MPBillModel *bill;
+
+
+/**
+ 根据bill的查询结果生成模型数组
+
+ @param results bill的查询结果集
+ @return MPTimeLineModel模型数组
+ */
++ (NSMutableArray *)timeLineArrayWithResults:(RLMResults *)results;
 
 @end

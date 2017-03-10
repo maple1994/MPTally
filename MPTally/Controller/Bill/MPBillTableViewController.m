@@ -12,12 +12,18 @@
 #import "MPTimeLineHeaderView.h"
 #import "MPBookManager.h"
 #import "MPTimeLineDayTableViewCell.h"
+#import "MPTimeLineModel.h"
 
 @interface MPBillTableViewController ()
 
+/// 从数据库查询的Bill数据
 @property (nonatomic, strong) RLMResults *billModelArray;
+/// tableView的Header
 @property (nonatomic, strong) MPTimeLineHeaderView *headerView;
+/// Realm通知token
 @property (nonatomic, strong) RLMNotificationToken *token;
+/// 时间线数组
+@property (nonatomic, strong) NSMutableArray *timeLineModelArray;
 
 @end
 
@@ -31,6 +37,9 @@ static NSString *DayCellID = @"DayCellID";
     [super viewDidLoad];
   self.tableView.rowHeight = 75;
   [self setupnNotificationToken];
+  
+  self.timeLineModelArray = [MPTimeLineModel timeLineArrayWithResults:self.billModelArray];
+  
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.showsVerticalScrollIndicator = NO;
   [self.tableView registerClass:MPTimeLineItemTableViewCell.class forCellReuseIdentifier:ItemCellID];
@@ -65,19 +74,24 @@ static NSString *DayCellID = @"DayCellID";
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return self.billModelArray.count + 1;
+  return self.timeLineModelArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if(indexPath.row == 0)
+  MPTimeLineModel *model = self.timeLineModelArray[indexPath.row];
+  if(model.type == TimeLineDayItem)
   {
     MPTimeLineDayTableViewCell *dayCell = [tableView dequeueReusableCellWithIdentifier:DayCellID];
     return dayCell;
   }
-  MPTimeLineItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ItemCellID];
-  cell.bill = self.billModelArray[indexPath.row - 1];
-  return cell;
+  else
+  {
+    MPTimeLineItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ItemCellID];
+    cell.bill = model.bill;
+    return cell;
+
+  }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
