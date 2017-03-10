@@ -58,7 +58,7 @@
     make.leading.equalTo(self.outComeCateTitleLabel.mas_trailing).offset(5);
   }];
   [self.outComeRemarkLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.outComeCateTitleLabel.mas_bottom).offset(5);
+    make.top.equalTo(self.outComeCateTitleLabel.mas_bottom).offset(0);
     make.leading.equalTo(self.outComeCateTitleLabel);
     make.trailing.equalTo(self.contentView).offset(-10);
   }];
@@ -73,7 +73,7 @@
     make.trailing.equalTo(self.inComeCateTitleLabel.mas_leading).offset(-5);
   }];
   [self.inComeRemarkLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.inComeCateTitleLabel.mas_bottom).offset(5);
+    make.top.equalTo(self.inComeCateTitleLabel.mas_bottom).offset(0);
     make.trailing.equalTo(self.inComeCateTitleLabel);
     make.leading.equalTo(self.contentView).offset(10);
   }];
@@ -153,6 +153,7 @@
   if(_outComeNumLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:14];
     _outComeNumLabel = label;
     [self.contentView addSubview:label];
   }
@@ -164,6 +165,7 @@
   if(_outComeCateTitleLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:14];
     _outComeCateTitleLabel = label;
     [self.contentView addSubview:label];
   }
@@ -176,6 +178,8 @@
   {
     UILabel *label = [[UILabel alloc] init];
     label.numberOfLines = 2;
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = [UIColor lightGrayColor];
     _outComeRemarkLabel = label;
     [self.contentView addSubview:label];
   }
@@ -188,6 +192,7 @@
   {
     UILabel *label = [[UILabel alloc] init];
     _inComeNumLabel = label;
+    label.font = [UIFont systemFontOfSize:14];
     [self.contentView addSubview:label];
   }
   return _inComeNumLabel;
@@ -198,6 +203,7 @@
   if(_inComeCateTitleLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:14];
     _inComeCateTitleLabel = label;
     [self.contentView addSubview:label];
   }
@@ -211,6 +217,8 @@
     UILabel *label = [[UILabel alloc] init];
     label.textAlignment = NSTextAlignmentRight;
     label.numberOfLines = 2;
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = [UIColor lightGrayColor];
     _inComeRemarkLabel = label;
     [self.contentView addSubview:label];
   }
