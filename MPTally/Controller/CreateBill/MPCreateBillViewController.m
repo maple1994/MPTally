@@ -214,6 +214,7 @@
   bill.isIncome = self.resultView.categoryModel.isIncome;
   bill.money = [self.resultView.results doubleValue];
   [[MPBillManager shareManager] insertBill:bill];
+  [self cancel];
 }
 
 #pragma mark - FSCalendarDelegate

@@ -44,7 +44,7 @@
 
 - (void)setupChildController:(UIViewController *)controller title:(NSString *)title imageName:(NSString *)imageName
 {
-  controller.view.backgroundColor = kRandomColor;
+//  controller.view.backgroundColor = kRandomColor;
   NSString *selectedImageName = [imageName stringByAppendingString:@"_selected"];
   controller.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
   controller.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
