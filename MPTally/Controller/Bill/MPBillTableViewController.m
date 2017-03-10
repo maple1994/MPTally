@@ -11,6 +11,7 @@
 #import "MPTimeLineItemTableViewCell.h"
 #import "MPTimeLineHeaderView.h"
 #import "MPBookManager.h"
+#import "MPTimeLineDayTableViewCell.h"
 
 @interface MPBillTableViewController ()
 
@@ -23,6 +24,8 @@
 @implementation MPBillTableViewController
 
 static NSString *ItemCellID = @"ItemCellID";
+static NSString *DayCellID = @"DayCellID";
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,6 +34,7 @@ static NSString *ItemCellID = @"ItemCellID";
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.showsVerticalScrollIndicator = NO;
   [self.tableView registerClass:MPTimeLineItemTableViewCell.class forCellReuseIdentifier:ItemCellID];
+  [self.tableView registerClass:MPTimeLineDayTableViewCell.class forCellReuseIdentifier:DayCellID];
 }
 
 - (void)setupnNotificationToken
@@ -61,13 +65,18 @@ static NSString *ItemCellID = @"ItemCellID";
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return self.billModelArray.count;
+  return self.billModelArray.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  if(indexPath.row == 0)
+  {
+    MPTimeLineDayTableViewCell *dayCell = [tableView dequeueReusableCellWithIdentifier:DayCellID];
+    return dayCell;
+  }
   MPTimeLineItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ItemCellID];
-  cell.bill = self.billModelArray[indexPath.row];
+  cell.bill = self.billModelArray[indexPath.row - 1];
   return cell;
 }
 
@@ -89,8 +98,9 @@ static NSString *ItemCellID = @"ItemCellID";
     MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
     _billModelArray = [MPBillModel objectsWhere:@"book=%@", book];
     
-    
+    // 首先根据dateStr（账单时间）进行排序
     RLMSortDescriptor *desc1 = [RLMSortDescriptor sortDescriptorWithKeyPath:@"dateStr" ascending:NO];
+    // 再根据recordDate（记录时间）进行排序
     RLMSortDescriptor *desc2 = [RLMSortDescriptor sortDescriptorWithKeyPath:@"recordDate" ascending:NO];
     _billModelArray = [_billModelArray sortedResultsUsingDescriptors:@[desc1, desc2]];
   }

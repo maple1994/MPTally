@@ -38,6 +38,8 @@
 		F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FCE21E6C35B50032A60F /* MPOutcomeCategoryViewController.m */; };
 		F555D3B61E728C050007AD24 /* MPTimeLineYearMonthMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = F555D3B51E728C050007AD24 /* MPTimeLineYearMonthMarkView.m */; };
 		F555D3B91E7297720007AD24 /* MPTimeLineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F555D3B81E7297720007AD24 /* MPTimeLineHeaderView.m */; };
+		F555D3BC1E72D4690007AD24 /* MPTimeLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F555D3BB1E72D4690007AD24 /* MPTimeLineModel.m */; };
+		F555D3BF1E72D5580007AD24 /* MPTimeLineDayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F555D3BE1E72D5580007AD24 /* MPTimeLineDayTableViewCell.m */; };
 		F560E7811E70D852007068CC /* MPEditRemarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7801E70D852007068CC /* MPEditRemarkViewController.m */; };
 		F560E7841E70DDF3007068CC /* FQPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7831E70DDF3007068CC /* FQPlaceholderTextView.m */; };
 		F560E78A1E70EADC007068CC /* MPBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F560E7891E70EADC007068CC /* MPBillModel.m */; };
@@ -140,6 +142,10 @@
 		F555D3B51E728C050007AD24 /* MPTimeLineYearMonthMarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTimeLineYearMonthMarkView.m; sourceTree = "<group>"; };
 		F555D3B71E7297720007AD24 /* MPTimeLineHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTimeLineHeaderView.h; sourceTree = "<group>"; };
 		F555D3B81E7297720007AD24 /* MPTimeLineHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTimeLineHeaderView.m; sourceTree = "<group>"; };
+		F555D3BA1E72D4690007AD24 /* MPTimeLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTimeLineModel.h; sourceTree = "<group>"; };
+		F555D3BB1E72D4690007AD24 /* MPTimeLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTimeLineModel.m; sourceTree = "<group>"; };
+		F555D3BD1E72D5580007AD24 /* MPTimeLineDayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTimeLineDayTableViewCell.h; sourceTree = "<group>"; };
+		F555D3BE1E72D5580007AD24 /* MPTimeLineDayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTimeLineDayTableViewCell.m; sourceTree = "<group>"; };
 		F560E77F1E70D852007068CC /* MPEditRemarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPEditRemarkViewController.h; sourceTree = "<group>"; };
 		F560E7801E70D852007068CC /* MPEditRemarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPEditRemarkViewController.m; sourceTree = "<group>"; };
 		F560E7821E70DDF3007068CC /* FQPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FQPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -309,6 +315,8 @@
 				F560E7891E70EADC007068CC /* MPBillModel.m */,
 				F560E78B1E70EB2D007068CC /* MPBookModel.h */,
 				F560E78C1E70EB2D007068CC /* MPBookModel.m */,
+				F555D3BA1E72D4690007AD24 /* MPTimeLineModel.h */,
+				F555D3BB1E72D4690007AD24 /* MPTimeLineModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -501,6 +509,8 @@
 				F555D3B51E728C050007AD24 /* MPTimeLineYearMonthMarkView.m */,
 				F555D3B71E7297720007AD24 /* MPTimeLineHeaderView.h */,
 				F555D3B81E7297720007AD24 /* MPTimeLineHeaderView.m */,
+				F555D3BD1E72D5580007AD24 /* MPTimeLineDayTableViewCell.h */,
+				F555D3BE1E72D5580007AD24 /* MPTimeLineDayTableViewCell.m */,
 			);
 			path = Bill;
 			sourceTree = "<group>";
@@ -837,10 +847,12 @@
 				F560E7961E70ECC2007068CC /* MPAccountManager.m in Sources */,
 				F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */,
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
+				F555D3BC1E72D4690007AD24 /* MPTimeLineModel.m in Sources */,
 				F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
 				F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */,
 				F560E78A1E70EADC007068CC /* MPBillModel.m in Sources */,
+				F555D3BF1E72D5580007AD24 /* MPTimeLineDayTableViewCell.m in Sources */,
 				F5AD3B181E702B9C003F7B69 /* MPAccountModel.m in Sources */,
 				F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */,
 				F560E79F1E7103CA007068CC /* NSDate+MPPrint.m in Sources */,

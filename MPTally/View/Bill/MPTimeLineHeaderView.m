@@ -159,7 +159,7 @@
   if(_lineView == nil)
   {
     UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor lightGrayColor];
+    view.backgroundColor = kTimeLineColor;
     _lineView = view;
     [self addSubview:view];
   }

@@ -28,6 +28,7 @@
 # define MPLog(...);
 #endif
 
+#define kTimeLineColor [UIColor lightGrayColor] // 时间线线条的颜色
 #define kRealm [RLMRealm defaultRealm] 
 #define colorWithRGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 #define kFuncNameLog MPLog(@"%s", __func__); // 打印当前函数名

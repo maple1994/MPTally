@@ -31,7 +31,7 @@
 
 - (void)setup
 {
-  self.backgroundColor = [UIColor lightGrayColor];
+  self.backgroundColor = kTimeLineColor;
   [self.dotView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.center.equalTo(self);
     make.height.width.mas_offset(6);
