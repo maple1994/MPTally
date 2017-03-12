@@ -11,4 +11,6 @@
 /// 显示日期的时间线
 @interface MPTimeLineDayTableViewCell : UITableViewCell
 
+@property (nonatomic, copy) NSString *dateStr;
+
 @end

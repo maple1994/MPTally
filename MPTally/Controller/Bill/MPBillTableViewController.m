@@ -38,36 +38,24 @@ static NSString *DayCellID = @"DayCellID";
   self.tableView.rowHeight = 75;
   [self setupnNotificationToken];
   
-  self.timeLineModelArray = [MPTimeLineModel timeLineArrayWithResults:self.billModelArray];
-  
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.showsVerticalScrollIndicator = NO;
   [self.tableView registerClass:MPTimeLineItemTableViewCell.class forCellReuseIdentifier:ItemCellID];
   [self.tableView registerClass:MPTimeLineDayTableViewCell.class forCellReuseIdentifier:DayCellID];
+  [self resetData];
+}
+
+- (void)resetData
+{
+  self.timeLineModelArray = [MPTimeLineModel timeLineArrayWithResults:self.billModelArray];
+  [self.tableView reloadData];
 }
 
 - (void)setupnNotificationToken
 {
   __weak typeof(self)weakSelf = self;
   self.token = [self.billModelArray addNotificationBlock:^(RLMResults * _Nullable results, RLMCollectionChange * _Nullable change, NSError * _Nullable error) {
-    if(error) {
-      NSLog(@"打开realm数据库失败, %@", error);
-    }
-    /* 如果数据库的变化为空, 则仅仅刷新 tableView */
-    if (!change) {
-      [weakSelf.tableView reloadData];
-    }
-    
-    // 如果变化不为空，则更新tableView的数据源，并刷新tableView
-    [weakSelf.tableView beginUpdates];
-    // 删除数据
-    [weakSelf.tableView deleteRowsAtIndexPaths:[change deletionsInSection:0] withRowAnimation:UITableViewRowAnimationTop];
-    // 添加数据
-    [weakSelf.tableView insertRowsAtIndexPaths:[change insertionsInSection:0] withRowAnimation:UITableViewRowAnimationTop];
-    // 刷新数据
-    [weakSelf.tableView reloadRowsAtIndexPaths:[change modificationsInSection:0] withRowAnimation:UITableViewRowAnimationTop];
-    // 结束更新
-    [weakSelf.tableView endUpdates];
+    [weakSelf resetData];
   }];
 }
 
@@ -83,6 +71,7 @@ static NSString *DayCellID = @"DayCellID";
   if(model.type == TimeLineDayItem)
   {
     MPTimeLineDayTableViewCell *dayCell = [tableView dequeueReusableCellWithIdentifier:DayCellID];
+    dayCell.dateStr = model.dateStr;
     return dayCell;
   }
   else

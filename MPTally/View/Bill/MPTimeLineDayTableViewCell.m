@@ -76,6 +76,17 @@
   }];
 }
 
+- (void)setDateStr:(NSString *)dateStr
+{
+  _dateStr = dateStr;
+  NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+  fmt.dateFormat = @"yyyy-MM-dd";
+  NSDate *date = [fmt dateFromString:dateStr];
+  fmt.dateFormat = @"d日";
+  
+  self.dateLabel.text = [fmt stringFromDate:date];
+}
+
 #pragma mark - getter
 - (UIView *)timeLineView
 {

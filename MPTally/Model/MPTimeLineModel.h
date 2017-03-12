@@ -20,7 +20,8 @@ typedef NS_ENUM(NSInteger, TimeLineType)
 @property (nonatomic, assign) TimeLineType type;
 /// 账单模型
 @property (nonatomic, strong) MPBillModel *bill;
-
+/// 时间字符串
+@property (nonatomic, copy) NSString *dateStr;
 
 /**
  根据bill的查询结果生成模型数组

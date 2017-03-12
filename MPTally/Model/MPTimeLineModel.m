@@ -26,7 +26,7 @@
     // 不相同时，添加日期Cell模型
     if(![currentDateStr isEqualToString:bill.dateStr])
     {
-      [modelArray addObject:[self getDayItem]];
+      [modelArray addObject:[self getDayItem:bill.dateStr]];
       currentDateStr = bill.dateStr;
     }
     // 添加普通Cell
@@ -36,10 +36,11 @@
 }
 
 /// 产生一个日期的Item
-+ (instancetype)getDayItem
++ (instancetype)getDayItem:(NSString *)dateStr
 {
   MPTimeLineModel *model = [[MPTimeLineModel alloc] init];
   model.type = TimeLineDayItem;
+  model.dateStr = dateStr;
   return model;
 }
 
