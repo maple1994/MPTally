@@ -7,6 +7,14 @@
 //
 
 #import "MPTimeLineModel.h"
+#import "MPDayBillModel.h"
+
+@interface MPTimeLineModel ()
+
+/// 记录上一个dayBill
+@property (nonatomic, weak) MPTimeLineModel *preDayBill;
+
+@end
 
 @implementation MPTimeLineModel
 
@@ -19,38 +27,74 @@
 + (NSMutableArray *)timeLineArrayWithResults:(RLMResults *)results
 {
   NSMutableArray *modelArray = [NSMutableArray array];
-  // 比较日期，以此产生日期Cell模型
-  NSString *currentDateStr = nil;
-  for (MPBillModel *bill in results)
+  NSMutableArray *billInSameDay = [NSMutableArray array];
+  for(int i = 0; i < results.count; i++)
   {
-    // 不相同时，添加日期Cell模型
-    if(![currentDateStr isEqualToString:bill.dateStr])
+    MPBillModel *bill = results[i];
+    // 当数组为空时，直接添加元素
+    if(billInSameDay.count == 0)
     {
-      [modelArray addObject:[self getDayItem:bill.dateStr]];
-      currentDateStr = bill.dateStr;
+      [billInSameDay addObject:bill];
     }
-    // 添加普通Cell
-    [modelArray addObject:[self getNormalItem:bill]];
+    else
+    {
+      // 将日期相同的账单，放在同一个数组中
+      MPBillModel *lastOj = billInSameDay.lastObject;
+      if([bill.dateStr isEqualToString:lastOj.dateStr])
+      {
+        [billInSameDay addObject:bill];
+      }
+      else
+      {
+        // 创建Day类型的模型
+        [modelArray addObject:[self getDayItemWithBillArray:billInSameDay dateStr:lastOj.dateStr]];
+        // 生成Normal类型的模型
+        for (MPBillModel *bill in billInSameDay)
+        {
+          MPTimeLineModel *model = [[MPTimeLineModel alloc] init];
+          model.bill = bill;
+          model.type = TimeLineNormalItem;
+          [modelArray addObject:model];
+        }
+        // 重新开始分类
+        [billInSameDay removeAllObjects];
+        [billInSameDay addObject:bill];
+      }
+    }
+  }
+  if(billInSameDay.count != 0)
+  {
+    MPBillModel *bill = billInSameDay.firstObject;
+    [modelArray addObject:[self getDayItemWithBillArray:billInSameDay dateStr:bill.dateStr]];
+    // 生成Normal类型的模型
+    for (MPBillModel *bill in billInSameDay)
+    {
+      MPTimeLineModel *model = [[MPTimeLineModel alloc] init];
+      model.bill = bill;
+      model.type = TimeLineNormalItem;
+      [modelArray addObject:model];
+    }
   }
   return modelArray;
 }
 
-/// 产生一个日期的Item
-+ (instancetype)getDayItem:(NSString *)dateStr
+/// 创建normal类型的模型
++ (instancetype)getNormalItemWithBill:(MPBillModel *)bill
 {
   MPTimeLineModel *model = [[MPTimeLineModel alloc] init];
-  model.type = TimeLineDayItem;
-  model.dateStr = dateStr;
+  model.bill = bill;
+  model.type = TimeLineNormalItem;
   return model;
 }
 
-/// 产生一个普通的Item
-+ (instancetype)getNormalItem:(MPBillModel *)bill
+/// 创建Day类型的模型
++ (instancetype)getDayItemWithBillArray:(NSArray *)billInSameDay dateStr:(NSString *)dateStr
 {
-  MPTimeLineModel *timeLineModel = [[MPTimeLineModel alloc] init];
-  timeLineModel.bill = bill;
-  timeLineModel.type = TimeLineNormalItem;
-  return timeLineModel;
+  MPTimeLineModel *model = [[MPTimeLineModel alloc] init];
+  model.dayBill = [MPDayBillModel dayBill:billInSameDay dateStr:dateStr];
+  model.dateStr = dateStr;
+  model.type = TimeLineDayItem;
+  return model;
 }
 
 @end

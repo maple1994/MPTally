@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MPDayBillModel;
 /// 显示日期的时间线
 @interface MPTimeLineDayTableViewCell : UITableViewCell
 
 @property (nonatomic, copy) NSString *dateStr;
+@property (nonatomic, strong) MPDayBillModel *dayBill;
 
 @end

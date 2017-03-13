@@ -60,6 +60,7 @@
 		F5ECA9A91E6EB36700007969 /* MPBaseCategoryCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9A81E6EB36700007969 /* MPBaseCategoryCollectionViewController.m */; };
 		F5ECA9AC1E6EEB9300007969 /* MPCalculatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9AB1E6EEB9300007969 /* MPCalculatorView.m */; };
 		F5ECA9AE1E6EEEEB00007969 /* MPCalculatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5ECA9AD1E6EEEEB00007969 /* MPCalculatorView.xib */; };
+		F5FE7B3B1E763A0E003D1B6D /* MPDayBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FE7B3A1E763A0E003D1B6D /* MPDayBillModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,8 @@
 		F5ECA9AA1E6EEB9300007969 /* MPCalculatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCalculatorView.h; sourceTree = "<group>"; };
 		F5ECA9AB1E6EEB9300007969 /* MPCalculatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCalculatorView.m; sourceTree = "<group>"; };
 		F5ECA9AD1E6EEEEB00007969 /* MPCalculatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCalculatorView.xib; sourceTree = "<group>"; };
+		F5FE7B391E763A0E003D1B6D /* MPDayBillModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDayBillModel.h; sourceTree = "<group>"; };
+		F5FE7B3A1E763A0E003D1B6D /* MPDayBillModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDayBillModel.m; sourceTree = "<group>"; };
 		FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -317,6 +320,8 @@
 				F560E78C1E70EB2D007068CC /* MPBookModel.m */,
 				F555D3BA1E72D4690007AD24 /* MPTimeLineModel.h */,
 				F555D3BB1E72D4690007AD24 /* MPTimeLineModel.m */,
+				F5FE7B391E763A0E003D1B6D /* MPDayBillModel.h */,
+				F5FE7B3A1E763A0E003D1B6D /* MPDayBillModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -832,6 +837,7 @@
 				F5ECA9AC1E6EEB9300007969 /* MPCalculatorView.m in Sources */,
 				F52BCCB01E6AF8F30036234E /* MPReportFormViewController.m in Sources */,
 				F52BCC9E1E6AF2480036234E /* MPTabBarController.m in Sources */,
+				F5FE7B3B1E763A0E003D1B6D /* MPDayBillModel.m in Sources */,
 				F560E7A61E7185C6007068CC /* MPTimeLineItemTableViewCell.m in Sources */,
 				F52BCCA11E6AF4740036234E /* MPNavigationController.m in Sources */,
 				F5AD3B0B1E6FB1AF003F7B69 /* MPCalendarView.m in Sources */,

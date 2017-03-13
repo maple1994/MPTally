@@ -47,6 +47,7 @@ static NSString *DayCellID = @"DayCellID";
 
 - (void)resetData
 {
+//  self.timeLineModelArray = [[MPTimeLineModel alloc] getModelArrayWithResults:self.billModelArray];
   self.timeLineModelArray = [MPTimeLineModel timeLineArrayWithResults:self.billModelArray];
   [self.tableView reloadData];
 }
@@ -71,7 +72,7 @@ static NSString *DayCellID = @"DayCellID";
   if(model.type == TimeLineDayItem)
   {
     MPTimeLineDayTableViewCell *dayCell = [tableView dequeueReusableCellWithIdentifier:DayCellID];
-    dayCell.dateStr = model.dateStr;
+    dayCell.dayBill = model.dayBill;
     return dayCell;
   }
   else

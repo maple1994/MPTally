@@ -7,6 +7,7 @@
 //
 
 #import "MPTimeLineDayTableViewCell.h"
+#import "MPDayBillModel.h"
 
 @interface MPTimeLineDayTableViewCell ()
 
@@ -40,6 +41,7 @@
 
 - (void)setup
 {
+  self.selectionStyle = UITableViewCellSelectionStyleNone;
   [self.dateBgView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.contentView);
     make.centerX.equalTo(self.contentView);
@@ -85,6 +87,23 @@
   fmt.dateFormat = @"d日";
   
   self.dateLabel.text = [fmt stringFromDate:date];
+}
+
+- (void)setDayBill:(MPDayBillModel *)dayBill
+{
+  _dayBill = dayBill;
+  NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+  fmt.dateFormat = @"yyyy-MM-dd";
+  NSDate *date = [fmt dateFromString:dayBill.dateStr];
+  fmt.dateFormat = @"d日";
+  self.dateLabel.text = [fmt stringFromDate:date];
+  self.outcomeNumLabel.text = [MyUtils numToString:dayBill.outcome];
+  self.incomeNumLabel.text = [MyUtils numToString:dayBill.income];
+  
+  self.outcomeNumLabel.hidden = (dayBill.outcome == 0);
+  self.outcomeTitleLabel.hidden = self.outcomeNumLabel.isHidden;
+  self.incomeNumLabel.hidden = (dayBill.income == 0);
+  self.incomeTitleLabel.hidden = self.incomeNumLabel.isHidden;
 }
 
 #pragma mark - getter
