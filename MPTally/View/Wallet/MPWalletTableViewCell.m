@@ -21,12 +21,14 @@
     [super awakeFromNib];
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   self.bgVIew.backgroundColor = kRandomColor;
+  self.bgVIew.layer.cornerRadius = 3;
+  self.bgVIew.layer.masksToBounds = YES;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setAccount:(MPAccountModel *)account
+{
+  _account = account;
+  self.titleLabel.text = account.accountName;
+  self.numLabel.text = [MyUtils numToString:account.money];
 }
-
 @end

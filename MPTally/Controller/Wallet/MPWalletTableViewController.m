@@ -9,12 +9,16 @@
 #import "MPWalletTableViewController.h"
 #import "MPWalletTableViewCell.h"
 #import "MPWalletBalanceHeaderView.h"
+#import "MPAccountManager.h"
 
 #define kRowHeight 60
 
 @interface MPWalletTableViewController ()
 
+/// 余额Header
 @property (nonatomic, strong) MPWalletBalanceHeaderView *balanceHeaderView;
+/// 模型数组
+@property (nonatomic, strong) RLMResults *accountArray;
 
 @end
 
@@ -37,13 +41,13 @@ static NSString *WalletCellID = @"WalletCellID";
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.accountArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletCellID forIndexPath:indexPath];
-    
+    MPWalletTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletCellID forIndexPath:indexPath];
+  cell.account = self.accountArray[indexPath.row];
     return cell;
 }
 
@@ -58,6 +62,15 @@ static NSString *WalletCellID = @"WalletCellID";
 }
 
 #pragma mark - get
+- (RLMResults *)accountArray
+{
+  if(_accountArray == nil)
+  {
+    _accountArray = [[MPAccountManager shareManager] getAccountList];
+  }
+  return _accountArray;
+}
+
 - (MPWalletBalanceHeaderView *)balanceHeaderView
 {
   if(_balanceHeaderView == nil)

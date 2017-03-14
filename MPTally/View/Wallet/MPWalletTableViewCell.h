@@ -11,4 +11,6 @@
 /// 钱包Cell
 @interface MPWalletTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) MPAccountModel *account;
+
 @end
