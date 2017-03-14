@@ -13,8 +13,9 @@
 #import "MPBookManager.h"
 #import "MPTimeLineDayTableViewCell.h"
 #import "MPTimeLineModel.h"
+#import "MPBookListView.h"
 
-@interface MPBillTableViewController ()
+@interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 /// 从数据库查询的Bill数据
 @property (nonatomic, strong) RLMResults *billModelArray;
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) RLMNotificationToken *token;
 /// 时间线数组
 @property (nonatomic, strong) NSMutableArray *timeLineModelArray;
+@property (nonatomic, weak) UITableView *tableView;
 
 @end
 
@@ -42,7 +44,23 @@ static NSString *DayCellID = @"DayCellID";
   self.tableView.showsVerticalScrollIndicator = NO;
   [self.tableView registerClass:MPTimeLineItemTableViewCell.class forCellReuseIdentifier:ItemCellID];
   [self.tableView registerClass:MPTimeLineDayTableViewCell.class forCellReuseIdentifier:DayCellID];
-  [self resetData];
+//  [self resetData];
+  [self setupNav];
+}
+
+- (void)setupNav
+{
+  UIButton *button = [[UIButton alloc] init];
+  [button setTitle:@"默认账本" forState:UIControlStateNormal];
+  [button sizeToFit];
+  [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+  [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.titleView = button;
+}
+
+- (void)buttonClick
+{
+  
 }
 
 - (void)resetData
@@ -94,6 +112,13 @@ static NSString *DayCellID = @"DayCellID";
   return 100;
 }
 
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//  CGFloat offy = scrollView.contentOffset.y;
+//  NSInteger index = offy / 75;
+//  
+//}
+
 #pragma mark - getter
 - (RLMResults *)billModelArray
 {
@@ -109,6 +134,22 @@ static NSString *DayCellID = @"DayCellID";
     _billModelArray = [_billModelArray sortedResultsUsingDescriptors:@[desc1, desc2]];
   }
   return _billModelArray;
+}
+
+- (UITableView *)tableView
+{
+  if(_tableView == nil)
+  {
+    UITableView *view = [[UITableView alloc] init];
+    view.delegate = self;
+    view.dataSource = self;
+    _tableView = view;
+    [self.view addSubview:view];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.edges.equalTo(self.view);
+    }];
+  }
+  return _tableView;
 }
 
 - (MPTimeLineHeaderView *)headerView

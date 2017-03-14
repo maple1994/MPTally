@@ -38,7 +38,7 @@ static MPAccountManager *instance;
   if(accountID)
   {
     // accountID不为空时，根据accountID去获得对应的account
-    defaultModel = [MPAccountModel objectsWhere:@"accountID=%@", accountID].firstObject;
+    defaultModel = [MPAccountModel objectForPrimaryKey:accountID];
   }
   else
   {

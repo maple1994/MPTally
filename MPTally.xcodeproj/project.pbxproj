@@ -34,6 +34,11 @@
 		F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCCF1E6BF66F0036234E /* MPCategoryCollectionViewCell.m */; };
 		F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */; };
 		F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCD41E6C08430036234E /* MPCategoryModel.m */; };
+		F541E7941E7784BF00556D46 /* MPBookListView.m in Sources */ = {isa = PBXBuildFile; fileRef = F541E7931E7784BF00556D46 /* MPBookListView.m */; };
+		F541E7981E77895800556D46 /* MPWalletTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F541E7971E77895800556D46 /* MPWalletTableViewCell.m */; };
+		F541E79A1E77896E00556D46 /* MPWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F541E7991E77896E00556D46 /* MPWalletTableViewCell.xib */; };
+		F541E7A01E778CFF00556D46 /* MPWalletBalanceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F541E79F1E778CFF00556D46 /* MPWalletBalanceHeaderView.m */; };
+		F541E7A21E778D0900556D46 /* MPWalletBalanceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F541E7A11E778D0900556D46 /* MPWalletBalanceHeaderView.xib */; };
 		F554FCE01E6C35A20032A60F /* MPIncomeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FCDF1E6C35A20032A60F /* MPIncomeCategoryViewController.m */; };
 		F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FCE21E6C35B50032A60F /* MPOutcomeCategoryViewController.m */; };
 		F555D3B61E728C050007AD24 /* MPTimeLineYearMonthMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = F555D3B51E728C050007AD24 /* MPTimeLineYearMonthMarkView.m */; };
@@ -135,6 +140,14 @@
 		F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		F52BCCD31E6C08430036234E /* MPCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCategoryModel.h; sourceTree = "<group>"; };
 		F52BCCD41E6C08430036234E /* MPCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCategoryModel.m; sourceTree = "<group>"; };
+		F541E7921E7784BF00556D46 /* MPBookListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBookListView.h; sourceTree = "<group>"; };
+		F541E7931E7784BF00556D46 /* MPBookListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBookListView.m; sourceTree = "<group>"; };
+		F541E7961E77895800556D46 /* MPWalletTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPWalletTableViewCell.h; sourceTree = "<group>"; };
+		F541E7971E77895800556D46 /* MPWalletTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPWalletTableViewCell.m; sourceTree = "<group>"; };
+		F541E7991E77896E00556D46 /* MPWalletTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPWalletTableViewCell.xib; sourceTree = "<group>"; };
+		F541E79E1E778CFF00556D46 /* MPWalletBalanceHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPWalletBalanceHeaderView.h; sourceTree = "<group>"; };
+		F541E79F1E778CFF00556D46 /* MPWalletBalanceHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPWalletBalanceHeaderView.m; sourceTree = "<group>"; };
+		F541E7A11E778D0900556D46 /* MPWalletBalanceHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPWalletBalanceHeaderView.xib; sourceTree = "<group>"; };
 		F554FCDE1E6C35A20032A60F /* MPIncomeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPIncomeCategoryViewController.h; sourceTree = "<group>"; };
 		F554FCDF1E6C35A20032A60F /* MPIncomeCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPIncomeCategoryViewController.m; sourceTree = "<group>"; };
 		F554FCE11E6C35B50032A60F /* MPOutcomeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOutcomeCategoryViewController.h; sourceTree = "<group>"; };
@@ -357,6 +370,7 @@
 		F52BCC8A1E6AECB10036234E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F541E7951E77894700556D46 /* Wallet */,
 				F560E7A21E7185B1007068CC /* Bill */,
 				F52BCCBF1E6BEEA70036234E /* CreateBill */,
 				F52BCCA71E6AF57B0036234E /* Root */,
@@ -505,6 +519,19 @@
 			path = CreateBill;
 			sourceTree = "<group>";
 		};
+		F541E7951E77894700556D46 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				F541E79E1E778CFF00556D46 /* MPWalletBalanceHeaderView.h */,
+				F541E79F1E778CFF00556D46 /* MPWalletBalanceHeaderView.m */,
+				F541E7A11E778D0900556D46 /* MPWalletBalanceHeaderView.xib */,
+				F541E7961E77895800556D46 /* MPWalletTableViewCell.h */,
+				F541E7971E77895800556D46 /* MPWalletTableViewCell.m */,
+				F541E7991E77896E00556D46 /* MPWalletTableViewCell.xib */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
 		F560E7A21E7185B1007068CC /* Bill */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +543,8 @@
 				F555D3B81E7297720007AD24 /* MPTimeLineHeaderView.m */,
 				F555D3BD1E72D5580007AD24 /* MPTimeLineDayTableViewCell.h */,
 				F555D3BE1E72D5580007AD24 /* MPTimeLineDayTableViewCell.m */,
+				F541E7921E7784BF00556D46 /* MPBookListView.h */,
+				F541E7931E7784BF00556D46 /* MPBookListView.m */,
 			);
 			path = Bill;
 			sourceTree = "<group>";
@@ -657,11 +686,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5AD3B201E703DB0003F7B69 /* MPAccountPickerTableViewCell.xib in Resources */,
+				F541E79A1E77896E00556D46 /* MPWalletTableViewCell.xib in Resources */,
 				F560E7A11E7136F0007068CC /* account.plist in Resources */,
 				F52BCCBC1E6BE9F10036234E /* category.plist in Resources */,
 				F52BCCC41E6BEF1C0036234E /* MPCreateBillHeaderView.xib in Resources */,
 				F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */,
 				F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */,
+				F541E7A21E778D0900556D46 /* MPWalletBalanceHeaderView.xib in Resources */,
 				F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */,
 				F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */,
 				F5ECA9AE1E6EEEEB00007969 /* MPCalculatorView.xib in Resources */,
@@ -851,9 +882,12 @@
 				F560E7811E70D852007068CC /* MPEditRemarkViewController.m in Sources */,
 				F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */,
 				F560E7961E70ECC2007068CC /* MPAccountManager.m in Sources */,
+				F541E7A01E778CFF00556D46 /* MPWalletBalanceHeaderView.m in Sources */,
 				F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */,
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
 				F555D3BC1E72D4690007AD24 /* MPTimeLineModel.m in Sources */,
+				F541E7981E77895800556D46 /* MPWalletTableViewCell.m in Sources */,
+				F541E7941E7784BF00556D46 /* MPBookListView.m in Sources */,
 				F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
 				F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */,

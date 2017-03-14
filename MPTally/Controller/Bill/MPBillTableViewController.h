@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 /// 账单列表
-@interface MPBillTableViewController : UITableViewController
+@interface MPBillTableViewController : UIViewController
 
 @end

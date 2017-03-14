@@ -35,6 +35,8 @@ static id instance;
   bill.recordDate = [NSDate date];
   [kRealm transactionWithBlock:^{
     [MPBillModel createInDefaultRealmWithValue:bill];
+    // 设置对应账单的金额
+    
   }];
 }
 

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MPWalletBalanceHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="318" height="89"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-fu-Qco">
+                    <rect key="frame" x="10" y="0.0" width="298" height="79"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIk-Ee-pDK">
+                            <rect key="frame" x="10" y="29" width="35" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6632.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOx-Kn-khh">
+                            <rect key="frame" x="222" y="29" width="66" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.60784313729999995" green="0.84705882349999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="yOx-Kn-khh" secondAttribute="trailing" constant="10" id="24F-CA-ffD"/>
+                        <constraint firstItem="hIk-Ee-pDK" firstAttribute="centerY" secondItem="c0e-fu-Qco" secondAttribute="centerY" id="evO-7e-k4G"/>
+                        <constraint firstItem="yOx-Kn-khh" firstAttribute="centerY" secondItem="c0e-fu-Qco" secondAttribute="centerY" id="v23-7h-hXr"/>
+                        <constraint firstItem="hIk-Ee-pDK" firstAttribute="leading" secondItem="c0e-fu-Qco" secondAttribute="leading" constant="10" id="vQD-6e-417"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="c0e-fu-Qco" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="8oW-4h-TeR"/>
+                <constraint firstItem="c0e-fu-Qco" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="p9K-4h-Rmb"/>
+                <constraint firstAttribute="bottom" secondItem="c0e-fu-Qco" secondAttribute="bottom" constant="10" id="pma-wH-ydc"/>
+                <constraint firstAttribute="trailing" secondItem="c0e-fu-Qco" secondAttribute="trailing" constant="10" id="sna-NA-q0m"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="balanceLabel" destination="yOx-Kn-khh" id="zFG-cm-MXZ"/>
+                <outlet property="bgView" destination="c0e-fu-Qco" id="3BG-QM-tcW"/>
+            </connections>
+            <point key="canvasLocation" x="-110" y="-361.5"/>
+        </view>
+    </objects>
+</document>

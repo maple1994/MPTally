@@ -36,7 +36,7 @@ static MPBookManager *instance;
   MPBookModel *book = nil;
   if(bookID)
   {
-    book = [MPBookModel objectsWhere:@"bookID=%@", bookID].firstObject;
+    book = [MPBookModel objectForPrimaryKey:bookID];
   }
   else
   {
