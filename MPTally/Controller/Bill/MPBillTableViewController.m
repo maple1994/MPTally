@@ -14,8 +14,9 @@
 #import "MPTimeLineDayTableViewCell.h"
 #import "MPTimeLineModel.h"
 #import "MPBookListView.h"
+#import "MPTopBarView.h"
 
-@interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate>
 
 /// 从数据库查询的Bill数据
 @property (nonatomic, strong) RLMResults *billModelArray;
@@ -25,6 +26,12 @@
 @property (nonatomic, strong) RLMNotificationToken *token;
 /// 时间线数组
 @property (nonatomic, strong) NSMutableArray *timeLineModelArray;
+/// 替代导航栏的
+@property (nonatomic, weak) MPTopBarView *topBarView;
+/// 账本容器
+@property (nonatomic, weak) MPBookListView *bookListView;
+/// 添加一层遮罩
+@property (nonatomic, weak) UIControl *hudCtrl;
 @property (nonatomic, weak) UITableView *tableView;
 
 @end
@@ -37,6 +44,7 @@ static NSString *DayCellID = @"DayCellID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  [self setupUI];
   self.tableView.rowHeight = 75;
   [self setupnNotificationToken];
   
@@ -46,6 +54,37 @@ static NSString *DayCellID = @"DayCellID";
   [self.tableView registerClass:MPTimeLineDayTableViewCell.class forCellReuseIdentifier:DayCellID];
 //  [self resetData];
   [self setupNav];
+}
+
+- (void)setupUI
+{
+  self.automaticallyAdjustsScrollViewInsets = NO;
+  [self.bookListView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.bottom.equalTo(self.view.mas_top);
+    make.leading.trailing.equalTo(self.view);
+    make.height.mas_equalTo(200);
+  }];
+  [self.topBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.bookListView.mas_bottom);
+    make.leading.trailing.equalTo(self.view);
+    make.height.mas_equalTo(44);
+  }];
+  [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.topBarView.mas_bottom);
+    make.leading.trailing.bottom.equalTo(self.view);
+  }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [super viewWillDisappear:animated];
+  [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)setupNav
@@ -60,7 +99,8 @@ static NSString *DayCellID = @"DayCellID";
 
 - (void)buttonClick
 {
-  
+  kFuncNameLog;
+  [self.tabBarController.tabBar setHidden:!self.tabBarController.tabBar.isHidden];
 }
 
 - (void)resetData
@@ -75,6 +115,31 @@ static NSString *DayCellID = @"DayCellID";
   __weak typeof(self)weakSelf = self;
   self.token = [self.billModelArray addNotificationBlock:^(RLMResults * _Nullable results, RLMCollectionChange * _Nullable change, NSError * _Nullable error) {
     [weakSelf resetData];
+  }];
+}
+
+/// 添加遮罩
+- (void)addHUD
+{
+  UIControl *ctrl = [[UIControl alloc] init];
+  [self.view addSubview:ctrl];
+  [ctrl addTarget:self action:@selector(removeHUD:) forControlEvents:UIControlEventTouchUpInside];
+  [ctrl mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.bookListView.mas_bottom);
+    make.leading.trailing.bottom.equalTo(self.view);
+  }];
+}
+
+/// 去除遮罩
+- (void)removeHUD:(UIControl *)ctrl
+{
+  [ctrl removeFromSuperview];
+  [self.bookListView mas_updateConstraints:^(MASConstraintMaker *make) {
+    make.bottom.equalTo(self.view.mas_top);
+  }];
+  [UIView animateWithDuration:0.25 animations:^{
+    [self.view layoutIfNeeded];
+    [self.tabBarController.tabBar setHidden:NO];
   }];
 }
 
@@ -119,7 +184,45 @@ static NSString *DayCellID = @"DayCellID";
 //  
 //}
 
+#pragma mark - TopBarViewDelegate
+- (void)topBarView:(MPTopBarView *)topBar didClickTitleButton:(UIButton *)button
+{
+  [self.bookListView mas_updateConstraints:^(MASConstraintMaker *make) {
+    make.bottom.equalTo(self.view.mas_top).offset(200);
+  }];
+  [self addHUD];
+  [UIView animateWithDuration:0.25 animations:^{
+    [self.view layoutIfNeeded];
+    [self.tabBarController.tabBar setHidden:YES];
+  }];
+}
+
 #pragma mark - getter
+- (MPBookListView *)bookListView
+{
+  if(_bookListView == nil)
+  {
+    MPBookListView *view = [[MPBookListView alloc] init];
+    _bookListView = view;
+    _bookListView.backgroundColor = kRandomColor;
+    [self.view addSubview:view];
+  }
+  return _bookListView;
+}
+
+- (MPTopBarView *)topBarView
+{
+  if(_topBarView == nil)
+  {
+    MPTopBarView *view = [[MPTopBarView alloc] init];
+    view.delegate = self;
+    _topBarView = view;
+    [self.view addSubview:view];
+  }
+  return _topBarView;
+}
+
+
 - (RLMResults *)billModelArray
 {
   if(_billModelArray == nil)
@@ -145,9 +248,6 @@ static NSString *DayCellID = @"DayCellID";
     view.dataSource = self;
     _tableView = view;
     [self.view addSubview:view];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.edges.equalTo(self.view);
-    }];
   }
   return _tableView;
 }

@@ -20,6 +20,7 @@
 /// 模型数组
 @property (nonatomic, strong) RLMResults *accountArray;
 
+
 @end
 
 @implementation MPWalletTableViewController
@@ -38,6 +39,7 @@ static NSString *WalletCellID = @"WalletCellID";
   self.tableView.rowHeight = kRowHeight;
   self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
 }
+
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
