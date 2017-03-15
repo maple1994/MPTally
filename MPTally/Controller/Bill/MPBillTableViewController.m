@@ -204,8 +204,8 @@ static NSString *DayCellID = @"DayCellID";
   {
     CGFloat itemW = (kScreenW - 5 * 10) / 4.0;
     CGFloat itemH = itemW * 1.35;
-    self.bookListViewH = itemH + 30;
-    MPBookListView *view = [[MPBookListView alloc] initWithItemSize:CGSizeMake(itemW, itemH)];
+    self.bookListViewH = ceilf(itemH) + 30;
+    MPBookListView *view = [[MPBookListView alloc] initWithItemSize:CGSizeMake(ceilf(itemW), ceilf(itemH))];
     _bookListView = view;
     _bookListView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:view];

@@ -11,4 +11,6 @@
 /// 创建账本的弹窗View
 @interface MPCreateBookView : UIView
 
+@property (nonatomic, strong) MPBookModel *book;
+
 @end

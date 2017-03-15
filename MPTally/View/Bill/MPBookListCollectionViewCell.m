@@ -45,6 +45,18 @@
     make.bottom.equalTo(self.bgView).offset(-5);
     make.width.height.mas_equalTo(20);
   }];
+  // 添加长按手势
+  UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(press:)];
+  [self addGestureRecognizer:longPress];
+}
+
+- (void)press:(UILongPressGestureRecognizer *)gesture
+{
+  if(gesture.state == UIGestureRecognizerStateBegan)
+  {
+    if(self.longPressBlock)
+      self.longPressBlock();
+  }
 }
 
 - (void)setBookModel:(MPBookModel *)bookModel

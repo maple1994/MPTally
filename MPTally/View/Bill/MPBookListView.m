@@ -41,7 +41,8 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
   return self;
 }
 
-- (void)didMoveToSuperview
+/// 设置选中标志
+- (void)setupSelectedMark
 {
   for(int i = 0; i < self.bookArray.count; i++)
   {
@@ -55,7 +56,6 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
     }
   }
 }
-
 - (void)setupWithSize:(CGSize)size
 {
   self.collectionView = [self createCollectionView:size];
@@ -75,6 +75,7 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
   __weak typeof(self) weakSelf = self;
   self.token = [self.dbResults addNotificationBlock:^(RLMResults * _Nullable results, RLMCollectionChange * _Nullable change, NSError * _Nullable error) {
     weakSelf.bookArray = nil;
+    [weakSelf setupSelectedMark];
     [weakSelf.collectionView reloadData];
   }];
 }
@@ -94,6 +95,14 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
   return view;
 }
 
+/// 弹出编辑账本窗口
+- (void)showEditBookView:(MPBookModel *)book
+{
+  MPCreateBookView *view = [[MPCreateBookView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH)];
+  view.book = book;
+  [[UIApplication sharedApplication].keyWindow addSubview:view];
+}
+
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -110,6 +119,10 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
   MPBookListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:BookListCellID forIndexPath:indexPath];
   MPBookModel *book = self.bookArray[indexPath.row];
   cell.bookModel = book;
+  // 设置长按手势Block
+  [cell setLongPressBlock:^{
+    [self showEditBookView:book];
+  }];
   return cell;
 }
 
@@ -118,8 +131,7 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
 {
   if(indexPath.row == self.bookArray.count)
   {
-    MPCreateBookView *view = [[MPCreateBookView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH)];
-    [[UIApplication sharedApplication].keyWindow addSubview:view];
+    [self showEditBookView:nil];
     return;
   }
   self.selectedIndexPath = indexPath;

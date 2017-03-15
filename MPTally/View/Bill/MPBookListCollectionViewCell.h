@@ -14,5 +14,7 @@
 @property (nonatomic, strong) MPBookModel *bookModel;
 /// 显示选中标记
 @property (nonatomic, assign, getter=isShowSelectedMark) BOOL showSelectedMark;
+/// 处理长按手势Block
+@property (nonatomic, copy) void (^longPressBlock)();
 
 @end

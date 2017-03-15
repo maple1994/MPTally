@@ -29,6 +29,8 @@
 @property (nonatomic, weak) UIView *inputAear;
 /// 背景蒙版
 @property (nonatomic, weak) UIView *bgHUD;
+/// 删除按钮
+@property (nonatomic, weak) UIButton *deleteButton;
 
 @end
 
@@ -85,7 +87,11 @@
     make.top.mas_equalTo(self.textFieldLabel.mas_bottom);
     make.leading.trailing.equalTo(self.inputAear);
     make.height.mas_equalTo(30);
-    make.bottom.equalTo(self.inputAear).offset(-20);
+  }];
+  [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.textField.mas_bottom).offset(1);
+    make.leading.trailing.bottom.equalTo(self.inputAear);
+    make.height.mas_equalTo(30);
   }];
   self.titleAear.backgroundColor = [UIColor whiteColor];
   self.inputAear.backgroundColor = colorWithRGB(240, 240, 240);
@@ -109,6 +115,19 @@
 - (void)cancel
 {
   [self removeFromSuperview];
+}
+
+- (void)deleteBook
+{
+  kFuncNameLog;
+}
+
+- (void)setBook:(MPBookModel *)book
+{
+  _book = book;
+  self.textField.text = book.bookName;
+  self.deleteButton.hidden = !book;
+  self.titleLabel.text = (book) ? @"编辑账本" : @"创建账本";
 }
 
 #pragma mark - getter
@@ -145,6 +164,7 @@
   if(_textField == nil)
   {
     UITextField *field = [[UITextField alloc] init];
+    field.font = [UIFont systemFontOfSize:15];
     field.leftViewMode = UITextFieldViewModeAlways;
     field.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     field.backgroundColor = [UIColor whiteColor];
@@ -226,6 +246,22 @@
     [self addSubview:view];
   }
   return _bgHUD;
+}
+
+- (UIButton *)deleteButton
+{
+  if(_deleteButton == nil)
+  {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.titleLabel.font = [UIFont systemFontOfSize:13];
+    [button addTarget:self action:@selector(deleteBook) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor whiteColor];
+    button.hidden = YES;
+    [button setTitle:@"删除账本" forState:UIControlStateNormal];
+    _deleteButton = button;
+    [self.inputAear addSubview:button];
+  }
+  return _deleteButton;
 }
 
 
