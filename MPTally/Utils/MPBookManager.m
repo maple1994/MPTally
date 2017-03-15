@@ -91,6 +91,31 @@ static MPBookManager *instance;
   }];
 }
 
+/**
+ 更新账本的名字
+ 
+ @param bookName 修改的名字
+ @param book 要修改的账本对象
+ */
+- (void)updateBookName:(NSString *)bookName book:(MPBookModel *)book
+{
+  [kRealm transactionWithBlock:^{
+    book.bookName = bookName;
+  }];
+}
+
+/**
+ 删除账本
+
+ @param book 要移除的账单模型
+ */
+- (void)deleteBook:(MPBookModel *)book
+{
+  [kRealm transactionWithBlock:^{
+    [kRealm deleteObject:book];
+  }];
+}
+
 #pragma mark - Private
 /**
  账本列表是否为空

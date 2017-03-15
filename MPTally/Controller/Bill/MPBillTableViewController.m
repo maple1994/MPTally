@@ -16,7 +16,7 @@
 #import "MPBookListView.h"
 #import "MPTopBarView.h"
 
-@interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate>
+@interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate, MPBookListViewDelegate>
 
 /// 从数据库查询的Bill数据
 @property (nonatomic, strong) RLMResults *billModelArray;
@@ -32,6 +32,8 @@
 @property (nonatomic, weak) MPBookListView *bookListView;
 /// 账本列表的高度
 @property (nonatomic, assign) CGFloat bookListViewH;
+/// 当显示账本列表时，列表下隐藏的control
+@property (nonatomic, weak) UIControl *ctrl;
 @property (nonatomic, weak) UITableView *tableView;
 
 @end
@@ -128,6 +130,7 @@ static NSString *DayCellID = @"DayCellID";
     make.top.equalTo(self.bookListView.mas_bottom);
     make.leading.trailing.bottom.equalTo(self.view);
   }];
+  self.ctrl = ctrl;
 }
 
 /// 去除遮罩
@@ -184,6 +187,18 @@ static NSString *DayCellID = @"DayCellID";
 //  
 //}
 
+#pragma mark - MPBookListViewDelegate
+- (void)bookListView:(MPBookListView *)listView didChangeBook:(MPBookModel *)book
+{
+  // 切换账本，重新设置数据
+  [self removeHUD:self.ctrl];
+  [[MPBookManager shareManager] setCurrentBook:book];
+  self.billModelArray = nil;
+  self.token = nil;
+  [self resetData];
+  [self setupnNotificationToken];
+}
+
 #pragma mark - TopBarViewDelegate
 - (void)topBarView:(MPTopBarView *)topBar didClickTitleButton:(UIButton *)button
 {
@@ -207,6 +222,7 @@ static NSString *DayCellID = @"DayCellID";
     self.bookListViewH = ceilf(itemH) + 30;
     MPBookListView *view = [[MPBookListView alloc] initWithItemSize:CGSizeMake(ceilf(itemW), ceilf(itemH))];
     _bookListView = view;
+    view.delegate = self;
     _bookListView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:view];
   }

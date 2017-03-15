@@ -42,5 +42,20 @@
  */
 - (void)insertBook:(MPBookModel *)book;
 
+/**
+ 更新账本的名字
+
+ @param bookName 修改的名字
+ @param book 要修改的账本对象
+ */
+- (void)updateBookName:(NSString *)bookName book:(MPBookModel *)book;
+
+/**
+ 删除账本
+ 
+ @param book 要移除的账单模型
+ */
+- (void)deleteBook:(MPBookModel *)book;
+
 
 @end

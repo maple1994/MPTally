@@ -100,7 +100,8 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
 {
   MPCreateBookView *view = [[MPCreateBookView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH)];
   view.book = book;
-  [[UIApplication sharedApplication].keyWindow addSubview:view];
+  [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:view];
+//  [[UIApplication sharedApplication].keyWindow addSubview:view];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -129,10 +130,16 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+  // 点击最后一个Cell，即添加账本
   if(indexPath.row == self.bookArray.count)
   {
     [self showEditBookView:nil];
     return;
+  }
+  // 切换账本，交给代理处理
+  if([self.delegate respondsToSelector:@selector(bookListView:didChangeBook:)])
+  {
+    [self.delegate bookListView:self didChangeBook:self.bookArray[indexPath.row]];
   }
   self.selectedIndexPath = indexPath;
 }

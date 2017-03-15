@@ -47,7 +47,16 @@
 
 - (void)didMoveToSuperview
 {
-  [self.textField becomeFirstResponder];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+      make.top.equalTo(self).offset(150);
+    }];
+    [UIView animateWithDuration:0.5 animations:^{
+      [self layoutIfNeeded];
+    }completion:^(BOOL finished) {
+      [self.textField becomeFirstResponder];
+    }];
+  });
 }
 
 - (void)setup
@@ -56,7 +65,7 @@
     make.edges.equalTo(self);
   }];
   [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self).offset(150);
+    make.top.equalTo(self).offset(-300);
     make.centerX.equalTo(self);
     make.width.mas_equalTo(kScreenW * 0.6);
   }];
@@ -97,31 +106,71 @@
   self.inputAear.backgroundColor = colorWithRGB(240, 240, 240);
 }
 
+#pragma mark - Action
+/// 确定
 - (void)confirm
 {
-  if(self.textField.text.length > 4)
+  if(self.textField.text.length == 0)
+  {
+    [SVProgressHUD showTips:@"请填写账本名称"];
+  }
+  else if(self.textField.text.length > 4)
   {
     [SVProgressHUD showTips:@"账本名字最多只能四个字"];
   }
   else
   {
-    MPBookModel *book = [[MPBookModel alloc] init];
-    book.bookName = self.textField.text;
-    [[MPBookManager shareManager] insertBook:book];
+    if(_book)
+    {
+      // 更新账本
+      [[MPBookManager shareManager] updateBookName:self.textField.text book:self.book];
+    }
+    else
+    {
+      // 添加新的账本
+      MPBookModel *book = [[MPBookModel alloc] init];
+      book.bookName = self.textField.text;
+      [[MPBookManager shareManager] insertBook:book];
+    }
     [self cancel];
   }
 }
 
+/// 取消
 - (void)cancel
 {
   [self removeFromSuperview];
 }
 
+/// 删除账本
 - (void)deleteBook
 {
-  kFuncNameLog;
+  [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self).offset(kScreenH);
+  }];
+  [UIView animateWithDuration:0.5 animations:^{
+    [self layoutIfNeeded];
+  }completion:^(BOOL finished) {
+    [[MPBookManager shareManager] deleteBook:_book];
+    [self cancel];
+  }];
 }
 
+/// 弹窗提示是否删除
+- (void)showAlertView
+{
+  [self.textField resignFirstResponder];
+  UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要删除这个账本吗？" preferredStyle:UIAlertControllerStyleAlert];
+  UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    [self deleteBook];
+  }];
+  UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+  [alertVC addAction:confirmAction];
+  [alertVC addAction:cancelAction];
+  [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertVC animated:YES completion:nil];
+}
+
+#pragma mark - getter or setter
 - (void)setBook:(MPBookModel *)book
 {
   _book = book;
@@ -130,7 +179,6 @@
   self.titleLabel.text = (book) ? @"编辑账本" : @"创建账本";
 }
 
-#pragma mark - getter
 - (UIButton *)cancelButton
 {
   if(_cancelButton == nil)
@@ -254,7 +302,7 @@
   {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.titleLabel.font = [UIFont systemFontOfSize:13];
-    [button addTarget:self action:@selector(deleteBook) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(showAlertView) forControlEvents:UIControlEventTouchUpInside];
     button.backgroundColor = [UIColor whiteColor];
     button.hidden = YES;
     [button setTitle:@"删除账本" forState:UIControlStateNormal];
