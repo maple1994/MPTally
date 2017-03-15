@@ -20,6 +20,13 @@
  */
 - (MPBookModel *)getCurrentBook;
 
+/**
+ 获得所有账本
+
+ @return MPBookModel数据
+ */
+- (RLMResults *)getAllBook;
+
 #pragma mark - Write
 /**
  设置当前的账本

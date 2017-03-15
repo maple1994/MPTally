@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSString *bookID;
 /// 账本名
 @property (nonatomic, copy) NSString *bookName;
+/// 是否为选中状态
+@property (nonatomic, assign) BOOL selected;
 
 @end
 

@@ -10,23 +10,14 @@
 
 @interface MPBookListCollectionViewCell ()
 
+// 正常显示的视图
 @property (nonatomic, weak) UIView *bgView;
 @property (nonatomic, weak) UIImageView *bgImageView;
 @property (nonatomic, weak) UILabel *titleLabel;
 @property (nonatomic, weak) UIImageView *markImageView;
-
 @end
 
 @implementation MPBookListCollectionViewCell
-
-//- (instancetype)init
-//{
-//  if(self = [super init])
-//  {
-//    [self setup];
-//  }
-//  return self;
-//}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -52,7 +43,21 @@
   [self.markImageView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.trailing.equalTo(self.bgView).offset(-5);
     make.bottom.equalTo(self.bgView).offset(-5);
+    make.width.height.mas_equalTo(20);
   }];
+}
+
+- (void)setBookModel:(MPBookModel *)bookModel
+{
+  _bookModel = bookModel;
+  self.titleLabel.text = bookModel.bookName;
+  [self setShowSelectedMark:bookModel.selected];
+}
+
+- (void)setShowSelectedMark:(BOOL)showSelectedMark
+{
+  _showSelectedMark = showSelectedMark;
+  self.markImageView.hidden = !showSelectedMark;
 }
 
 #pragma mark - getter
@@ -96,8 +101,9 @@
 {
   if(_markImageView == nil)
   {
-    UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gou_white"]];
+    UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gou_circle"]];
     _markImageView = iv;
+    iv.hidden = YES;
     [self.bgView addSubview:iv];
   }
   return _markImageView;

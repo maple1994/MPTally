@@ -11,4 +11,8 @@
 /// 账本列表Cell
 @interface MPBookListCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, strong) MPBookModel *bookModel;
+/// 显示选中标记
+@property (nonatomic, assign, getter=isShowSelectedMark) BOOL showSelectedMark;
+
 @end
