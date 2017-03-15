@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,12 +14,12 @@
             <rect key="frame" x="0.0" y="0.0" width="379" height="91"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qJ3-cA-Mby" id="mRE-x0-kM9">
-                <rect key="frame" x="0.0" y="0.0" width="379" height="90"/>
+                <rect key="frame" x="0.0" y="0.0" width="379" height="90.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kh6-Hs-VwJ">
                         <rect key="frame" x="356" y="34.5" width="13" height="22"/>
-                        <state key="normal" image="gou"/>
+                        <state key="normal" image="gou_blue"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uys-VX-NzA">
                         <rect key="frame" x="15" y="24" width="87" height="44"/>
@@ -66,6 +65,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="gou" width="13" height="10"/>
+        <image name="gou_blue" width="13" height="10"/>
     </resources>
 </document>

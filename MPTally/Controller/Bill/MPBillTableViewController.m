@@ -30,8 +30,8 @@
 @property (nonatomic, weak) MPTopBarView *topBarView;
 /// 账本容器
 @property (nonatomic, weak) MPBookListView *bookListView;
-/// 添加一层遮罩
-@property (nonatomic, weak) UIControl *hudCtrl;
+/// 账本列表的高度
+@property (nonatomic, assign) CGFloat bookListViewH;
 @property (nonatomic, weak) UITableView *tableView;
 
 @end
@@ -62,7 +62,7 @@ static NSString *DayCellID = @"DayCellID";
   [self.bookListView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.bottom.equalTo(self.view.mas_top);
     make.leading.trailing.equalTo(self.view);
-    make.height.mas_equalTo(200);
+    make.height.mas_equalTo(_bookListViewH);
   }];
   [self.topBarView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.bookListView.mas_bottom);
@@ -188,7 +188,7 @@ static NSString *DayCellID = @"DayCellID";
 - (void)topBarView:(MPTopBarView *)topBar didClickTitleButton:(UIButton *)button
 {
   [self.bookListView mas_updateConstraints:^(MASConstraintMaker *make) {
-    make.bottom.equalTo(self.view.mas_top).offset(200);
+    make.bottom.equalTo(self.view.mas_top).offset(_bookListViewH);
   }];
   [self addHUD];
   [UIView animateWithDuration:0.25 animations:^{
@@ -202,9 +202,12 @@ static NSString *DayCellID = @"DayCellID";
 {
   if(_bookListView == nil)
   {
-    MPBookListView *view = [[MPBookListView alloc] init];
+    CGFloat itemW = (kScreenW - 5 * 10) / 4.0;
+    CGFloat itemH = itemW * 1.35;
+    self.bookListViewH = itemH + 30;
+    MPBookListView *view = [[MPBookListView alloc] initWithItemSize:CGSizeMake(itemW, itemH)];
     _bookListView = view;
-    _bookListView.backgroundColor = kRandomColor;
+    _bookListView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:view];
   }
   return _bookListView;

@@ -11,4 +11,6 @@
 /// 账本列表View
 @interface MPBookListView : UIView
 
+- (instancetype)initWithItemSize:(CGSize)size;
+
 @end
