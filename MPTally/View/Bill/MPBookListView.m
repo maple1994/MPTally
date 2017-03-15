@@ -51,6 +51,7 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
     if([[[MPBookManager shareManager] getCurrentBook].bookID isEqualToString:book.bookID])
     {
       book.selected = YES;
+      self.selectedIndexPath = [NSIndexPath indexPathForItem:i inSection:0];
       [self.collectionView reloadData];
       break;
     }
