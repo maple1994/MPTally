@@ -68,6 +68,8 @@
 		F5ECA9AE1E6EEEEB00007969 /* MPCalculatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5ECA9AD1E6EEEEB00007969 /* MPCalculatorView.xib */; };
 		F5F202F31E78CF8900F18F6E /* MPBookListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F202F21E78CF8900F18F6E /* MPBookListCollectionViewCell.m */; };
 		F5F202F61E78E8D600F18F6E /* MPCreateBookCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F202F51E78E8D600F18F6E /* MPCreateBookCollectionViewCell.m */; };
+		F5F202F91E79290600F18F6E /* MPCreateBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F202F81E79290600F18F6E /* MPCreateBookView.m */; };
+		F5F202FC1E79386600F18F6E /* SVProgressHUD+MPTips.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F202FB1E79386600F18F6E /* SVProgressHUD+MPTips.m */; };
 		F5FE7B3B1E763A0E003D1B6D /* MPDayBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FE7B3A1E763A0E003D1B6D /* MPDayBillModel.m */; };
 /* End PBXBuildFile section */
 
@@ -206,6 +208,10 @@
 		F5F202F21E78CF8900F18F6E /* MPBookListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBookListCollectionViewCell.m; sourceTree = "<group>"; };
 		F5F202F41E78E8D600F18F6E /* MPCreateBookCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCreateBookCollectionViewCell.h; sourceTree = "<group>"; };
 		F5F202F51E78E8D600F18F6E /* MPCreateBookCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCreateBookCollectionViewCell.m; sourceTree = "<group>"; };
+		F5F202F71E79290600F18F6E /* MPCreateBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCreateBookView.h; sourceTree = "<group>"; };
+		F5F202F81E79290600F18F6E /* MPCreateBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCreateBookView.m; sourceTree = "<group>"; };
+		F5F202FA1E79386600F18F6E /* SVProgressHUD+MPTips.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD+MPTips.h"; sourceTree = "<group>"; };
+		F5F202FB1E79386600F18F6E /* SVProgressHUD+MPTips.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD+MPTips.m"; sourceTree = "<group>"; };
 		F5FE7B391E763A0E003D1B6D /* MPDayBillModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDayBillModel.h; sourceTree = "<group>"; };
 		F5FE7B3A1E763A0E003D1B6D /* MPDayBillModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDayBillModel.m; sourceTree = "<group>"; };
 		FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,6 +415,8 @@
 				F52BCC911E6AEE1A0036234E /* UIView+MPExtension.m */,
 				F560E79D1E7103CA007068CC /* NSDate+MPPrint.h */,
 				F560E79E1E7103CA007068CC /* NSDate+MPPrint.m */,
+				F5F202FA1E79386600F18F6E /* SVProgressHUD+MPTips.h */,
+				F5F202FB1E79386600F18F6E /* SVProgressHUD+MPTips.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -560,6 +568,8 @@
 				F5F202F21E78CF8900F18F6E /* MPBookListCollectionViewCell.m */,
 				F5F202F41E78E8D600F18F6E /* MPCreateBookCollectionViewCell.h */,
 				F5F202F51E78E8D600F18F6E /* MPCreateBookCollectionViewCell.m */,
+				F5F202F71E79290600F18F6E /* MPCreateBookView.h */,
+				F5F202F81E79290600F18F6E /* MPCreateBookView.m */,
 			);
 			path = Bill;
 			sourceTree = "<group>";
@@ -907,11 +917,13 @@
 				F541E7941E7784BF00556D46 /* MPBookListView.m in Sources */,
 				F5F202F61E78E8D600F18F6E /* MPCreateBookCollectionViewCell.m in Sources */,
 				F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */,
+				F5F202F91E79290600F18F6E /* MPCreateBookView.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
 				F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */,
 				F560E78A1E70EADC007068CC /* MPBillModel.m in Sources */,
 				F555D3BF1E72D5580007AD24 /* MPTimeLineDayTableViewCell.m in Sources */,
 				F5AD3B181E702B9C003F7B69 /* MPAccountModel.m in Sources */,
+				F5F202FC1E79386600F18F6E /* SVProgressHUD+MPTips.m in Sources */,
 				F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */,
 				F560E79F1E7103CA007068CC /* NSDate+MPPrint.m in Sources */,
 				F52BCCAA1E6AF6E90036234E /* MPTabBar.m in Sources */,

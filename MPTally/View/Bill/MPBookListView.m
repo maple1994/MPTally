@@ -10,6 +10,7 @@
 #import "MPBookListCollectionViewCell.h"
 #import "MPCreateBookCollectionViewCell.h"
 #import "MPBookManager.h"
+#import "MPCreateBookView.h"
 
 @interface MPBookListView ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -19,6 +20,10 @@
 @property (nonatomic, weak) NSIndexPath *selectedIndexPath;
 /// 账本模型数组
 @property (nonatomic, strong) NSMutableArray *bookArray;
+/// 通知Token
+@property (nonatomic, strong) RLMNotificationToken *token;
+/// 数据库数据数组
+@property (nonatomic, strong) RLMResults *dbResults;
 
 @end
 
@@ -36,6 +41,21 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
   return self;
 }
 
+- (void)didMoveToSuperview
+{
+  for(int i = 0; i < self.bookArray.count; i++)
+  {
+    MPBookModel *book = self.bookArray[i];
+    // 判断是否是当前默认选中的账本
+    if([[[MPBookManager shareManager] getCurrentBook].bookID isEqualToString:book.bookID])
+    {
+      book.selected = YES;
+      [self.collectionView reloadData];
+      break;
+    }
+  }
+}
+
 - (void)setupWithSize:(CGSize)size
 {
   self.collectionView = [self createCollectionView:size];
@@ -50,6 +70,13 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
   }];
   [self.collectionView registerClass:[MPBookListCollectionViewCell class] forCellWithReuseIdentifier:BookListCellID];
   [self.collectionView registerClass:[MPCreateBookCollectionViewCell class] forCellWithReuseIdentifier:BookListNewCellID];
+  
+  // 设置token事件
+  __weak typeof(self) weakSelf = self;
+  self.token = [self.dbResults addNotificationBlock:^(RLMResults * _Nullable results, RLMCollectionChange * _Nullable change, NSError * _Nullable error) {
+    weakSelf.bookArray = nil;
+    [weakSelf.collectionView reloadData];
+  }];
 }
 
 /// 根据ItemSize创建collectionView
@@ -91,6 +118,8 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
 {
   if(indexPath.row == self.bookArray.count)
   {
+    MPCreateBookView *view = [[MPCreateBookView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH)];
+    [[UIApplication sharedApplication].keyWindow addSubview:view];
     return;
   }
   self.selectedIndexPath = indexPath;
@@ -114,8 +143,7 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
   if(_bookArray == nil)
   {
     _bookArray = [NSMutableArray array];
-    RLMResults *tmpArr = [[MPBookManager shareManager] getAllBook];
-    for (MPBookModel *model in tmpArr)
+    for (MPBookModel *model in self.dbResults)
     {
       [_bookArray addObject:model];
     }
@@ -154,6 +182,11 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
     [self addSubview:view];
   }
   return _collectionView;
+}
+
+- (RLMResults *)dbResults
+{
+  return [MPBookModel allObjects];
 }
 
 @end

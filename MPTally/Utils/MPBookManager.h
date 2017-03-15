@@ -35,5 +35,12 @@
  */
 - (void)setCurrentBook:(MPBookModel *)book;
 
+/**
+ 添加账本
+
+ @param book MPBookModel
+ */
+- (void)insertBook:(MPBookModel *)book;
+
 
 @end

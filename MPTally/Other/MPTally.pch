@@ -20,6 +20,7 @@
 #import "MPBillModel.h"
 #import "MyUtils.h"
 #import "NSDate+MPPrint.h"
+#import "SVProgressHUD+MPTips.h"
 
 /*************** Macro ********************/
 #ifdef DEBUG

@@ -78,6 +78,19 @@ static MPBookManager *instance;
   [[NSUserDefaults standardUserDefaults] setObject:book.bookID forKey:CurrentBookKey];
 }
 
+/**
+ 添加账本
+ 
+ @param book MPBookModel
+ */
+- (void)insertBook:(MPBookModel *)book
+{
+  [kRealm transactionWithBlock:^{
+    book.bookID = [MyUtils createKey];
+    [MPBookModel createInDefaultRealmWithValue:book];
+  }];
+}
+
 #pragma mark - Private
 /**
  账本列表是否为空
