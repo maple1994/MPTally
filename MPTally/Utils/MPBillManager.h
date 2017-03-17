@@ -22,4 +22,11 @@
  */
 - (void)insertBill:(MPBillModel *)bill;
 
+/**
+ 删除账单
+
+ @param bill 要删除的账单
+ */
+- (void)deleteBill:(MPBillModel *)bill;
+
 @end

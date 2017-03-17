@@ -16,6 +16,8 @@
 #import "MPBookListView.h"
 #import "MPTopBarView.h"
 #import "MPTableView.h"
+#import "MPBillManager.h"
+#import "MPCreateBillViewController.h"
 
 @interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate, MPBookListViewDelegate, MPTimeLineItemTableViewCellDelegate>
 
@@ -205,12 +207,14 @@ static NSString *DayCellID = @"DayCellID";
 
 - (void)timeLineItemCellDidClickEdit:(MPTimeLineItemTableViewCell *)cell
 {
-  
+  MPCreateBillViewController *vc = [[MPCreateBillViewController alloc] init];
+  vc.selectedBill = cell.bill;
+  [self presentViewController:[[UINavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
 }
 
 - (void)timeLineItemCellDidClickDelete:(MPTimeLineItemTableViewCell *)cell
 {
-  
+  [[MPBillManager shareManager] deleteBill:cell.bill];
 }
 
 #pragma mark - MPBookListViewDelegate

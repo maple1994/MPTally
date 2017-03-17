@@ -205,7 +205,7 @@
 /// 编辑
 - (void)edit:(UIButton *)button
 {
-  kFuncNameLog;
+  [self hideEditView];
   if([self.delegate respondsToSelector:@selector(timeLineItemCellDidClickEdit:)])
   {
     [self.delegate timeLineItemCellDidClickEdit:self];
@@ -215,7 +215,7 @@
 /// 删除
 - (void)delete:(UIButton *)button
 {
-  kFuncNameLog;
+  [self hideEditView];
   if([self.delegate respondsToSelector:@selector(timeLineItemCellDidClickDelete:)])
   {
     [self.delegate timeLineItemCellDidClickDelete:self];

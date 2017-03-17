@@ -26,4 +26,12 @@
  */
 + (NSString *)numToString:(double)num;
 
+/**
+ 将yyyy-mm-dd格式的字符串转NSDate类型
+
+ @param dateStr yyyy-mm-dd格式的字符串
+ @return NSDate对象
+ */
++ (NSDate *)dateStrToDate:(NSString *)dateStr;
+
 @end

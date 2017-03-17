@@ -13,7 +13,6 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-  kFuncNameLog;
   [super touchesBegan:touches withEvent:event];
   for (UITableViewCell *cell in self.visibleCells)
   {

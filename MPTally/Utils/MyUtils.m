@@ -32,4 +32,17 @@
   return [NSString stringWithFormat:@"%.2lf", num];
 }
 
+/**
+ 将yyyy-mm-dd格式的字符串转NSDate类型
+ 
+ @param dateStr yyyy-mm-dd格式的字符串
+ @return NSDate对象
+ */
++ (NSDate *)dateStrToDate:(NSString *)dateStr
+{
+  NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+  fmt.dateFormat = @"yyyy-MM-dd";
+  return [fmt dateFromString:dateStr];
+}
+
 @end
