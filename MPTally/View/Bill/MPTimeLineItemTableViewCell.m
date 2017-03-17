@@ -149,6 +149,14 @@
   self.inComeRemarkLabel.hidden = NO;
 }
 
+/// 给label添加点击手势
+- (void)addTapGestureToLabel:(UILabel *)label
+{
+  label.userInteractionEnabled = YES;
+  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showEditView)];
+  [label addGestureRecognizer:tap];
+}
+
 #pragma mark - Action
 /// 显示编辑视图
 - (void)showEditView
@@ -288,6 +296,7 @@
   if(_outComeNumLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    [self addTapGestureToLabel:label];
     label.font = [UIFont systemFontOfSize:14];
     _outComeNumLabel = label;
     [self.contentView addSubview:label];
@@ -300,6 +309,7 @@
   if(_outComeCateTitleLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    [self addTapGestureToLabel:label];
     label.font = [UIFont systemFontOfSize:14];
     _outComeCateTitleLabel = label;
     [self.contentView addSubview:label];
@@ -312,6 +322,7 @@
   if(_outComeRemarkLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    [self addTapGestureToLabel:label];
     label.numberOfLines = 2;
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor lightGrayColor];
@@ -326,6 +337,7 @@
   if(_inComeNumLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    [self addTapGestureToLabel:label];
     _inComeNumLabel = label;
     label.font = [UIFont systemFontOfSize:14];
     [self.contentView addSubview:label];
@@ -338,6 +350,7 @@
   if(_inComeCateTitleLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    [self addTapGestureToLabel:label];
     label.font = [UIFont systemFontOfSize:14];
     _inComeCateTitleLabel = label;
     [self.contentView addSubview:label];
@@ -350,6 +363,7 @@
   if(_inComeRemarkLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    [self addTapGestureToLabel:label];
     label.textAlignment = NSTextAlignmentRight;
     label.numberOfLines = 2;
     label.font = [UIFont systemFontOfSize:12];

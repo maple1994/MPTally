@@ -59,6 +59,7 @@
     self.resultView.results = [MyUtils numToString:self.selectedBill.money];
     self.calculatorView.selectedDate = [MyUtils dateStrToDate:self.selectedBill.dateStr];
     self.calculatorView.selectedAccount = self.selectedBill.account;
+    self.remark = self.selectedBill.remark;
     [self showCalcultor];
   }
 }
