@@ -61,6 +61,8 @@
     self.calculatorView.selectedAccount = self.selectedBill.account;
     self.remark = self.selectedBill.remark;
     [self showCalcultor];
+    if(self.selectedBill.isIncome)
+      self.segCrt.selectedSegmentIndex = 0;
   }
 }
 

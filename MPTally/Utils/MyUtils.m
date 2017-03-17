@@ -45,4 +45,16 @@
   return [fmt dateFromString:dateStr];
 }
 
+/**
+ 比较两个yyyy-mm-dd格式的日期字符串是否同年同月
+ */
++ (BOOL)firstDateStr:(NSString *)dateStr1 isSameYearMonthNextDateStr:(NSString *)dateStr2
+{
+  // 比较月份是否相同
+  NSString *month1 = [dateStr1 substringWithRange:NSMakeRange(0, 7)];
+  NSString *month2 = [dateStr2 substringWithRange:NSMakeRange(0, 7)];
+
+  return [month1 isEqualToString:month2];
+}
+
 @end

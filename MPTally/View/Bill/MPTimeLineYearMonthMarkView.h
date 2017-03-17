@@ -11,4 +11,7 @@
 /// 时间线，有标注年月的结点
 @interface MPTimeLineYearMonthMarkView : UIView
 
+/// yyyy-MM格式的字符串
+@property (nonatomic, copy)  NSString *timeLineTime;
+
 @end

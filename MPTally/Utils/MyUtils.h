@@ -34,4 +34,9 @@
  */
 + (NSDate *)dateStrToDate:(NSString *)dateStr;
 
+/**
+  比较两个yyyy-mm-dd格式的日期字符串是否同年同月
+ */
++ (BOOL)firstDateStr:(NSString *)dateStr1 isSameYearMonthNextDateStr:(NSString *)dateStr2;
+
 @end

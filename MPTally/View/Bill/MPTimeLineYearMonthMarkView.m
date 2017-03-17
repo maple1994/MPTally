@@ -37,10 +37,32 @@
     make.height.width.mas_offset(6);
   }];
   [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.trailing.equalTo(self.dotView.mas_leading);
+    make.trailing.equalTo(self.dotView.mas_leading).offset(-5);
     make.centerY.equalTo(self.dotView);
   }];
 }
+
+- (void)setTimeLineTime:(NSString *)timeLineTime
+{
+  _timeLineTime = timeLineTime;
+  if(timeLineTime)
+  {
+    NSDate *date = [MyUtils dateStrToDate:timeLineTime];
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"M月";
+  
+    self.dotView.hidden = NO;
+    self.timeLabel.hidden = NO;
+    self.timeLabel.text = [fmt stringFromDate:date];
+  }
+  else
+  {
+    self.dotView.hidden = YES;
+    self.timeLabel.hidden = YES;
+    self.timeLabel.text = @"";
+  }
+}
+
 
 - (UIView *)dotView
 {
@@ -62,6 +84,8 @@
   if(_timeLabel == nil)
   {
     UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:13];
+    label.textColor = [UIColor lightGrayColor];
     label.hidden = YES;
     _timeLabel = label;
     label.text = @"2月";

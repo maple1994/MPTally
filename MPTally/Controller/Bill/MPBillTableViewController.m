@@ -19,6 +19,7 @@
 #import "MPBillManager.h"
 #import "MPCreateBillViewController.h"
 #import "MPTimeLineHeaderModel.h"
+#import "MPDayBillModel.h"
 
 @interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate, MPBookListViewDelegate, MPTimeLineItemTableViewCellDelegate>
 
@@ -173,6 +174,25 @@ static NSString *DayCellID = @"DayCellID";
     MPTimeLineItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ItemCellID];
     cell.bill = model.bill;
     cell.delegate = self;
+    NSInteger index = indexPath.row + 1;
+    if(index < self.timeLineModelArray.count)
+    {
+      MPTimeLineModel *nextModel = self.timeLineModelArray[index];
+      if(nextModel.type == TimeLineDayItem)
+      {
+        // 判断是否同年同月
+        if([MyUtils firstDateStr:model.bill.dateStr isSameYearMonthNextDateStr:nextModel.dayBill.dateStr])
+        {
+          // 时间线不显示月份
+          cell.timeLineTime = nil;
+        }
+        else
+        {
+          // 时间线显示月份
+          cell.timeLineTime = nextModel.dayBill.dateStr;
+        }
+      }
+    }
     return cell;
 
   }

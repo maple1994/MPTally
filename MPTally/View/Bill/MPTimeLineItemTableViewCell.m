@@ -101,10 +101,10 @@
     make.centerX.equalTo(self.contentView);
     make.width.mas_equalTo(1);
   }];
-  [self.testLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.centerX.equalTo(self.contentView);
-    make.top.equalTo(self.categoryButton.mas_bottom);
-  }];
+//  [self.testLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//    make.centerX.equalTo(self.contentView);
+//    make.top.equalTo(self.categoryButton.mas_bottom);
+//  }];
   [self.contentView bringSubviewToFront:self.categoryButton];
 }
 
@@ -117,6 +117,12 @@
     [self showIncome:bill];
   else
     [self showOutCome:bill];
+}
+
+- (void)setTimeLineTime:(NSString *)timeLineTime
+{
+  _timeLineTime = timeLineTime;
+  self.lineView.timeLineTime = timeLineTime;
 }
 
 /// 显示支出视图
