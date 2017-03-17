@@ -181,16 +181,21 @@ static NSString *DayCellID = @"DayCellID";
       if(nextModel.type == TimeLineDayItem)
       {
         // 判断是否同年同月
-        if([MyUtils firstDateStr:model.bill.dateStr isSameYearMonthNextDateStr:nextModel.dayBill.dateStr])
-        {
-          // 时间线不显示月份
-          cell.timeLineTime = nil;
-        }
-        else
+        if(![MyUtils firstDateStr:model.bill.dateStr isSameYearMonthNextDateStr:nextModel.dayBill.dateStr])
         {
           // 时间线显示月份
           cell.timeLineTime = nextModel.dayBill.dateStr;
         }
+        else
+        {
+          // 时间线不显示月份
+          cell.timeLineTime = nil;
+        }
+      }
+      else
+      {
+        // 时间线不显示月份
+        cell.timeLineTime = nil;
       }
     }
     return cell;
@@ -320,6 +325,7 @@ static NSString *DayCellID = @"DayCellID";
   if(_tableView == nil)
   {
     MPTableView *view = [[MPTableView alloc] init];
+    view.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     view.delegate = self;
     view.dataSource = self;
     _tableView = view;
