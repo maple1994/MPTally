@@ -18,6 +18,7 @@
 #import "MPTableView.h"
 #import "MPBillManager.h"
 #import "MPCreateBillViewController.h"
+#import "MPTimeLineHeaderModel.h"
 
 @interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate, MPBookListViewDelegate, MPTimeLineItemTableViewCellDelegate>
 
@@ -112,7 +113,8 @@ static NSString *DayCellID = @"DayCellID";
 
 - (void)resetData
 {
-//  self.timeLineModelArray = [[MPTimeLineModel alloc] getModelArrayWithResults:self.billModelArray];
+  MPTimeLineHeaderModel *model = [[MPTimeLineHeaderModel alloc] initWithBill:self.billModelArray.firstObject];
+  self.headerView.model = model;
   self.timeLineModelArray = [MPTimeLineModel timeLineArrayWithResults:self.billModelArray];
   [self.tableView reloadData];
 }

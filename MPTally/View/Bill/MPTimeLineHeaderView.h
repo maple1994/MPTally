@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class MPTimeLineHeaderModel;
+
 @interface MPTimeLineHeaderView : UIView
+
+@property (nonatomic, strong) MPTimeLineHeaderModel *model;
 
 @end

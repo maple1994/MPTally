@@ -7,6 +7,7 @@
 //
 
 #import "MPTimeLineHeaderView.h"
+#import "MPTimeLineHeaderModel.h"
 
 @interface MPTimeLineHeaderView ()
 
@@ -67,6 +68,14 @@
   }];
 }
 
+- (void)setModel:(MPTimeLineHeaderModel *)model
+{
+  _model = model;
+  self.incomeNumLabel.text = [MyUtils numToString:model.income];
+  self.outcomeNumLabel.text = [MyUtils numToString:model.outcome];
+  self.monthLabel.text = model.monthStr;
+}
+
 #pragma mark - getter
 - (UIView *)outcomeView
 {
@@ -95,8 +104,8 @@
     label2.textAlignment = label1.textAlignment;
     label1.font = [UIFont systemFontOfSize:12];
     label2.font = label1.font;
-    label1.text = @"收入";
-    label2.text = @"777.00";
+    label1.text = @"支出";
+    label2.text = @"00.00";
     self.outcomeTitleLabel = label1;
     self.outcomeNumLabel = label2;
     [self addSubview:view];
@@ -131,8 +140,8 @@
     label2.textAlignment = label1.textAlignment;
     label1.font = [UIFont systemFontOfSize:12];
     label2.font = label1.font;
-    label1.text = @"支出";
-    label2.text = @"666.00";
+    label1.text = @"收入";
+    label2.text = @"00.00";
     self.incomeTitleLabel = label1;
     self.incomeNumLabel = label2;
     [self addSubview:view];
@@ -173,7 +182,7 @@
     UILabel *label = [[UILabel alloc] init];
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont systemFontOfSize:15];
-    label.text = @"3月";
+    label.text = @"";
     _monthLabel = label;
     [self.monthButtonBgView addSubview:label];
   }
