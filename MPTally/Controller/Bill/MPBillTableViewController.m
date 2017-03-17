@@ -15,8 +15,9 @@
 #import "MPTimeLineModel.h"
 #import "MPBookListView.h"
 #import "MPTopBarView.h"
+#import "MPTableView.h"
 
-@interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate, MPBookListViewDelegate>
+@interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate, MPBookListViewDelegate, MPTimeLineItemTableViewCellDelegate>
 
 /// 从数据库查询的Bill数据
 @property (nonatomic, strong) RLMResults *billModelArray;
@@ -34,7 +35,9 @@
 @property (nonatomic, assign) CGFloat bookListViewH;
 /// 当显示账本列表时，列表下隐藏的control
 @property (nonatomic, weak) UIControl *ctrl;
-@property (nonatomic, weak) UITableView *tableView;
+/// 记录处于编辑状态的Cell
+@property (nonatomic, weak) MPTimeLineItemTableViewCell *editingCell;
+@property (nonatomic, weak) MPTableView *tableView;
 
 @end
 
@@ -165,6 +168,7 @@ static NSString *DayCellID = @"DayCellID";
   {
     MPTimeLineItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ItemCellID];
     cell.bill = model.bill;
+    cell.delegate = self;
     return cell;
 
   }
@@ -180,12 +184,34 @@ static NSString *DayCellID = @"DayCellID";
   return 100;
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//  CGFloat offy = scrollView.contentOffset.y;
-//  NSInteger index = offy / 75;
-//  
-//}
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+  // 在滚动的时候隐藏cell的编辑视图
+  for (UITableViewCell *cell in self.tableView.visibleCells)
+  {
+    if([cell isKindOfClass:[MPTimeLineItemTableViewCell class]])
+    {
+      MPTimeLineItemTableViewCell *cell1 = (MPTimeLineItemTableViewCell *)cell;
+      [cell1 hideEditView];
+    }
+  }
+}
+
+#pragma mark - MPTimeLineItemTableViewCellDelegate
+- (void)timeLineItemCellDidShowEditView:(MPTimeLineItemTableViewCell *)cell
+{
+  self.editingCell = cell;
+}
+
+- (void)timeLineItemCellDidClickEdit:(MPTimeLineItemTableViewCell *)cell
+{
+  
+}
+
+- (void)timeLineItemCellDidClickDelete:(MPTimeLineItemTableViewCell *)cell
+{
+  
+}
 
 #pragma mark - MPBookListViewDelegate
 - (void)bookListView:(MPBookListView *)listView didChangeBook:(MPBookModel *)book
@@ -212,7 +238,12 @@ static NSString *DayCellID = @"DayCellID";
   }];
 }
 
-#pragma mark - getter
+#pragma mark - getter or setter
+- (void)setEditingCell:(MPTimeLineItemTableViewCell *)editingCell
+{
+  [_editingCell hideEditView];
+  _editingCell = editingCell;
+}
 - (MPBookListView *)bookListView
 {
   if(_bookListView == nil)
@@ -258,11 +289,11 @@ static NSString *DayCellID = @"DayCellID";
   return _billModelArray;
 }
 
-- (UITableView *)tableView
+- (MPTableView *)tableView
 {
   if(_tableView == nil)
   {
-    UITableView *view = [[UITableView alloc] init];
+    MPTableView *view = [[MPTableView alloc] init];
     view.delegate = self;
     view.dataSource = self;
     _tableView = view;

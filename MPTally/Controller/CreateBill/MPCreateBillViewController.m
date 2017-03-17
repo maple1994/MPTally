@@ -83,7 +83,7 @@
   
   self.contentView.contentSize = CGSizeMake(kScreenW * 2, kScreenH);
   
-  [self showCalcultor];
+  self.calculatorView.frame = CGRectMake(0, kScreenH, kScreenW, kScreenH * 0.4);
 }
 
 #pragma mark - Private
@@ -140,6 +140,12 @@
   picker.delegate = self;
   picker.frame = self.view.bounds;
   [self.view addSubview:picker];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+//  [super touchesBegan:touches withEvent:event];
+  kFuncNameLog;
 }
 
 #pragma mark - UIScrollViewDelegate

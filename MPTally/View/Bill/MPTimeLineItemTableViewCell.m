@@ -27,7 +27,12 @@
 @property (nonatomic, weak) UILabel *outComeNumLabel;
 /// 时间线
 @property (nonatomic, weak) MPTimeLineYearMonthMarkView *lineView;
-
+/// 删除按钮
+@property (nonatomic, weak)  UIButton *deleteButton;
+/// 编辑按钮
+@property (nonatomic, weak) UIButton *editButton;
+/// 记录是否正在显示编辑视图
+@property (nonatomic, assign, getter=isShowEditView) BOOL showEditView;
 /// 测试时间Label
 @property (nonatomic, weak) UILabel *testLabel;
 
@@ -46,6 +51,15 @@
 
 - (void)setup
 {
+  // 编辑视图
+  [self.editButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.center.equalTo(self.categoryButton);
+    make.width.height.equalTo(self.categoryButton);
+  }];
+  [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.center.equalTo(self.categoryButton);
+    make.width.height.equalTo(self.categoryButton);
+  }];
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   [self.categoryButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.equalTo(self.contentView);
@@ -91,6 +105,7 @@
     make.centerX.equalTo(self.contentView);
     make.top.equalTo(self.categoryButton.mas_bottom);
   }];
+  [self.contentView bringSubviewToFront:self.categoryButton];
 }
 
 - (void)setBill:(MPBillModel *)bill
@@ -134,7 +149,106 @@
   self.inComeRemarkLabel.hidden = NO;
 }
 
+#pragma mark - Action
+/// 显示编辑视图
+- (void)showEditView
+{
+  if(self.isShowEditView)
+  {
+    [self hideEditView];
+  }
+  else
+  {
+    // 调用代理
+    if([self.delegate respondsToSelector:@selector(timeLineItemCellDidShowEditView:)])
+    {
+      [self.delegate timeLineItemCellDidShowEditView:self];
+    }
+    // 设置状态量
+    self.showEditView = YES;
+    [self.editButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+      make.centerY.equalTo(self.categoryButton);
+      make.trailing.equalTo(self.contentView).offset(-15);
+      make.width.height.equalTo(self.categoryButton);
+    }];
+    [self.deleteButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+      make.centerY.equalTo(self.categoryButton);
+      make.leading.equalTo(self.contentView).offset(15);
+      make.width.height.equalTo(self.categoryButton);
+    }];
+    [UIView animateWithDuration:0.25 animations:^{
+      [self layoutIfNeeded];
+    }];
+  }
+}
+
+/// 隐藏编辑视图
+- (void)hideEditView
+{
+  if(self.isShowEditView)
+  {
+    [self.editButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+      make.center.equalTo(self.categoryButton);
+      make.width.height.equalTo(self.categoryButton);
+    }];
+    [self.deleteButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+      make.center.equalTo(self.categoryButton);
+      make.width.height.equalTo(self.categoryButton);
+    }];
+    [UIView animateWithDuration:0.25 animations:^{
+      [self layoutIfNeeded];
+    }];
+    self.showEditView = NO;
+  }
+}
+
+/// 编辑
+- (void)edit:(UIButton *)button
+{
+  kFuncNameLog;
+  if([self.delegate respondsToSelector:@selector(timeLineItemCellDidClickEdit:)])
+  {
+    [self.delegate timeLineItemCellDidClickEdit:self];
+  }
+}
+
+/// 删除
+- (void)delete:(UIButton *)button
+{
+  kFuncNameLog;
+  if([self.delegate respondsToSelector:@selector(timeLineItemCellDidClickDelete:)])
+  {
+    [self.delegate timeLineItemCellDidClickDelete:self];
+  }
+}
+
 #pragma mark - getter
+- (UIButton *)editButton
+{
+  if(_editButton == nil)
+  {
+    UIButton *btn = [[UIButton alloc] init];
+    _editButton = btn;
+    [btn setImage:[UIImage imageNamed:@"item_edit"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:btn];
+  }
+  return _editButton;
+}
+
+- (UIButton *)deleteButton
+{
+  if(_deleteButton == nil)
+  {
+    UIButton *btn = [[UIButton alloc] init];
+    _deleteButton = btn;
+    [btn setImage:[UIImage imageNamed:@"item_delete"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:btn];
+  }
+  return _deleteButton;
+}
+
 - (UILabel *)testLabel
 {
   if(_testLabel == nil)
@@ -163,6 +277,7 @@
   {
     UIButton *button = [[UIButton alloc] init];
     _categoryButton = button;
+    [button addTarget:self action:@selector(showEditView) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:button];
   }
   return _categoryButton;
