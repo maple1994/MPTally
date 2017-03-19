@@ -10,8 +10,7 @@
 
 @interface MPTimeLineYearMonthMarkView ()
 
-/// 结点View
-@property (nonatomic, weak) UIView *dotView;
+
 /// 标明时间Label
 @property (nonatomic, weak) UILabel *timeLabel;
 

@@ -20,6 +20,11 @@
 #import "MPCreateBillViewController.h"
 #import "MPTimeLineHeaderModel.h"
 #import "MPDayBillModel.h"
+#import "MPTimeLineYearMonthMarkView.h"
+
+#define kRowHeight 75    // cell的行高
+#define kTopNavBarH 44   // “导航栏"的高度
+#define kHeaderViewH 100 // headerView的高度
 
 @interface MPBillTableViewController ()<UITableViewDelegate, UITableViewDataSource, TopBarViewDelegate, MPBookListViewDelegate, MPTimeLineItemTableViewCellDelegate>
 
@@ -41,6 +46,12 @@
 @property (nonatomic, weak) UIControl *ctrl;
 /// 记录处于编辑状态的Cell
 @property (nonatomic, weak) MPTimeLineItemTableViewCell *editingCell;
+/// 记录当前头部显示的年月
+@property (nonatomic, copy) NSString *curYMDateStr;
+/// 记录切换之前的年月
+@property (nonatomic, copy) NSString *preYMDateStr;
+@property (nonatomic, assign) CGFloat lastPosition;
+@property (nonatomic, assign) CGFloat currentPostion;
 @property (nonatomic, weak) MPTableView *tableView;
 
 @end
@@ -54,15 +65,13 @@ static NSString *DayCellID = @"DayCellID";
 {
     [super viewDidLoad];
   [self setupUI];
-  self.tableView.rowHeight = 75;
+  self.tableView.rowHeight = kRowHeight;
   [self setupnNotificationToken];
   
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.showsVerticalScrollIndicator = NO;
   [self.tableView registerClass:MPTimeLineItemTableViewCell.class forCellReuseIdentifier:ItemCellID];
   [self.tableView registerClass:MPTimeLineDayTableViewCell.class forCellReuseIdentifier:DayCellID];
-//  [self resetData];
-  [self setupNav];
 }
 
 - (void)setupUI
@@ -76,7 +85,7 @@ static NSString *DayCellID = @"DayCellID";
   [self.topBarView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.bookListView.mas_bottom);
     make.leading.trailing.equalTo(self.view);
-    make.height.mas_equalTo(44);
+    make.height.mas_equalTo(kTopNavBarH);
   }];
   [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.topBarView.mas_bottom);
@@ -96,30 +105,23 @@ static NSString *DayCellID = @"DayCellID";
   [self.navigationController setNavigationBarHidden:NO];
 }
 
-- (void)setupNav
-{
-  UIButton *button = [[UIButton alloc] init];
-  [button setTitle:@"默认账本" forState:UIControlStateNormal];
-  [button sizeToFit];
-  [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-  self.navigationItem.titleView = button;
-}
-
-- (void)buttonClick
-{
-  kFuncNameLog;
-  [self.tabBarController.tabBar setHidden:!self.tabBarController.tabBar.isHidden];
-}
-
+/// 重置数据
 - (void)resetData
 {
-  MPTimeLineHeaderModel *model = [[MPTimeLineHeaderModel alloc] initWithBill:self.billModelArray.firstObject];
-  self.headerView.model = model;
+  [self resetHeaderView];
   self.timeLineModelArray = [MPTimeLineModel timeLineArrayWithResults:self.billModelArray];
   [self.tableView reloadData];
 }
 
+/// 重置月份Header的数据
+- (void)resetHeaderView
+{
+  MPTimeLineHeaderModel *model = [[MPTimeLineHeaderModel alloc] initWithDateStr:self.curYMDateStr];
+  self.headerView.model = model;
+
+}
+
+/// 设置数据库数据变化时的操作
 - (void)setupnNotificationToken
 {
   __weak typeof(self)weakSelf = self;
@@ -210,7 +212,41 @@ static NSString *DayCellID = @"DayCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-  return 100;
+  return kHeaderViewH;
+}
+
+#pragma mark - ScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+  CGFloat offy = scrollView.contentOffset.y;
+  if(offy < 0)
+    return;
+  // 计算当前顶部的Cell对应的下表
+  NSInteger index = offy / kRowHeight;
+  if(index < self.timeLineModelArray.count)
+  {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    MPTimeLineItemTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    // 判断cell中的月份结点是否出现了
+    if([cell isKindOfClass:[MPTimeLineItemTableViewCell class]] && cell.timeLineTime)
+    {
+      // 将月份结点坐标系转化为self.view的坐标系
+      CGRect rectInSuperview = [cell.lineView convertRect:cell.lineView.dotView.frame toView:self.view];
+      // 结点与headerView相交，计算结点时间的金额
+      if(rectInSuperview.origin.y <= kHeaderViewH + kTopNavBarH)
+      {
+        self.curYMDateStr = cell.timeLineTime;
+        [self resetHeaderView];
+      }
+      // 结点上半部分与headerView相交，计算该Cell的bill.dateStr的金额
+      // 结点上半部分的 = categoryIconH(25) + 结点以上线条的长度(25 - 3)
+      else if(rectInSuperview.origin.y > kHeaderViewH + kTopNavBarH && rectInSuperview.origin.y <= kHeaderViewH + kTopNavBarH + 47)
+      {
+        self.curYMDateStr = cell.bill.dateStr;
+        [self resetHeaderView];
+      }
+    }
+  }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -275,6 +311,17 @@ static NSString *DayCellID = @"DayCellID";
   [_editingCell hideEditView];
   _editingCell = editingCell;
 }
+
+- (NSString *)curYMDateStr
+{
+  if(_curYMDateStr == nil)
+  {
+    MPBillModel *bill = self.billModelArray.firstObject;
+    _curYMDateStr = bill.dateStr;
+  }
+  return _curYMDateStr;
+}
+
 - (MPBookListView *)bookListView
 {
   if(_bookListView == nil)
@@ -339,7 +386,8 @@ static NSString *DayCellID = @"DayCellID";
   if(_headerView == nil)
   {
     _headerView = [[MPTimeLineHeaderView alloc] init];
-    _headerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+//    _headerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+    _headerView.backgroundColor = [UIColor redColor];
   }
   return _headerView;
 }

@@ -12,15 +12,14 @@
 @implementation MPTimeLineHeaderModel
 
 /**
- 根据MPBill模型，查询其一个月的支出，与收入
+ 根据日期字符串dateStr，查询其一个月的支出，与收入
  
- @param bill MPBillModel
+ @param dateStr 日期字符串 yyyy-MM-dd
  */
-- (instancetype)initWithBill:(MPBillModel *)bill
+- (instancetype)initWithDateStr:(NSString *)dateStr
 {
   if(self = [super init])
   {
-    NSString *dateStr = bill.dateStr;
     NSString *monthStr = [dateStr substringWithRange:NSMakeRange(0, 7)];
     MPBookModel *book = [MPBookManager shareManager].getCurrentBook;
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateStr BEGINSWITH %@ and book.bookID=%@", monthStr, book.bookID];

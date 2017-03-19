@@ -25,8 +25,7 @@
 @property (nonatomic, weak) UILabel *inComeNumLabel;
 /// 支出
 @property (nonatomic, weak) UILabel *outComeNumLabel;
-/// 时间线
-@property (nonatomic, weak) MPTimeLineYearMonthMarkView *lineView;
+
 /// 删除按钮
 @property (nonatomic, weak)  UIButton *deleteButton;
 /// 编辑按钮

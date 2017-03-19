@@ -13,5 +13,7 @@
 
 /// yyyy-MM格式的字符串
 @property (nonatomic, copy)  NSString *timeLineTime;
+/// 结点View
+@property (nonatomic, weak) UIView *dotView;
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MPTimeLineItemTableViewCell;
+@class MPTimeLineYearMonthMarkView;
 @protocol MPTimeLineItemTableViewCellDelegate <NSObject>
 
 /// cell显示了编辑视图
@@ -27,6 +28,8 @@
 @property (nonatomic, weak) id<MPTimeLineItemTableViewCellDelegate> delegate;
 /// yyyy-MM-dd格式的字符串，时间线的时间string
 @property (nonatomic, copy)  NSString *timeLineTime;
+/// 时间线
+@property (nonatomic, weak) MPTimeLineYearMonthMarkView *lineView;
 
 /// 隐藏编辑视图
 - (void)hideEditView;
