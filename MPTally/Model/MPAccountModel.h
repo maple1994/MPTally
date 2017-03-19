@@ -14,8 +14,10 @@
 @property (nonatomic, copy) NSString *accountID;
 /// 账户名字
 @property (nonatomic, copy) NSString *accountName;
-/// 账户余额
+/// 账户余额，16进制
 @property (nonatomic, assign) double money;
+/// 账户的颜色
+@property (nonatomic, copy) NSString *colorStr;
 
 /// 返回默认的账户列表
 + (NSArray *)defaultAccountList;

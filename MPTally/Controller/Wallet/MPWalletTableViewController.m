@@ -11,6 +11,7 @@
 #import "MPWalletBalanceHeaderView.h"
 #import "MPAccountManager.h"
 #import "MPWalletAddView.h"
+#import "MPCreateWalletViewController.h"
 
 #define kRowHeight 60
 #define kWalletAddViewH 50
@@ -43,6 +44,12 @@ static NSString *WalletCellID = @"WalletCellID";
   self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
 }
 
+/// 跳转至创建钱包的视图
+- (void)pushCreateWallerVC
+{
+  MPCreateWalletViewController *vc = [[MPCreateWalletViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:YES];
+}
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -82,6 +89,10 @@ static NSString *WalletCellID = @"WalletCellID";
   if(_addView == nil)
   {
     _addView = [MPWalletAddView viewFromNib];
+    __weak typeof(self) weakSelf = self;
+    [_addView setClickBlock:^{
+      [weakSelf pushCreateWallerVC];
+    }];
   }
   return _addView;
 }

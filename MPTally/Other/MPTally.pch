@@ -21,6 +21,7 @@
 #import "MyUtils.h"
 #import "NSDate+MPPrint.h"
 #import "SVProgressHUD+MPTips.h"
+#import "UIColor+MPHex.h"
 
 /*************** Macro ********************/
 #ifdef DEBUG

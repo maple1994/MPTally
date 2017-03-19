@@ -20,7 +20,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
   self.selectionStyle = UITableViewCellSelectionStyleNone;
-  self.bgVIew.backgroundColor = kRandomColor;
   self.bgVIew.layer.cornerRadius = 3;
   self.bgVIew.layer.masksToBounds = YES;
 }
@@ -30,5 +29,6 @@
   _account = account;
   self.titleLabel.text = account.accountName;
   self.numLabel.text = [MyUtils numToString:account.money];
+  self.bgVIew.backgroundColor = [UIColor colorWithHexString:account.colorStr];
 }
 @end

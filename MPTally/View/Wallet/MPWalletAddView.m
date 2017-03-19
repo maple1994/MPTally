@@ -28,7 +28,8 @@
 
 - (void)tap
 {
-  kFuncNameLog;
+  if(self.clickBlock)
+    self.clickBlock();
 }
 
 @end

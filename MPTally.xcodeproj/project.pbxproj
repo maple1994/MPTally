@@ -65,6 +65,9 @@
 		F5AD3B201E703DB0003F7B69 /* MPAccountPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5AD3B1F1E703DB0003F7B69 /* MPAccountPickerTableViewCell.xib */; };
 		F5C9A0E01E7E7EC20084B97B /* MPWalletAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9A0DF1E7E7EC20084B97B /* MPWalletAddView.m */; };
 		F5C9A0E21E7E7ECF0084B97B /* MPWalletAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C9A0E11E7E7ECF0084B97B /* MPWalletAddView.xib */; };
+		F5C9A0E51E7E84570084B97B /* MPCreateWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9A0E41E7E84570084B97B /* MPCreateWalletViewController.m */; };
+		F5C9A0E71E7E89120084B97B /* color.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5C9A0E61E7E89120084B97B /* color.plist */; };
+		F5C9A0EA1E7E8A940084B97B /* UIColor+MPHex.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9A0E91E7E8A940084B97B /* UIColor+MPHex.m */; };
 		F5E6A58D1E7BDF8B00BDCFB5 /* MPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E6A58C1E7BDF8B00BDCFB5 /* MPTableView.m */; };
 		F5E6A5901E7C0BF700BDCFB5 /* MPTimeLineHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E6A58F1E7C0BF700BDCFB5 /* MPTimeLineHeaderModel.m */; };
 		F5ECA9A91E6EB36700007969 /* MPBaseCategoryCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA9A81E6EB36700007969 /* MPBaseCategoryCollectionViewController.m */; };
@@ -206,6 +209,11 @@
 		F5C9A0DE1E7E7EC20084B97B /* MPWalletAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPWalletAddView.h; sourceTree = "<group>"; };
 		F5C9A0DF1E7E7EC20084B97B /* MPWalletAddView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPWalletAddView.m; sourceTree = "<group>"; };
 		F5C9A0E11E7E7ECF0084B97B /* MPWalletAddView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPWalletAddView.xib; sourceTree = "<group>"; };
+		F5C9A0E31E7E84570084B97B /* MPCreateWalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCreateWalletViewController.h; sourceTree = "<group>"; };
+		F5C9A0E41E7E84570084B97B /* MPCreateWalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCreateWalletViewController.m; sourceTree = "<group>"; };
+		F5C9A0E61E7E89120084B97B /* color.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = color.plist; sourceTree = "<group>"; };
+		F5C9A0E81E7E8A940084B97B /* UIColor+MPHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MPHex.h"; sourceTree = "<group>"; };
+		F5C9A0E91E7E8A940084B97B /* UIColor+MPHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MPHex.m"; sourceTree = "<group>"; };
 		F5E6A58B1E7BDF8B00BDCFB5 /* MPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTableView.h; sourceTree = "<group>"; };
 		F5E6A58C1E7BDF8B00BDCFB5 /* MPTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTableView.m; sourceTree = "<group>"; };
 		F5E6A58E1E7C0BF700BDCFB5 /* MPTimeLineHeaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTimeLineHeaderModel.h; sourceTree = "<group>"; };
@@ -430,6 +438,8 @@
 				F560E79E1E7103CA007068CC /* NSDate+MPPrint.m */,
 				F5F202FA1E79386600F18F6E /* SVProgressHUD+MPTips.h */,
 				F5F202FB1E79386600F18F6E /* SVProgressHUD+MPTips.m */,
+				F5C9A0E81E7E8A940084B97B /* UIColor+MPHex.h */,
+				F5C9A0E91E7E8A940084B97B /* UIColor+MPHex.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -503,6 +513,8 @@
 			children = (
 				F52BCCB41E6AF93C0036234E /* MPWalletTableViewController.h */,
 				F52BCCB51E6AF93C0036234E /* MPWalletTableViewController.m */,
+				F5C9A0E31E7E84570084B97B /* MPCreateWalletViewController.h */,
+				F5C9A0E41E7E84570084B97B /* MPCreateWalletViewController.m */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -522,6 +534,7 @@
 				F52BCCBD1E6BE9FC0036234E /* addCategory.plist */,
 				F52BCCBB1E6BE9F10036234E /* category.plist */,
 				F560E7A01E7136F0007068CC /* account.plist */,
+				F5C9A0E61E7E89120084B97B /* color.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -736,6 +749,7 @@
 				F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */,
 				F5C9A0E21E7E7ECF0084B97B /* MPWalletAddView.xib in Resources */,
 				F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */,
+				F5C9A0E71E7E89120084B97B /* color.plist in Resources */,
 				F541E7A21E778D0900556D46 /* MPWalletBalanceHeaderView.xib in Resources */,
 				F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */,
 				F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */,
@@ -925,6 +939,7 @@
 				F52BCCAD1E6AF8AA0036234E /* MPBillTableViewController.m in Sources */,
 				F560E79C1E70F518007068CC /* MyUtils.m in Sources */,
 				F560E7931E70ECA9007068CC /* MPCategoryManager.m in Sources */,
+				F5C9A0EA1E7E8A940084B97B /* UIColor+MPHex.m in Sources */,
 				F5F202F31E78CF8900F18F6E /* MPBookListCollectionViewCell.m in Sources */,
 				F560E7811E70D852007068CC /* MPEditRemarkViewController.m in Sources */,
 				F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */,
@@ -936,6 +951,7 @@
 				F555D3BC1E72D4690007AD24 /* MPTimeLineModel.m in Sources */,
 				F541E7981E77895800556D46 /* MPWalletTableViewCell.m in Sources */,
 				F541E7941E7784BF00556D46 /* MPBookListView.m in Sources */,
+				F5C9A0E51E7E84570084B97B /* MPCreateWalletViewController.m in Sources */,
 				F5F202F61E78E8D600F18F6E /* MPCreateBookCollectionViewCell.m in Sources */,
 				F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */,
 				F5F202F91E79290600F18F6E /* MPCreateBookView.m in Sources */,
