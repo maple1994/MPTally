@@ -235,16 +235,47 @@ static NSString *DayCellID = @"DayCellID";
       // 结点与headerView相交，计算结点时间的金额
       if(rectInSuperview.origin.y <= kHeaderViewH + kTopNavBarH)
       {
-        self.curYMDateStr = cell.timeLineTime;
-        [self resetHeaderView];
+        if(cell.timeLineTime != _curYMDateStr)
+        {
+          _curYMDateStr = cell.timeLineTime;
+          [self resetHeaderView];
+        }
       }
       // 结点上半部分与headerView相交，计算该Cell的bill.dateStr的金额
       // 结点上半部分的 = categoryIconH(25) + 结点以上线条的长度(25 - 3)
       else if(rectInSuperview.origin.y > kHeaderViewH + kTopNavBarH && rectInSuperview.origin.y <= kHeaderViewH + kTopNavBarH + 47)
       {
-        self.curYMDateStr = cell.bill.dateStr;
-        [self resetHeaderView];
+        if(cell.bill.dateStr != _curYMDateStr)
+        {
+          _curYMDateStr = cell.bill.dateStr;
+          [self resetHeaderView];
+        }
       }
+    }
+  }
+}
+
+/// 结束滚动时调用
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+  // 当scrollView快速滚动时，scrollViewDidScroll调用的不够频繁，因此里面计算header数据需要在滚动结束时，再进行一次判断
+  CGFloat offy = scrollView.contentOffset.y;
+  if(offy < 0)
+    return;
+  // 计算当前顶部的Cell对应的下表
+  NSInteger index = offy / kRowHeight;
+  if(index < self.timeLineModelArray.count)
+  {
+    MPTimeLineModel *model = self.timeLineModelArray[index];
+    while(model.type != TimeLineNormalItem && index + 1 < self.timeLineModelArray.count)
+    {
+      model = self.timeLineModelArray[++index];
+      break;
+    }
+    if(model.bill.dateStr != _curYMDateStr)
+    {
+      _curYMDateStr = model.bill.dateStr;
+      [self resetHeaderView];
     }
   }
 }
