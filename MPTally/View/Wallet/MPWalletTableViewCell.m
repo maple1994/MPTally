@@ -24,6 +24,12 @@
   self.bgVIew.layer.masksToBounds = YES;
 }
 
+- (void)setHexColorString:(NSString *)hexColorString
+{
+  _hexColorString = hexColorString;
+  self.bgVIew.backgroundColor = [UIColor colorWithHexString:hexColorString];
+}
+
 - (void)setAccount:(MPAccountModel *)account
 {
   _account = account;

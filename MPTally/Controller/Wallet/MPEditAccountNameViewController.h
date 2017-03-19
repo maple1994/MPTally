@@ -11,4 +11,7 @@
 /// 编辑
 @interface MPEditAccountNameViewController : UIViewController
 
+@property (nonatomic, copy) NSString *accountName;
+@property (nonatomic, copy) void (^doneBlock)(NSString *accountName);
+
 @end

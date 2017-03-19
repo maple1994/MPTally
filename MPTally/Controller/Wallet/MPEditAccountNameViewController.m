@@ -27,6 +27,7 @@
     make.top.bottom.equalTo(self.view);
   }];
   [self setupNav];
+  self.textView.text = _accountName;
 }
 
 - (void)setupNav
@@ -37,7 +38,10 @@
 
 - (void)done
 {
-  
+  self.accountName = self.textView.text;
+  if(self.doneBlock)
+    self.doneBlock(self.accountName);
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - getter

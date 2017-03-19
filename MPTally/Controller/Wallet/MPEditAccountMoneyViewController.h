@@ -11,4 +11,7 @@
 /// 编辑账户金额界面
 @interface MPEditAccountMoneyViewController : UIViewController
 
+@property (nonatomic, copy) void (^banlanceBlock)(double banlance);
+@property (nonatomic, assign) double banlance;
+
 @end

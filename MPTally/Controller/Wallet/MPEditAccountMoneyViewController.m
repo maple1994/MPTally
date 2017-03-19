@@ -34,6 +34,7 @@
     make.height.mas_equalTo(kScreenH * 0.4);
   }];
   [self setupNav];
+  self.balanceLabel.text = [MyUtils numToString:self.banlance];
 }
 
 - (void)setupNav
@@ -50,7 +51,9 @@
 /// 点击了确定
 - (void)calculatorViewDidClickConfirm:(MPCalculatorView *)view
 {
-  kFuncNameLog;
+  if(self.banlanceBlock)
+    self.banlanceBlock([_balanceLabel.text doubleValue]);
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - getter

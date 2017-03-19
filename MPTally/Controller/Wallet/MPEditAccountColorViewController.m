@@ -15,7 +15,7 @@
 @interface MPEditAccountColorViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 /// 选择颜色后的账本View
-@property (nonatomic, weak) MPWalletTableViewCell *walletCell;
+@property (nonatomic, strong) MPWalletTableViewCell *walletCell;
 /// 放置颜色的collectionView
 @property (nonatomic, weak) UICollectionView *collectionView;
 /// 选中的index
@@ -45,6 +45,16 @@ static NSString *ColorID = @"ColorID";
     make.bottom.equalTo(self.view);
   }];
   [self.collectionView registerClass:[MPColorCollectionViewCell class] forCellWithReuseIdentifier:ColorID];
+  
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+  [super viewDidDisappear:animated];
+  if(self.didSelectColor)
+  {
+    self.didSelectColor(self.colorArr[_selectedIndexPath.row]);
+  }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -57,12 +67,18 @@ static NSString *ColorID = @"ColorID";
 {
   MPColorCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorID forIndexPath:indexPath];
   cell.hexColorString = self.colorArr[indexPath.row];
+  if([cell.hexColorString isEqualToString:self.hexColor])
+  {
+    self.selectedIndexPath = indexPath;
+    cell.showSelectedMark = YES;
+  }
   return cell;
 }
 #pragma mark - UICollectionDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
   self.selectedIndexPath = indexPath;
+  self.walletCell.hexColorString = self.colorArr[indexPath.row];
 }
 
 #pragma mark - getter And setter

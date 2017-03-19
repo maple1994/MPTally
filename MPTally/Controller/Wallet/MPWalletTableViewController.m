@@ -24,6 +24,8 @@
 @property (nonatomic, strong) RLMResults *accountArray;
 /// 添加视图
 @property (nonatomic, strong) MPWalletAddView *addView;
+/// 通知token
+@property (nonatomic, strong) RLMNotificationToken *token;
 
 @end
 
@@ -42,6 +44,10 @@ static NSString *WalletCellID = @"WalletCellID";
   [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPWalletTableViewCell.class) bundle:nil] forCellReuseIdentifier:WalletCellID];
   self.tableView.rowHeight = kRowHeight;
   self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
+  __weak typeof(self) weakSelf = self;
+  self.token = [self.accountArray addNotificationBlock:^(RLMResults * _Nullable results, RLMCollectionChange * _Nullable change, NSError * _Nullable error) {
+    [weakSelf.tableView reloadData];
+  }];
 }
 
 /// 跳转至创建钱包的视图

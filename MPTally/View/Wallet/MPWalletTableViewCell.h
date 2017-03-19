@@ -12,5 +12,7 @@
 @interface MPWalletTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) MPAccountModel *account;
+/// 16进制颜色字符
+@property (nonatomic, copy) NSString *hexColorString;
 
 @end

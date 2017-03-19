@@ -10,8 +10,14 @@
 #import "MPEditAccountNameViewController.h"
 #import "MPEditAccountMoneyViewController.h"
 #import "MPEditAccountColorViewController.h"
+#import "MPEditAccountTableViewCell.h"
+#import "MPAccountManager.h"
 
 @interface MPCreateWalletViewController ()
+
+@property (nonatomic, copy) NSString *accountName;
+@property (nonatomic, assign) double balance;
+@property (nonatomic, copy) NSString *accountColor;
 
 @end
 
@@ -28,6 +34,13 @@ static NSString *CellID = @"CellID";
 {
   [super viewDidLoad];
   [self setupNav];
+  [self.tableView registerClass:[MPEditAccountTableViewCell class] forCellReuseIdentifier:CellID];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  [self.tableView reloadData];
 }
 
 - (void)setupNav
@@ -38,7 +51,17 @@ static NSString *CellID = @"CellID";
 
 - (void)confirm
 {
-  
+  if(!self.accountName)
+  {
+    [SVProgressHUD showTips:@"请填写账户名称"];
+    return;
+  }
+  MPAccountModel *account = [[MPAccountModel alloc] init];
+  account.accountName = _accountName;
+  account.money = _balance;
+  account.colorStr = _accountColor;
+  [[MPAccountManager shareManager] insertAccount:account];
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -49,27 +72,21 @@ static NSString *CellID = @"CellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
-  if(cell == nil)
-  {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellID];
-  }
-  cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-  cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  cell.textLabel.font = [UIFont systemFontOfSize:15];
+  MPEditAccountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
+  
   if(indexPath.row == 0)
   {
-    cell.textLabel.text = @"账户名称";
+    cell.myTitle = @"账户名称";
   }
   else if(indexPath.row == 1)
   {
-    cell.textLabel.text = @"金额";
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
-    cell.detailTextLabel.text = @"0.00";
+    cell.myTitle = @"金额";
+    cell.myDetailTitle = [MyUtils numToString:self.balance];
   }
   else if(indexPath.row == 2)
   {
-    cell.textLabel.text = @"账户颜色";
+    cell.myTitle = @"账户颜色";
+    cell.selectedColor = self.accountColor;
   }
   return cell;
 }
@@ -81,21 +98,44 @@ static NSString *CellID = @"CellID";
   {
     // 账户名称
     MPEditAccountNameViewController *vc = [[MPEditAccountNameViewController alloc] init];
+    vc.accountName = self.accountName;
+    [vc setDoneBlock:^(NSString *accountName) {
+      self.accountName = accountName;
+    }];
     [self.navigationController pushViewController:vc animated:YES];
   }
   else if(indexPath.row == 1)
   {
     // 金额
     MPEditAccountMoneyViewController *vc = [[MPEditAccountMoneyViewController alloc] init];
+    vc.banlance = self.balance;
+    [vc setBanlanceBlock:^(double balance) {
+      self.balance = balance;
+    }];
     [self.navigationController pushViewController:vc animated:YES];
   }
   else if(indexPath.row == 2)
   {
     // 账户颜色
     MPEditAccountColorViewController *vc = [[MPEditAccountColorViewController alloc] init];
+    vc.hexColor = self.accountColor;
+    [vc setDidSelectColor:^(NSString *hexColor) {
+      self.accountColor = hexColor;
+    }];
     [self.navigationController pushViewController:vc animated:YES];
   }
+}
 
+#pragma mark - getter
+- (NSString *)accountColor
+{
+  if(_accountColor == nil)
+  {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"color.plist" ofType:nil];
+    NSArray *colorArr = [NSArray arrayWithContentsOfFile:path];
+    _accountColor = colorArr.firstObject;
+  }
+  return _accountColor;
 }
 
 
