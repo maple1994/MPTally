@@ -262,10 +262,11 @@ static NSString *DayCellID = @"DayCellID";
   CGFloat offy = scrollView.contentOffset.y;
   if(offy < 0)
     return;
-  // 计算当前顶部的Cell对应的下表
+  // 计算当前顶部的Cell对应的下标
   NSInteger index = offy / kRowHeight;
   if(index < self.timeLineModelArray.count)
   {
+    // 找出离顶部最近的TimeLineNormalItem类型的模型，进行数据检查
     MPTimeLineModel *model = self.timeLineModelArray[index];
     while(model.type != TimeLineNormalItem && index + 1 < self.timeLineModelArray.count)
     {
@@ -319,6 +320,7 @@ static NSString *DayCellID = @"DayCellID";
   [[MPBookManager shareManager] setCurrentBook:book];
   self.billModelArray = nil;
   self.token = nil;
+  self.curYMDateStr = nil;
   [self resetData];
   [self setupnNotificationToken];
 }
@@ -417,8 +419,7 @@ static NSString *DayCellID = @"DayCellID";
   if(_headerView == nil)
   {
     _headerView = [[MPTimeLineHeaderView alloc] init];
-//    _headerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
-    _headerView.backgroundColor = [UIColor redColor];
+    _headerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
   }
   return _headerView;
 }

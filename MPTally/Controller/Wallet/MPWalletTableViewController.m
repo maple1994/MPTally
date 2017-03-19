@@ -10,8 +10,10 @@
 #import "MPWalletTableViewCell.h"
 #import "MPWalletBalanceHeaderView.h"
 #import "MPAccountManager.h"
+#import "MPWalletAddView.h"
 
 #define kRowHeight 60
+#define kWalletAddViewH 50
 
 @interface MPWalletTableViewController ()
 
@@ -19,7 +21,8 @@
 @property (nonatomic, strong) MPWalletBalanceHeaderView *balanceHeaderView;
 /// 模型数组
 @property (nonatomic, strong) RLMResults *accountArray;
-
+/// 添加视图
+@property (nonatomic, strong) MPWalletAddView *addView;
 
 @end
 
@@ -63,7 +66,25 @@ static NSString *WalletCellID = @"WalletCellID";
   return kRowHeight;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+  return self.addView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+  return kWalletAddViewH;
+}
+
 #pragma mark - get
+- (MPWalletAddView *)addView
+{
+  if(_addView == nil)
+  {
+    _addView = [MPWalletAddView viewFromNib];
+  }
+  return _addView;
+}
 - (RLMResults *)accountArray
 {
   if(_accountArray == nil)

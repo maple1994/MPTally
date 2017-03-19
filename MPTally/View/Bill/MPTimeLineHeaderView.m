@@ -74,6 +74,13 @@
   self.incomeNumLabel.text = [MyUtils numToString:model.income];
   self.outcomeNumLabel.text = [MyUtils numToString:model.outcome];
   self.monthLabel.text = model.monthStr;
+  if(!model.monthStr)
+  {
+    NSDate *date = [NSDate date];
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"M月";
+    self.monthLabel.text = [fmt stringFromDate:date];
+  }
 }
 
 #pragma mark - getter
