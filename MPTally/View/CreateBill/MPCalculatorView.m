@@ -17,6 +17,8 @@
 @property (nonatomic, copy) NSMutableString *resultString;
 /// 确定button
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
+/// 工具条区域
+@property (weak, nonatomic) IBOutlet UIView *toolView;
 
 /** 小数点前的字符串 */
 @property (nonatomic, copy) NSString *beforSting;
@@ -202,6 +204,12 @@
 
 }
 #pragma mark - setter
+- (void)setHideToolbar:(BOOL)hideToolbar
+{
+  _hideToolbar = hideToolbar;
+  self.toolView.hidden = hideToolbar;
+}
+
 - (void)setSelectedAccount:(MPAccountModel *)selectedAccount
 {
   _selectedAccount = selectedAccount;

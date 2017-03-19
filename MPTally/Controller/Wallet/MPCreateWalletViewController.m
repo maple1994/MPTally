@@ -7,6 +7,9 @@
 //
 
 #import "MPCreateWalletViewController.h"
+#import "MPEditAccountNameViewController.h"
+#import "MPEditAccountMoneyViewController.h"
+#import "MPEditAccountColorViewController.h"
 
 @interface MPCreateWalletViewController ()
 
@@ -24,8 +27,21 @@ static NSString *CellID = @"CellID";
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [self setupNav];
 }
 
+- (void)setupNav
+{
+  self.title = @"新建账户";
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirm)];
+}
+
+- (void)confirm
+{
+  
+}
+
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return 3;
@@ -57,5 +73,30 @@ static NSString *CellID = @"CellID";
   }
   return cell;
 }
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if(indexPath.row == 0)
+  {
+    // 账户名称
+    MPEditAccountNameViewController *vc = [[MPEditAccountNameViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+  }
+  else if(indexPath.row == 1)
+  {
+    // 金额
+    MPEditAccountMoneyViewController *vc = [[MPEditAccountMoneyViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+  }
+  else if(indexPath.row == 2)
+  {
+    // 账户颜色
+    MPEditAccountColorViewController *vc = [[MPEditAccountColorViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+  }
+
+}
+
 
 @end

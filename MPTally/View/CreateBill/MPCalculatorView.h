@@ -34,4 +34,7 @@
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic, strong) MPAccountModel *selectedAccount;
 
+/// 隐藏工具条
+@property (nonatomic, assign) BOOL hideToolbar;
+
 @end
