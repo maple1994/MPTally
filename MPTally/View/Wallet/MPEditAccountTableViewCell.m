@@ -30,6 +30,7 @@
 
 - (void)setup
 {
+  self.selectionStyle = UITableViewCellSelectionStyleNone;
   [self.myTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
     make.leading.equalTo(self.contentView).offset(10);
     make.centerY.equalTo(self.contentView);

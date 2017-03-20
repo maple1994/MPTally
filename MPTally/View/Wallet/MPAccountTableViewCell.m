@@ -6,8 +6,8 @@
 //  Copyright © 2017年 Maple. All rights reserved.
 //
 
-#import "MPWalletTableViewCell.h"
-@interface MPWalletTableViewCell()
+#import "MPAccountTableViewCell.h"
+@interface MPAccountTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *bgVIew;
@@ -15,9 +15,10 @@
 
 @end
 
-@implementation MPWalletTableViewCell
+@implementation MPAccountTableViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   self.bgVIew.layer.cornerRadius = 3;

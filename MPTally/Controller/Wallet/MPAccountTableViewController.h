@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 /// 钱包页面
-@interface MPWalletTableViewController : UITableViewController
+@interface MPAccountTableViewController : UITableViewController
 
 @end

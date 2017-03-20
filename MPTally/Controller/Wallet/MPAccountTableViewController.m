@@ -6,30 +6,30 @@
 //  Copyright © 2017年 Maple. All rights reserved.
 //
 
-#import "MPWalletTableViewController.h"
-#import "MPWalletTableViewCell.h"
-#import "MPWalletBalanceHeaderView.h"
+#import "MPAccountTableViewController.h"
+#import "MPAccountTableViewCell.h"
+#import "MPAccountBalanceHeaderView.h"
 #import "MPAccountManager.h"
-#import "MPWalletAddView.h"
-#import "MPCreateWalletViewController.h"
+#import "MPAccountAddView.h"
+#import "MPCreateAccountViewController.h"
 
 #define kRowHeight 60
 #define kWalletAddViewH 50
 
-@interface MPWalletTableViewController ()
+@interface MPAccountTableViewController ()
 
 /// 余额Header
-@property (nonatomic, strong) MPWalletBalanceHeaderView *balanceHeaderView;
+@property (nonatomic, strong) MPAccountBalanceHeaderView *balanceHeaderView;
 /// 模型数组
 @property (nonatomic, strong) RLMResults *accountArray;
 /// 添加视图
-@property (nonatomic, strong) MPWalletAddView *addView;
+@property (nonatomic, strong) MPAccountAddView *addView;
 /// 通知token
 @property (nonatomic, strong) RLMNotificationToken *token;
 
 @end
 
-@implementation MPWalletTableViewController
+@implementation MPAccountTableViewController
 
 static NSString *WalletCellID = @"WalletCellID";
 
@@ -41,7 +41,7 @@ static NSString *WalletCellID = @"WalletCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPWalletTableViewCell.class) bundle:nil] forCellReuseIdentifier:WalletCellID];
+  [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPAccountTableViewCell.class) bundle:nil] forCellReuseIdentifier:WalletCellID];
   self.tableView.rowHeight = kRowHeight;
   self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
   __weak typeof(self) weakSelf = self;
@@ -53,7 +53,7 @@ static NSString *WalletCellID = @"WalletCellID";
 /// 跳转至创建钱包的视图
 - (void)pushCreateWallerVC
 {
-  MPCreateWalletViewController *vc = [[MPCreateWalletViewController alloc] init];
+  MPCreateAccountViewController *vc = [[MPCreateAccountViewController alloc] init];
   [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -64,7 +64,7 @@ static NSString *WalletCellID = @"WalletCellID";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MPWalletTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletCellID forIndexPath:indexPath];
+    MPAccountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletCellID forIndexPath:indexPath];
   cell.account = self.accountArray[indexPath.row];
     return cell;
 }
@@ -90,11 +90,11 @@ static NSString *WalletCellID = @"WalletCellID";
 }
 
 #pragma mark - get
-- (MPWalletAddView *)addView
+- (MPAccountAddView *)addView
 {
   if(_addView == nil)
   {
-    _addView = [MPWalletAddView viewFromNib];
+    _addView = [MPAccountAddView viewFromNib];
     __weak typeof(self) weakSelf = self;
     [_addView setClickBlock:^{
       [weakSelf pushCreateWallerVC];
@@ -111,11 +111,11 @@ static NSString *WalletCellID = @"WalletCellID";
   return _accountArray;
 }
 
-- (MPWalletBalanceHeaderView *)balanceHeaderView
+- (MPAccountBalanceHeaderView *)balanceHeaderView
 {
   if(_balanceHeaderView == nil)
   {
-    _balanceHeaderView = [MPWalletBalanceHeaderView viewFromNib];
+    _balanceHeaderView = [MPAccountBalanceHeaderView viewFromNib];
   }
   return _balanceHeaderView;
 }

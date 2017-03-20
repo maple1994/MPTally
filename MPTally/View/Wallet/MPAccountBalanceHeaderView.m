@@ -6,15 +6,15 @@
 //  Copyright © 2017年 Maple. All rights reserved.
 //
 
-#import "MPWalletBalanceHeaderView.h"
+#import "MPAccountBalanceHeaderView.h"
 
-@interface MPWalletBalanceHeaderView ()
+@interface MPAccountBalanceHeaderView ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 
 @end
 
-@implementation MPWalletBalanceHeaderView
+@implementation MPAccountBalanceHeaderView
 
 - (void)awakeFromNib {
   [super awakeFromNib];

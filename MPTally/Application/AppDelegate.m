@@ -21,6 +21,7 @@
   MPTabBarController *tabVC = [[MPTabBarController alloc] init];
   self.window.rootViewController = tabVC;
   [self.window makeKeyAndVisible];
+  
   [self dbVersionCheck];
   return YES;
 }

@@ -1,5 +1,5 @@
 //
-//  MPCreateWalletViewController.h
+//  MPWalletAddView.h
 //  MPTally
 //
 //  Created by Maple on 2017/3/19.
@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-/// 创建新账户
-@interface MPCreateWalletViewController : UITableViewController
+/// 添加钱包的Item视图
+@interface MPAccountAddView : UIView
+
+@property (nonatomic, copy) void (^clickBlock)();
 
 @end

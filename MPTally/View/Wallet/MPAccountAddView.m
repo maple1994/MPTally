@@ -6,14 +6,14 @@
 //  Copyright © 2017年 Maple. All rights reserved.
 //
 
-#import "MPWalletAddView.h"
+#import "MPAccountAddView.h"
 
-@interface MPWalletAddView ()
+@interface MPAccountAddView ()
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @end
 
-@implementation MPWalletAddView
+@implementation MPAccountAddView
 
 - (void)awakeFromNib
 {

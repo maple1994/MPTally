@@ -11,7 +11,7 @@
 #import "MPBillTableViewController.h"
 #import "MPReportFormViewController.h"
 #import "MPSettingTableViewController.h"
-#import "MPWalletTableViewController.h"
+#import "MPAccountTableViewController.h"
 #import "MPNavigationController.h"
 
 @interface MPTabBarController ()
@@ -32,7 +32,7 @@
 - (void)addChildController
 {
   MPBillTableViewController *billVC = [[MPBillTableViewController alloc] init];
-  MPWalletTableViewController *walletVC = [[MPWalletTableViewController alloc] init];
+  MPAccountTableViewController *walletVC = [[MPAccountTableViewController alloc] init];
   MPReportFormViewController *formVC = [[MPReportFormViewController alloc] init];
   MPSettingTableViewController *settingVC = [[MPSettingTableViewController alloc] init];
   [self setupChildController:billVC title:@"明细" imageName:@""];

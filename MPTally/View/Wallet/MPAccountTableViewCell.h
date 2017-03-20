@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /// 钱包Cell
-@interface MPWalletTableViewCell : UITableViewCell
+@interface MPAccountTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) MPAccountModel *account;
 /// 16进制颜色字符

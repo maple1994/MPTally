@@ -7,7 +7,7 @@
 //
 
 #import "MPEditAccountColorViewController.h"
-#import "MPWalletTableViewCell.h"
+#import "MPAccountTableViewCell.h"
 #import "MPColorCollectionViewCell.h"
 
 #define kNumOfRow 8 // 指定一行有8个Item
@@ -15,7 +15,7 @@
 @interface MPEditAccountColorViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 /// 选择颜色后的账本View
-@property (nonatomic, strong) MPWalletTableViewCell *walletCell;
+@property (nonatomic, strong) MPAccountTableViewCell *walletCell;
 /// 放置颜色的collectionView
 @property (nonatomic, weak) UICollectionView *collectionView;
 /// 选中的index
@@ -91,7 +91,7 @@ static NSString *ColorID = @"ColorID";
   _selectedIndexPath = selectedIndexPath;
 }
 
-- (MPWalletTableViewCell *)walletCell
+- (MPAccountTableViewCell *)walletCell
 {
   if(_walletCell == nil)
   {
@@ -99,7 +99,7 @@ static NSString *ColorID = @"ColorID";
     account.accountName = @"账户名称";
     account.money = 0.00;
     account.colorStr = @"F3BD5D";
-    MPWalletTableViewCell *cell = [MPWalletTableViewCell viewFromNib];
+    MPAccountTableViewCell *cell = [MPAccountTableViewCell viewFromNib];
     cell.account = account;
     _walletCell = cell;
     [self.view addSubview:_walletCell.contentView];

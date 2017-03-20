@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 /// 钱包界面的余额HeaderView
-@interface MPWalletBalanceHeaderView : UIView
+@interface MPAccountBalanceHeaderView : UIView
 
 @end

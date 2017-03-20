@@ -6,14 +6,14 @@
 //  Copyright © 2017年 Maple. All rights reserved.
 //
 
-#import "MPCreateWalletViewController.h"
+#import "MPCreateAccountViewController.h"
 #import "MPEditAccountNameViewController.h"
 #import "MPEditAccountMoneyViewController.h"
 #import "MPEditAccountColorViewController.h"
 #import "MPEditAccountTableViewCell.h"
 #import "MPAccountManager.h"
 
-@interface MPCreateWalletViewController ()
+@interface MPCreateAccountViewController ()
 
 @property (nonatomic, copy) NSString *accountName;
 @property (nonatomic, assign) double balance;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation MPCreateWalletViewController
+@implementation MPCreateAccountViewController
 
 static NSString *CellID = @"CellID";
 
