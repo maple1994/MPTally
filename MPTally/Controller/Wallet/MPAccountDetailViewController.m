@@ -7,11 +7,14 @@
 //
 
 #import "MPAccountDetailViewController.h"
+#import "MPAccountDetailHeaderView.h"
 
 @interface MPAccountDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UIView *topbarView;
+@property (nonatomic, strong) UIView *tableHeaderView;
+@property (nonatomic, weak) MPAccountDetailHeaderView *detailView;
 
 @end
 
@@ -31,10 +34,9 @@ static NSString *BillCellID = @"BillCellID";
 - (void)setupUI
 {
   self.automaticallyAdjustsScrollViewInsets = NO;
-  UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 176 - 480, kScreenW, 480)];
-  headerView.backgroundColor = [UIColor colorWithHexString:self.accountModel.colorStr];
+  
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 176)];
-  [self.tableView addSubview:headerView];
+  [self.tableView addSubview:self.tableHeaderView];
   [self.topbarView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.leading.trailing.equalTo(self.view);
     make.height.mas_equalTo(64);
@@ -105,6 +107,24 @@ static NSString *BillCellID = @"BillCellID";
 }
 
 #pragma mark - getter
+- (UIView *)tableHeaderView
+{
+  if(_tableHeaderView == nil)
+  {
+    _tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 176 - 480, kScreenW, 480)];
+    _tableHeaderView.backgroundColor = [UIColor colorWithHexString:self.accountModel.colorStr];
+    MPAccountDetailHeaderView *detailView = [MPAccountDetailHeaderView viewFromNib];
+    detailView.account = _accountModel;
+    self.detailView = detailView;
+    [_tableHeaderView addSubview:detailView];
+    [detailView mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.leading.trailing.bottom.equalTo(_tableHeaderView);
+      make.height.mas_equalTo(176);
+    }];
+  }
+  return _tableHeaderView;
+}
+
 - (UITableView *)tableView
 {
   if(_tableView == nil)

@@ -41,6 +41,8 @@
 		F541E7A01E778CFF00556D46 /* MPAccountBalanceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F541E79F1E778CFF00556D46 /* MPAccountBalanceHeaderView.m */; };
 		F541E7A21E778D0900556D46 /* MPAccountBalanceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F541E7A11E778D0900556D46 /* MPAccountBalanceHeaderView.xib */; };
 		F541E7A51E7799A500556D46 /* MPTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F541E7A41E7799A500556D46 /* MPTopBarView.m */; };
+		F550AB351E8005240064C947 /* MPAccountDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F550AB341E8005240064C947 /* MPAccountDetailHeaderView.m */; };
+		F550AB371E8005630064C947 /* MPAccountDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F550AB361E8005630064C947 /* MPAccountDetailHeaderView.xib */; };
 		F554FCE01E6C35A20032A60F /* MPIncomeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FCDF1E6C35A20032A60F /* MPIncomeCategoryViewController.m */; };
 		F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FCE21E6C35B50032A60F /* MPOutcomeCategoryViewController.m */; };
 		F555D3B61E728C050007AD24 /* MPTimeLineYearMonthMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = F555D3B51E728C050007AD24 /* MPTimeLineYearMonthMarkView.m */; };
@@ -170,6 +172,9 @@
 		F541E7A11E778D0900556D46 /* MPAccountBalanceHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAccountBalanceHeaderView.xib; sourceTree = "<group>"; };
 		F541E7A31E7799A500556D46 /* MPTopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTopBarView.h; sourceTree = "<group>"; };
 		F541E7A41E7799A500556D46 /* MPTopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTopBarView.m; sourceTree = "<group>"; };
+		F550AB331E8005240064C947 /* MPAccountDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountDetailHeaderView.h; sourceTree = "<group>"; };
+		F550AB341E8005240064C947 /* MPAccountDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAccountDetailHeaderView.m; sourceTree = "<group>"; };
+		F550AB361E8005630064C947 /* MPAccountDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAccountDetailHeaderView.xib; sourceTree = "<group>"; };
 		F554FCDE1E6C35A20032A60F /* MPIncomeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPIncomeCategoryViewController.h; sourceTree = "<group>"; };
 		F554FCDF1E6C35A20032A60F /* MPIncomeCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPIncomeCategoryViewController.m; sourceTree = "<group>"; };
 		F554FCE11E6C35B50032A60F /* MPOutcomeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOutcomeCategoryViewController.h; sourceTree = "<group>"; };
@@ -604,6 +609,9 @@
 				F5C9A0F51E7EB5B80084B97B /* MPColorCollectionViewCell.m */,
 				F5C9A0F71E7EC8D90084B97B /* MPEditAccountTableViewCell.h */,
 				F5C9A0F81E7EC8D90084B97B /* MPEditAccountTableViewCell.m */,
+				F550AB331E8005240064C947 /* MPAccountDetailHeaderView.h */,
+				F550AB341E8005240064C947 /* MPAccountDetailHeaderView.m */,
+				F550AB361E8005630064C947 /* MPAccountDetailHeaderView.xib */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -775,6 +783,7 @@
 				F541E79A1E77896E00556D46 /* MPAccountTableViewCell.xib in Resources */,
 				F560E7A11E7136F0007068CC /* account.plist in Resources */,
 				F52BCCBC1E6BE9F10036234E /* category.plist in Resources */,
+				F550AB371E8005630064C947 /* MPAccountDetailHeaderView.xib in Resources */,
 				F52BCCC41E6BEF1C0036234E /* MPCreateBillHeaderView.xib in Resources */,
 				F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */,
 				F5C9A0E21E7E7ECF0084B97B /* MPAccountAddView.xib in Resources */,
@@ -974,6 +983,7 @@
 				F560E7931E70ECA9007068CC /* MPCategoryManager.m in Sources */,
 				F5C9A0EA1E7E8A940084B97B /* UIColor+MPHex.m in Sources */,
 				F5F202F31E78CF8900F18F6E /* MPBookListCollectionViewCell.m in Sources */,
+				F550AB351E8005240064C947 /* MPAccountDetailHeaderView.m in Sources */,
 				F560E7811E70D852007068CC /* MPEditRemarkViewController.m in Sources */,
 				F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */,
 				F5C9A0E01E7E7EC20084B97B /* MPAccountAddView.m in Sources */,
