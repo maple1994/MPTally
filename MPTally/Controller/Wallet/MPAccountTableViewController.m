@@ -12,6 +12,7 @@
 #import "MPAccountManager.h"
 #import "MPAccountAddView.h"
 #import "MPCreateAccountViewController.h"
+#import "MPAccountDetailViewController.h"
 
 #define kRowHeight 60
 #define kWalletAddViewH 50
@@ -87,6 +88,14 @@ static NSString *WalletCellID = @"WalletCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
   return kWalletAddViewH;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  MPAccountDetailViewController *vc = [[MPAccountDetailViewController alloc] init];
+  vc.accountModel = self.accountArray[indexPath.row];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - get

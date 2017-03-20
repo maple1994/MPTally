@@ -11,4 +11,6 @@
 /// 账户详情
 @interface MPAccountDetailViewController : UIViewController
 
+@property (nonatomic, strong) MPAccountModel *accountModel;
+
 @end
