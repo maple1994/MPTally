@@ -22,4 +22,16 @@
   return [fmt stringFromDate:self];
 }
 
+/**
+ 获取yyyy-MM格式的字符串date
+ 
+ @return yyyy-MM字符创
+ */
+- (NSString *)getYearMonthDateString
+{
+  NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+  fmt.dateFormat = @"yyyy-MM";
+  return [fmt stringFromDate:self];
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MPAccountManager.h"
+#import "MPBookManager.h"
 
 @implementation MPAccountManager
 

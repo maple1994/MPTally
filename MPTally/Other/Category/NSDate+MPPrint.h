@@ -18,4 +18,11 @@
  */
 - (NSString *)dateFormattrString;
 
+/**
+ 获取yyyy-MM格式的字符串date
+
+ @return yyyy-MM字符创
+ */
+- (NSString *)getYearMonthDateString;
+
 @end
