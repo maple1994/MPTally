@@ -24,6 +24,14 @@ static id instance;
   return instance;
 }
 
+- (RLMResults *)getBillsInCurrentBook
+{
+  MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
+  RLMResults *results = [MPBillModel objectsWhere:@"book=%@", book];
+  // 返回排序后的结果集
+  return [self sortTheResultsByDate:results];
+}
+
 /**
  获取该账本指定年月的账单列表
  

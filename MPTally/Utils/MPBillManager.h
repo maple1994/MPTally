@@ -15,13 +15,20 @@
 + (instancetype)shareManager;
 
 /**
- 获取当前账本下的账户，指定年月的账单列表
+ 获取当前账本，指定账户，指定年月的账单列表
  
  @param account 要查询的账本
  @param date 指定年月
  @return MPBillModel账单列表
  */
 - (RLMResults *)getBillInAccount:(MPAccountModel *)account inAnMonth:(NSDate *)date;
+
+/**
+ 获取当前账本下的所有账单
+
+ @return MPBillModel账单列表
+ */
+- (RLMResults *)getBillsInCurrentBook;
 
 #pragma mark - Write
 /**

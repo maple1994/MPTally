@@ -8,13 +8,19 @@
 
 #import "MPAccountDetailViewController.h"
 #import "MPAccountDetailHeaderView.h"
+#import "MPBillManager.h"
+#import "MPAccountBillTableViewCell.h"
 
-@interface MPAccountDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface MPAccountDetailViewController ()<UITableViewDelegate, UITableViewDataSource, MPAccountDetailHeaderViewDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UIView *topbarView;
 @property (nonatomic, strong) UIView *tableHeaderView;
 @property (nonatomic, weak) MPAccountDetailHeaderView *detailView;
+/// 分组的账单模型数组
+@property (nonatomic, strong) NSMutableArray *billGroupedArray;
+/// 当前用户选择的日期
+@property (nonatomic, strong) NSDate *selectedDate;
 
 @end
 
@@ -26,7 +32,7 @@ static NSString *BillCellID = @"BillCellID";
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:BillCellID];
+  [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPAccountBillTableViewCell.class) bundle:nil] forCellReuseIdentifier:BillCellID];
   [self setupUI];
   [self setupNav];
 }
@@ -88,25 +94,119 @@ static NSString *BillCellID = @"BillCellID";
   kFuncNameLog;
 }
 
+- (UIView *)sectionHeaderView:(MPBillModel *)bill
+{
+  UIView *header = [[UIView alloc] init];
+  UILabel *dateLabel = [[UILabel alloc] init];
+  dateLabel.textColor = [UIColor lightGrayColor];
+  dateLabel.font = [UIFont systemFontOfSize:13];
+  [header addSubview:dateLabel];
+  [dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.leading.equalTo(header).offset(10);
+    make.bottom.equalTo(header);
+  }];
+  
+  NSDate *date = [MyUtils dateStrToDate:bill.dateStr];
+  NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+  fmt.dateFormat = @"MM月dd日";
+  dateLabel.text = [fmt stringFromDate:date];
+  return header;
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-  return 3;
+  return self.billGroupedArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 10;
+  NSArray *arr = self.billGroupedArray[section];
+  return arr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BillCellID];
-  cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
+  MPAccountBillTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BillCellID];
+  NSArray *arr = self.billGroupedArray[indexPath.section];
+  MPBillModel *bill = arr[indexPath.row];
+  cell.bill = bill;
   return cell;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+  NSArray *arr = self.billGroupedArray[section];
+  MPBillModel *bill = arr.firstObject;
+  UIView *headerView = [self sectionHeaderView:bill];
+  return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+  return 35;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+  return 0.01;
+}
+
+#pragma mark - MPAccountDetailHeaderViewDelegate
+- (void)accountDetailHeaderView:(MPAccountDetailHeaderView *)header didChangeDate:(NSDate *)date
+{
+  self.selectedDate = date;
+  self.billGroupedArray = nil;
+  [self.tableView reloadData];
+}
+
 #pragma mark - getter
+- (NSDate *)selectedDate
+{
+  if(_selectedDate == nil)
+  {
+    // 默认是当前日期
+    _selectedDate = [NSDate date];
+  }
+  return _selectedDate;
+}
+
+- (NSMutableArray *)billGroupedArray
+{
+  if(_billGroupedArray == nil)
+  {
+    _billGroupedArray = [NSMutableArray array];
+    NSMutableArray *group = [NSMutableArray array];
+    RLMResults *results = [[MPBillManager shareManager] getBillInAccount:_accountModel inAnMonth:self.selectedDate];
+    if(results.count >= 1)
+    {
+      // 上一个bill模型
+      MPBillModel *prebill = results.firstObject;
+      [group addObject:prebill];
+      for(int i = 1; i < results.count; i++)
+      {
+        MPBillModel *bill = results[i];
+        if([prebill.dateStr isEqualToString:bill.dateStr])
+        {
+          // 相同日期，加入到同一group中
+          [group addObject:bill];
+        }
+        else
+        {
+          // 不同日期
+          [_billGroupedArray addObject:group];
+          // 创建新的组
+          group = [NSMutableArray array];
+          [group addObject:bill];
+        }
+      }
+      if(group.count > 0)
+        [_billGroupedArray addObject:group];
+    }
+  }
+  return _billGroupedArray;
+}
+
 - (UIView *)tableHeaderView
 {
   if(_tableHeaderView == nil)
@@ -116,6 +216,7 @@ static NSString *BillCellID = @"BillCellID";
     MPAccountDetailHeaderView *detailView = [MPAccountDetailHeaderView viewFromNib];
     detailView.account = _accountModel;
     self.detailView = detailView;
+    detailView.delegate = self;
     [_tableHeaderView addSubview:detailView];
     [detailView mas_makeConstraints:^(MASConstraintMaker *make) {
       make.leading.trailing.bottom.equalTo(_tableHeaderView);
@@ -132,6 +233,9 @@ static NSString *BillCellID = @"BillCellID";
     UITableView *view = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     view.delegate = self;
     view.dataSource = self;
+    view.backgroundColor = colorWithRGB(245, 245, 245);
+    view.rowHeight = 50;
+    view.separatorColor = colorWithRGB(240, 240, 240);
     _tableView = view;
     [self.view addSubview:view];
   }

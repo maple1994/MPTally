@@ -37,6 +37,8 @@
 		F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCD41E6C08430036234E /* MPCategoryModel.m */; };
 		F53EDB7D1E80CC8A0075C807 /* HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */; };
 		F53EDB7E1E80CC8A0075C807 /* NSDate+HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7C1E80CC8A0075C807 /* NSDate+HooDatePicker.m */; };
+		F53EDB821E8104C60075C807 /* MPAccountBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB801E8104C60075C807 /* MPAccountBillTableViewCell.m */; };
+		F53EDB831E8104C60075C807 /* MPAccountBillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53EDB811E8104C60075C807 /* MPAccountBillTableViewCell.xib */; };
 		F541E7941E7784BF00556D46 /* MPBookListView.m in Sources */ = {isa = PBXBuildFile; fileRef = F541E7931E7784BF00556D46 /* MPBookListView.m */; };
 		F541E7981E77895800556D46 /* MPAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F541E7971E77895800556D46 /* MPAccountTableViewCell.m */; };
 		F541E79A1E77896E00556D46 /* MPAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F541E7991E77896E00556D46 /* MPAccountTableViewCell.xib */; };
@@ -169,6 +171,9 @@
 		F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HooDatePicker.m; sourceTree = "<group>"; };
 		F53EDB7B1E80CC8A0075C807 /* NSDate+HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HooDatePicker.h"; sourceTree = "<group>"; };
 		F53EDB7C1E80CC8A0075C807 /* NSDate+HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HooDatePicker.m"; sourceTree = "<group>"; };
+		F53EDB7F1E8104C60075C807 /* MPAccountBillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountBillTableViewCell.h; sourceTree = "<group>"; };
+		F53EDB801E8104C60075C807 /* MPAccountBillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAccountBillTableViewCell.m; sourceTree = "<group>"; };
+		F53EDB811E8104C60075C807 /* MPAccountBillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAccountBillTableViewCell.xib; sourceTree = "<group>"; };
 		F541E7921E7784BF00556D46 /* MPBookListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBookListView.h; sourceTree = "<group>"; };
 		F541E7931E7784BF00556D46 /* MPBookListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBookListView.m; sourceTree = "<group>"; };
 		F541E7961E77895800556D46 /* MPAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountTableViewCell.h; sourceTree = "<group>"; };
@@ -634,6 +639,9 @@
 				F550AB361E8005630064C947 /* MPAccountDetailHeaderView.xib */,
 				F550AB461E802E9C0064C947 /* MPDatePickerView.h */,
 				F550AB471E802E9C0064C947 /* MPDatePickerView.m */,
+				F53EDB7F1E8104C60075C807 /* MPAccountBillTableViewCell.h */,
+				F53EDB801E8104C60075C807 /* MPAccountBillTableViewCell.m */,
+				F53EDB811E8104C60075C807 /* MPAccountBillTableViewCell.xib */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -808,6 +816,7 @@
 				F52BCCBC1E6BE9F10036234E /* category.plist in Resources */,
 				F550AB371E8005630064C947 /* MPAccountDetailHeaderView.xib in Resources */,
 				F52BCCC41E6BEF1C0036234E /* MPCreateBillHeaderView.xib in Resources */,
+				F53EDB831E8104C60075C807 /* MPAccountBillTableViewCell.xib in Resources */,
 				F52BCC5E1E6AEAF60036234E /* LaunchScreen.storyboard in Resources */,
 				F5C9A0E21E7E7ECF0084B97B /* MPAccountAddView.xib in Resources */,
 				F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */,
@@ -1017,6 +1026,7 @@
 				F5C9A0F31E7EAE5E0084B97B /* MPEditAccountColorViewController.m in Sources */,
 				F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */,
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
+				F53EDB821E8104C60075C807 /* MPAccountBillTableViewCell.m in Sources */,
 				F555D3BC1E72D4690007AD24 /* MPTimeLineModel.m in Sources */,
 				F541E7981E77895800556D46 /* MPAccountTableViewCell.m in Sources */,
 				F541E7941E7784BF00556D46 /* MPBookListView.m in Sources */,

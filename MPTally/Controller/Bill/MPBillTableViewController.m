@@ -388,14 +388,7 @@ static NSString *DayCellID = @"DayCellID";
 {
   if(_billModelArray == nil)
   {
-    MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
-    _billModelArray = [MPBillModel objectsWhere:@"book=%@", book];
-    
-    // 首先根据dateStr（账单时间）进行排序
-    RLMSortDescriptor *desc1 = [RLMSortDescriptor sortDescriptorWithKeyPath:@"dateStr" ascending:NO];
-    // 再根据recordDate（记录时间）进行排序
-    RLMSortDescriptor *desc2 = [RLMSortDescriptor sortDescriptorWithKeyPath:@"recordDate" ascending:NO];
-    _billModelArray = [_billModelArray sortedResultsUsingDescriptors:@[desc1, desc2]];
+    _billModelArray = [[MPBillManager shareManager] getBillsInCurrentBook];
   }
   return _billModelArray;
 }

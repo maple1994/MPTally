@@ -68,8 +68,11 @@
   [dateFormatter setDateFormat:@"M"];
   NSString *value = [dateFormatter stringFromDate:date];
   self.monthLabel.text = value;
-  
   [self calculateTotalSum:date];
+  if([self.delegate respondsToSelector:@selector(accountDetailHeaderView:didChangeDate:)])
+  {
+    [self.delegate accountDetailHeaderView:self didChangeDate:date];
+  }
 }
 
 - (NSDate *)selectedDate
