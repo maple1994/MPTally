@@ -12,6 +12,7 @@
 #import "MPAccountBillTableViewCell.h"
 #import "MPEditAccountMoneyViewController.h"
 #import "MPCreateAccountViewController.h"
+#import "MPBillDetailViewController.h"
 
 @interface MPAccountDetailViewController ()<UITableViewDelegate, UITableViewDataSource, MPAccountDetailHeaderViewDelegate>
 
@@ -157,6 +158,20 @@ static NSString *BillCellID = @"BillCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
   return 0.01;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSArray *tmp = self.billGroupedArray[indexPath.section];
+  MPBillDetailViewController *vc = [[MPBillDetailViewController alloc] init];
+  vc.bill = tmp[indexPath.row];
+  vc.topbarColor = _accountModel.colorStr;
+  [vc setDelteBlock:^(MPBillModel *bill) {
+    [[MPBillManager shareManager] deleteBill:bill];
+    self.billGroupedArray = nil;
+  }];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - MPAccountDetailHeaderViewDelegate
