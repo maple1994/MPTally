@@ -14,9 +14,14 @@
 
 @implementation MPNavigationController
 
++ (void)load
+{
+  UINavigationBar *bar = [UINavigationBar appearance];
+  [bar setTintColor:kNavTintColor];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

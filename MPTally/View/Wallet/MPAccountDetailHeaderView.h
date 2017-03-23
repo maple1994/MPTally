@@ -14,6 +14,8 @@
 @optional
 /// 切换了日期
 - (void)accountDetailHeaderView:(MPAccountDetailHeaderView *)header didChangeDate:(NSDate *)date;
+/// 点击了余额
+- (void)accountDetailHeaderView:(MPAccountDetailHeaderView *)header didEditBalance:(UIButton *)button;
 
 @end
 

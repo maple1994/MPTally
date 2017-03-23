@@ -74,7 +74,7 @@
   self.navigationItem.titleView = segCtr;
   self.segCrt = segCtr;
   
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"X" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"cancel"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
   self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
 }
 

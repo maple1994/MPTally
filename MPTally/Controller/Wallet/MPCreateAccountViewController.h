@@ -11,4 +11,6 @@
 /// 创建新账户
 @interface MPCreateAccountViewController : UITableViewController
 
+@property (nonatomic, strong) MPAccountModel *account;
+
 @end

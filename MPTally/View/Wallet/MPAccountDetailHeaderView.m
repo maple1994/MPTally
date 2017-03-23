@@ -60,6 +60,13 @@
 {
   [self.datePicker show];
 }
+- (IBAction)editBalance:(UIButton *)sender
+{
+  if([self.delegate respondsToSelector:@selector(accountDetailHeaderView:didEditBalance:)])
+  {
+    [self.delegate accountDetailHeaderView:self didEditBalance:sender ];
+  }
+}
 
 #pragma mark - HooDatePickerDelegate
 - (void)datePicker:(HooDatePicker *)datePicker didSelectedDate:(NSDate*)date {

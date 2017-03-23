@@ -10,6 +10,8 @@
 #import "MPAccountDetailHeaderView.h"
 #import "MPBillManager.h"
 #import "MPAccountBillTableViewCell.h"
+#import "MPEditAccountMoneyViewController.h"
+#import "MPCreateAccountViewController.h"
 
 @interface MPAccountDetailViewController ()<UITableViewDelegate, UITableViewDataSource, MPAccountDetailHeaderViewDelegate>
 
@@ -55,7 +57,6 @@ static NSString *BillCellID = @"BillCellID";
 
 - (void)setupNav
 {
-  self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
   self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
   UILabel *label = [[UILabel alloc] init];
@@ -68,11 +69,14 @@ static NSString *BillCellID = @"BillCellID";
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
+  self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
   [self.tableView reloadData];
   // 设置导航栏背景为透明
   [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
   // 隐藏导航栏底部黑线
   self.navigationController.navigationBar.shadowImage = [UIImage new];
+  self.detailView.account = _accountModel;
+  self.topbarView.backgroundColor = [UIColor colorWithHexString:_accountModel.colorStr];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -81,6 +85,7 @@ static NSString *BillCellID = @"BillCellID";
   // 还原导航栏样式
   [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
   self.navigationController.navigationBar.shadowImage = nil;
+  self.navigationController.navigationBar.tintColor = kNavTintColor;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -91,7 +96,9 @@ static NSString *BillCellID = @"BillCellID";
 #pragma mark - private
 - (void)setting
 {
-  kFuncNameLog;
+  MPCreateAccountViewController *vc = [[MPCreateAccountViewController alloc] init];
+  vc.account = _accountModel;
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (UIView *)sectionHeaderView:(MPBillModel *)bill
@@ -158,6 +165,19 @@ static NSString *BillCellID = @"BillCellID";
   self.selectedDate = date;
   self.billGroupedArray = nil;
   [self.tableView reloadData];
+}
+
+- (void)accountDetailHeaderView:(MPAccountDetailHeaderView *)header didEditBalance:(UIButton *)button
+{
+  MPEditAccountMoneyViewController *vc = [[MPEditAccountMoneyViewController alloc] init];
+  vc.banlance = _accountModel.money;
+  [vc setBanlanceBlock:^(double balance) {
+    [kRealm transactionWithBlock:^{
+      _accountModel.money = balance;
+      header.account = _accountModel;
+    }];
+  }];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - getter

@@ -35,6 +35,7 @@
   }];
   [self setupNav];
   self.balanceLabel.text = [MyUtils numToString:self.banlance];
+ 
 }
 
 - (void)setupNav

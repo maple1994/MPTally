@@ -23,6 +23,8 @@
 
 @implementation MPCreateAccountViewController
 
+@synthesize accountColor=_accountColor;
+
 static NSString *CellID = @"CellID";
 
 - (instancetype)init
@@ -33,6 +35,11 @@ static NSString *CellID = @"CellID";
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  if(_account)
+  {
+    _balance = _account.money;
+    _accountColor = _account.colorStr;
+  }
   [self setupNav];
   [self.tableView registerClass:[MPEditAccountTableViewCell class] forCellReuseIdentifier:CellID];
 }
@@ -45,8 +52,13 @@ static NSString *CellID = @"CellID";
 
 - (void)setupNav
 {
-  self.title = @"新建账户";
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirm)];
+  if(_account)
+    self.title = @"设置";
+  else
+  {
+    self.title = @"新建账户";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirm)];
+  }
 }
 
 - (void)confirm
@@ -137,6 +149,40 @@ static NSString *CellID = @"CellID";
   }
   return _accountColor;
 }
+
+- (void)setAccountName:(NSString *)accountName
+{
+  _accountName = accountName;
+  if(_account)
+  {
+    [kRealm transactionWithBlock:^{
+      _account.accountName = accountName;
+    }];
+  }
+}
+
+- (void)setAccountColor:(NSString *)accountColor
+{
+  _accountColor = accountColor;
+  if(_account)
+  {
+    [kRealm transactionWithBlock:^{
+      _account.colorStr = accountColor;
+    }];
+  }
+}
+
+- (void)setBalance:(double)balance
+{
+  _balance = balance;
+  if(_account)
+  {
+    [kRealm transactionWithBlock:^{
+      _account.money = balance;
+    }];
+  }
+}
+
 
 
 @end
