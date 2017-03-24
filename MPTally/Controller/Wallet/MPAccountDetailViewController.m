@@ -166,7 +166,6 @@ static NSString *BillCellID = @"BillCellID";
   NSArray *tmp = self.billGroupedArray[indexPath.section];
   MPBillDetailViewController *vc = [[MPBillDetailViewController alloc] init];
   vc.bill = tmp[indexPath.row];
-  vc.topbarColor = _accountModel.colorStr;
   [vc setDelteBlock:^(MPBillModel *bill) {
     [[MPBillManager shareManager] deleteBill:bill];
     self.billGroupedArray = nil;
@@ -233,14 +232,17 @@ static NSString *BillCellID = @"BillCellID";
           // 创建新的组
           group = [NSMutableArray array];
           [group addObject:bill];
+          prebill = bill;
         }
       }
       if(group.count > 0)
         [_billGroupedArray addObject:group];
     }
   }
+  
   return _billGroupedArray;
 }
+
 
 - (UIView *)tableHeaderView
 {

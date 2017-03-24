@@ -12,7 +12,6 @@
 @interface MPBillDetailViewController : UIViewController
 
 @property (nonatomic, strong) MPBillModel *bill;
-@property (nonatomic, copy) NSString *topbarColor;
 /// 删除账单的回调
 @property (nonatomic, copy) void (^delteBlock)(MPBillModel *bill);
 

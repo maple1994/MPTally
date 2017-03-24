@@ -9,6 +9,8 @@
 #import "MPBillDetailViewController.h"
 #import "MPBillDetailHeaderView.h"
 #import "MPBillDetailBodyView.h"
+#import "MPCreateBillViewController.h"
+#import "CCColorCube.h"
 
 @interface MPBillDetailViewController ()
 
@@ -19,7 +21,10 @@
 @property (nonatomic, weak) MPBillDetailBodyView *bodyDetailView;
 /// 尾部备注
 @property (nonatomic, weak) UILabel *remarkLabel;
-
+/// 底部编辑栏
+@property (nonatomic, weak) UIView *bottomEditView;
+/// 提取的颜色
+@property (nonatomic, strong) UIColor *extractColor;
 @end
 
 @implementation MPBillDetailViewController
@@ -53,11 +58,20 @@
     make.leading.equalTo(self.view).offset(10);
     make.trailing.equalTo(self.view).offset(-10);
   }];
+  [self.bottomEditView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.leading.trailing.bottom.equalTo(self.view);
+    make.height.mas_equalTo(50);
+  }];
+}
+
+/// 给界面元素重新赋值
+- (void)resetBillDetail
+{
   self.billDetailHeaderView.bill = self.bill;
   self.bodyDetailView.bill = self.bill;
   self.remarkLabel.text = self.bill.remark;
-}
 
+}
 
 - (void)setupNav
 {
@@ -85,6 +99,14 @@
   [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertVC animated:YES completion:nil];
 }
 
+/// 编辑
+- (void)edit
+{
+  MPCreateBillViewController *vc = [[MPCreateBillViewController alloc] init];
+  vc.selectedBill = self.bill;
+  [self presentViewController:[[UINavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
@@ -93,6 +115,7 @@
   [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
   // 隐藏导航栏底部黑线
   self.navigationController.navigationBar.shadowImage = [UIImage new];
+  [self resetBillDetail];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -104,13 +127,24 @@
 }
 
 #pragma mark - getter
+- (UIColor *)extractColor
+{
+  if(_extractColor == nil)
+  {
+    CCColorCube *imageColor = [[CCColorCube alloc] init];
+    NSArray *colors = [imageColor extractColorsFromImage:[UIImage imageNamed:_bill.category.categoryImageFileName] flags:CCAvoidBlack count:1];
+    _extractColor = colors.firstObject;
+  }
+  return _extractColor;
+}
+
 - (UIView *)topbarView
 {
   if(_topbarView == nil)
   {
     UIView *view = [[UIView alloc] init];
     _topbarView = view;
-    _topbarView.backgroundColor = [UIColor colorWithHexString:_topbarColor];
+    _topbarView.backgroundColor = self.extractColor;
     [self.view addSubview:view];
   }
   return _topbarView;
@@ -149,6 +183,35 @@
     [self.view addSubview:label];
   }
   return _remarkLabel;
+}
+
+- (UIView *)bottomEditView
+{
+  if(_bottomEditView == nil)
+  {
+    UIView *view = [[UIView alloc] init];
+    _bottomEditView = view;
+    [self.view addSubview:view];
+    
+    // 设置分割线
+    UIView *line = [[UIView alloc] init];
+    line.backgroundColor = colorWithRGB(240, 240, 240);
+    [view addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.leading.trailing.top.equalTo(view);
+      make.height.mas_equalTo(1);
+    }];
+    // 设置按钮
+    UIButton *button = [[UIButton alloc] init];
+    [button setTitle:@"编辑" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithHexString:@"2FB2E8"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(edit) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.center.equalTo(view);
+    }];
+  }
+  return _bottomEditView;
 }
 
 
