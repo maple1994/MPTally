@@ -65,7 +65,14 @@ static id instance;
   [kRealm transactionWithBlock:^{
     [MPBillModel createInDefaultRealmWithValue:bill];
     // 设置对应账单的金额
-    
+    if(bill.isIncome)
+    {
+      bill.account.money += bill.money;
+    }
+    else
+    {
+      bill.account.money -= bill.money;
+    }
   }];
 }
 
@@ -77,7 +84,53 @@ static id instance;
 - (void)deleteBill:(MPBillModel *)bill
 {
   [kRealm transactionWithBlock:^{
+    // 设置对应账单的金额
+    if(bill.isIncome)
+    {
+      bill.account.money -= bill.money;
+    }
+    else
+    {
+      bill.account.money += bill.money;
+    }
     [kRealm deleteObject:bill];
+  }];
+}
+
+/**
+ 更新账单
+ 
+ @param oldBill 旧账单
+ @param newBill 更新后的账单
+ */
+- (void)updateOldBill:(MPBillModel *)oldBill withNewBill:(MPBillModel *)newBill
+{
+  [kRealm transactionWithBlock:^{
+    // 还原之前对Account的操作，将之前的支出，收入对应的减去
+    if(oldBill.isIncome)
+    {
+      oldBill.account.money -= oldBill.money;
+    }
+    else
+    {
+      oldBill.account.money += oldBill.money;
+    }
+    // 设置新的Account
+    if(newBill.isIncome)
+    {
+      newBill.account.money += newBill.money;
+    }
+    else
+    {
+      newBill.account.money -= newBill.money;
+    }
+    oldBill.account = newBill.account;
+    oldBill.dateStr = newBill.dateStr;
+    oldBill.book = newBill.book;
+    oldBill.category = newBill.category;
+    oldBill.remark = newBill.remark;
+    oldBill.isIncome = newBill.isIncome;
+    oldBill.money = newBill.money;
   }];
 }
 

@@ -224,28 +224,20 @@
 
 - (void)calculatorViewDidClickConfirm:(MPCalculatorView *)view
 {
+  MPBillModel *bill = [[MPBillModel alloc] init];
+  bill.account = self.calculatorView.selectedAccount;
+  bill.dateStr = [self.calculatorView.selectedDate dateFormattrString];
+  bill.book = [[MPBookManager shareManager] getCurrentBook];
+  bill.category = self.resultView.categoryModel;
+  bill.remark = self.remark;
+  bill.isIncome = self.resultView.categoryModel.isIncome;
+  bill.money = [self.resultView.results doubleValue];
   if(self.selectedBill)
   {
-    [kRealm transactionWithBlock:^{
-      self.selectedBill.account = self.calculatorView.selectedAccount;
-      self.selectedBill.dateStr = [self.calculatorView.selectedDate dateFormattrString];
-      self.selectedBill.book = [[MPBookManager shareManager] getCurrentBook];
-      self.selectedBill.category = self.resultView.categoryModel;
-      self.selectedBill.remark = self.remark;
-      self.selectedBill.isIncome = self.resultView.categoryModel.isIncome;
-      self.selectedBill.money = [self.resultView.results doubleValue];
-    }];
+    [[MPBillManager shareManager] updateOldBill:self.selectedBill withNewBill:bill];
   }
   else
   {
-    MPBillModel *bill = [[MPBillModel alloc] init];
-    bill.account = self.calculatorView.selectedAccount;
-    bill.dateStr = [self.calculatorView.selectedDate dateFormattrString];
-    bill.book = [[MPBookManager shareManager] getCurrentBook];
-    bill.category = self.resultView.categoryModel;
-    bill.remark = self.remark;
-    bill.isIncome = self.resultView.categoryModel.isIncome;
-    bill.money = [self.resultView.results doubleValue];
     [[MPBillManager shareManager] insertBill:bill];
   }
   [self cancel];

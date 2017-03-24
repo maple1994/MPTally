@@ -45,4 +45,12 @@
  */
 - (void)deleteBill:(MPBillModel *)bill;
 
+/**
+ 更新账单
+
+ @param oldBill 旧账单
+ @param newBill 更新后的账单
+ */
+- (void)updateOldBill:(MPBillModel *)oldBill withNewBill:(MPBillModel *)newBill;
+
 @end
