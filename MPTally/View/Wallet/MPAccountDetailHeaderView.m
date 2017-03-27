@@ -37,7 +37,7 @@
 /// 计算指定日期的收支
 - (void)calculateTotalSum:(NSDate *)date
 {
-  RLMResults *result = [[MPBillManager shareManager] getBillInAccount:_account inAnMonth:date];
+  RLMResults *result = [[MPBillManager shareManager] getBillsInAccount:_account inAnMonth:date];
   double income = 0;
   double outcome = 0;
   for (MPBillModel *bill in result)

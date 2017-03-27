@@ -39,7 +39,7 @@ static id instance;
  @param date 指定年月
  @return MPBillModel账单列表
  */
-- (RLMResults *)getBillInAccount:(MPAccountModel *)account inAnMonth:(NSDate *)date
+- (RLMResults *)getBillsInAccount:(MPAccountModel *)account inAnMonth:(NSDate *)date
 {
   // 获取当前的账本
   MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
@@ -53,14 +53,21 @@ static id instance;
 }
 
 /**
- 获取当前账本下，指定年月的所有账单
+ 在当前账本下，获取指定年月的所有账单记录
  
- @param yearMonth yyyy-MM格式的字符串
- @return 查询结果
+ @param date 指定年月的NSDate对象
+ @return MPBillModel账单列表
  */
-- (RLMResults *)getBillsInYearMonth:(NSString *)yearMonth;
+- (RLMResults *)getOutcomeBillsInSameYearMonth:(NSDate *)date
 {
-  return nil;
+  // 获取当前的账本
+  MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
+  // 生成yyyy-MM格式的字符串
+  NSString *dateStr = [date getYearMonthDateString];
+  // 生成对应的谓语查询语句
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateStr BEGINSWITH %@ and book.bookID=%@ and isIncome=NO", dateStr, book.bookID];
+  RLMResults *results = [MPBillModel objectsWithPredicate:predicate];
+  return [results sortedResultsUsingKeyPath:@"category.categoryName" ascending:YES];
 }
 
 #pragma mark Write

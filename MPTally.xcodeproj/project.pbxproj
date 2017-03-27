@@ -37,6 +37,9 @@
 		F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCD41E6C08430036234E /* MPCategoryModel.m */; };
 		F53ABDE71E88DEB7007D8239 /* MPPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDE61E88DEB7007D8239 /* MPPieView.m */; };
 		F53ABDEA1E88DFB2007D8239 /* MPFormDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDE91E88DFB2007D8239 /* MPFormDatePicker.m */; };
+		F53ABDED1E88F5A2007D8239 /* MPPieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDEC1E88F5A2007D8239 /* MPPieModel.m */; };
+		F53ABDF11E88FCBF007D8239 /* MPBillsInCateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDEF1E88FCBF007D8239 /* MPBillsInCateTableViewCell.m */; };
+		F53ABDF21E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53ABDF01E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib */; };
 		F53EDB7D1E80CC8A0075C807 /* HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */; };
 		F53EDB7E1E80CC8A0075C807 /* NSDate+HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7C1E80CC8A0075C807 /* NSDate+HooDatePicker.m */; };
 		F53EDB821E8104C60075C807 /* MPAccountBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB801E8104C60075C807 /* MPAccountBillTableViewCell.m */; };
@@ -180,6 +183,11 @@
 		F53ABDE61E88DEB7007D8239 /* MPPieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPieView.m; sourceTree = "<group>"; };
 		F53ABDE81E88DFB2007D8239 /* MPFormDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFormDatePicker.h; sourceTree = "<group>"; };
 		F53ABDE91E88DFB2007D8239 /* MPFormDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFormDatePicker.m; sourceTree = "<group>"; };
+		F53ABDEB1E88F5A2007D8239 /* MPPieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPieModel.h; sourceTree = "<group>"; };
+		F53ABDEC1E88F5A2007D8239 /* MPPieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPieModel.m; sourceTree = "<group>"; };
+		F53ABDEE1E88FCBF007D8239 /* MPBillsInCateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBillsInCateTableViewCell.h; sourceTree = "<group>"; };
+		F53ABDEF1E88FCBF007D8239 /* MPBillsInCateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBillsInCateTableViewCell.m; sourceTree = "<group>"; };
+		F53ABDF01E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPBillsInCateTableViewCell.xib; sourceTree = "<group>"; };
 		F53EDB791E80CC8A0075C807 /* HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HooDatePicker.h; sourceTree = "<group>"; };
 		F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HooDatePicker.m; sourceTree = "<group>"; };
 		F53EDB7B1E80CC8A0075C807 /* NSDate+HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HooDatePicker.h"; sourceTree = "<group>"; };
@@ -434,6 +442,8 @@
 				F5FE7B3A1E763A0E003D1B6D /* MPDayBillModel.m */,
 				F5E6A58E1E7C0BF700BDCFB5 /* MPTimeLineHeaderModel.h */,
 				F5E6A58F1E7C0BF700BDCFB5 /* MPTimeLineHeaderModel.m */,
+				F53ABDEB1E88F5A2007D8239 /* MPPieModel.h */,
+				F53ABDEC1E88F5A2007D8239 /* MPPieModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -644,6 +654,9 @@
 				F53ABDE61E88DEB7007D8239 /* MPPieView.m */,
 				F53ABDE81E88DFB2007D8239 /* MPFormDatePicker.h */,
 				F53ABDE91E88DFB2007D8239 /* MPFormDatePicker.m */,
+				F53ABDEE1E88FCBF007D8239 /* MPBillsInCateTableViewCell.h */,
+				F53ABDEF1E88FCBF007D8239 /* MPBillsInCateTableViewCell.m */,
+				F53ABDF01E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -883,6 +896,7 @@
 				F5C9A0E21E7E7ECF0084B97B /* MPAccountAddView.xib in Resources */,
 				F52BCCBE1E6BE9FC0036234E /* addCategory.plist in Resources */,
 				F5C9A0E71E7E89120084B97B /* color.plist in Resources */,
+				F53ABDF21E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib in Resources */,
 				F541E7A21E778D0900556D46 /* MPAccountBalanceHeaderView.xib in Resources */,
 				F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */,
 				F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */,
@@ -1081,6 +1095,7 @@
 				F5DFCE001E85018300185284 /* CCLocalMaximum.m in Sources */,
 				F560E79C1E70F518007068CC /* MyUtils.m in Sources */,
 				F5C9A0ED1E7EA5610084B97B /* MPEditAccountNameViewController.m in Sources */,
+				F53ABDF11E88FCBF007D8239 /* MPBillsInCateTableViewCell.m in Sources */,
 				F560E7931E70ECA9007068CC /* MPCategoryManager.m in Sources */,
 				F5C9A0EA1E7E8A940084B97B /* UIColor+MPHex.m in Sources */,
 				F5F202F31E78CF8900F18F6E /* MPBookListCollectionViewCell.m in Sources */,
@@ -1092,6 +1107,7 @@
 				F541E7A01E778CFF00556D46 /* MPAccountBalanceHeaderView.m in Sources */,
 				F5C9A0F31E7EAE5E0084B97B /* MPEditAccountColorViewController.m in Sources */,
 				F52BCC921E6AEE1A0036234E /* UIView+MPExtension.m in Sources */,
+				F53ABDED1E88F5A2007D8239 /* MPPieModel.m in Sources */,
 				F52BCC501E6AEAF60036234E /* main.m in Sources */,
 				F53EDB821E8104C60075C807 /* MPAccountBillTableViewCell.m in Sources */,
 				F555D3BC1E72D4690007AD24 /* MPTimeLineModel.m in Sources */,

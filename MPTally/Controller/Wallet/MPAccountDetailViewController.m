@@ -211,7 +211,7 @@ static NSString *BillCellID = @"BillCellID";
   {
     _billGroupedArray = [NSMutableArray array];
     NSMutableArray *group = [NSMutableArray array];
-    RLMResults *results = [[MPBillManager shareManager] getBillInAccount:_accountModel inAnMonth:self.selectedDate];
+    RLMResults *results = [[MPBillManager shareManager] getBillsInAccount:_accountModel inAnMonth:self.selectedDate];
     if(results.count >= 1)
     {
       // 上一个bill模型
