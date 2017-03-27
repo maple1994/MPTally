@@ -13,5 +13,7 @@
 
 /// 饼状图模型数组
 @property (nonatomic, strong) NSArray *data;
+/// 是否显示收入状态的报表，默认为NO
+@property (nonatomic, assign, getter=isShowIncomeChart) BOOL showIncomeChart;
 
 @end

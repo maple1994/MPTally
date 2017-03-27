@@ -7,147 +7,91 @@
 //
 
 #import "MPReportFormViewController.h"
-#import "MPFormDatePicker.h"
-#import "MPPieView.h"
-#import "MPBillManager.h"
-#import "MPPieModel.h"
-#import "MPBillsInCateTableViewCell.h"
+#import "MPLineChartViewController.h"
+#import "MPPieChartViewController.h"
 
-@interface MPReportFormViewController ()<MPFormDatePickerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MPReportFormViewController ()<UIScrollViewDelegate>
 
-/// 日期选择器
-@property (nonatomic, weak) MPFormDatePicker *datePicker;
-/// 饼状图
-@property (nonatomic, strong) MPPieView *pieView;
-/// tableView
-@property (nonatomic, weak) UITableView *tableView;
-/// 模型数组
-@property (nonatomic, strong) NSArray *modelArray;
-/// 选中的日期
-@property (nonatomic, strong) NSDate *selectedDate;
+/// 水平滚动容器
+@property (nonatomic, weak) UIScrollView *contentView;
+/// 导航栏分栏
+@property (nonatomic, weak) UISegmentedControl *segCrt;
 
 @end
 
 @implementation MPReportFormViewController
 
-static NSString *ChartBillCellID = @"ChartBillCellID";
-
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  self.automaticallyAdjustsScrollViewInsets = NO;
+  [self setupNavigationBar];
   [self setupUI];
+  self.segCrt.selectedSegmentIndex = 0;
+}
 
-  [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPBillsInCateTableViewCell.class) bundle:nil] forCellReuseIdentifier:ChartBillCellID];
-  self.tableView.rowHeight = 50;
+/// 设置导航栏
+- (void)setupNavigationBar
+{
+  UISegmentedControl *segCtr = [[UISegmentedControl alloc] initWithItems:@[@"分类", @"趋势"]];
+  [segCtr addTarget:self action:@selector(segChange:) forControlEvents:UIControlEventValueChanged];
+  self.navigationItem.titleView = segCtr;
+  self.segCrt = segCtr;
+}
+
+- (void)segChange:(UISegmentedControl *)segCrtl
+{
+  [self.contentView setContentOffset:CGPointMake(kScreenW * segCrtl.selectedSegmentIndex, 0) animated:YES];
 }
 
 - (void)setupUI
 {
-  self.view.backgroundColor = [UIColor whiteColor];
-  self.automaticallyAdjustsScrollViewInsets = NO;
-  [self.datePicker mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.view).offset(64);
-    make.leading.trailing.equalTo(self.view);
-    make.height.mas_equalTo(40);
-  }];
-  [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.datePicker.mas_bottom);
-    make.leading.trailing.bottom.equalTo(self.view);
-  }];
-}
-
-/// 根据选择的日期进行更新数据
-- (void)resetDataByDate:(NSDate *)date
-{
+  self.contentView.frame = CGRectMake(0, 0, kScreenW, kScreenH);
+  MPPieChartViewController *pieVC = [[MPPieChartViewController alloc] init];
+  MPLineChartViewController *lineVC = [[MPLineChartViewController alloc] init];
+  [self addChildViewController:pieVC];
+  [self addChildViewController:lineVC];
   
+  pieVC.view.frame = CGRectMake(0, 0, kScreenW, kScreenH);
+  lineVC.view.frame = CGRectMake(kScreenW, 0, kScreenW, kScreenH);
+  [self.contentView addSubview:pieVC.view];
+  [self.contentView addSubview:lineVC.view];
+  self.contentView.contentSize = CGSizeMake(kScreenW * 2, kScreenH);
 }
 
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-  return self.modelArray.count;
+  //设置标题栏的位置
+  NSInteger index = scrollView.contentOffset.x / self.view.mp_width;
+  self.segCrt.selectedSegmentIndex = index;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-  MPBillsInCateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ChartBillCellID];
-  cell.pieModel = self.modelArray[indexPath.row];
-  return cell;
+  [self scrollViewDidEndDecelerating:scrollView];
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-  return self.pieView;
-}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+#pragma mark - getter
+- (UIScrollView *)contentView
 {
-  return 250;
-}
-
-#pragma mark - MPFormDatePickerDelegate
-- (void)formDatePickerDidSelectDate:(NSDate *)date
-{
-  self.selectedDate = date;
-  self.modelArray = nil;
-  self.pieView.data = self.modelArray;
-  [self.tableView reloadData];
-}
-
-#pragma mark - datePicker
-- (NSDate *)selectedDate
-{
-  if(_selectedDate == nil)
+  if(_contentView == nil)
   {
-    _selectedDate = [NSDate date];
-  }
-  return _selectedDate;
-}
-
-- (UITableView *)tableView
-{
-  if(_tableView == nil)
-  {
-    UITableView *view = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    view.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
+    UIScrollView *view = [[UIScrollView alloc] init];
+    view.showsHorizontalScrollIndicator = NO;
     view.delegate = self;
-    view.dataSource = self;
-    _tableView = view;
+    view.backgroundColor = [UIColor whiteColor];
+    view.bounces = YES;
+    view.alwaysBounceHorizontal = YES;
+    view.alwaysBounceHorizontal = NO;
+    _contentView = view;
+    view.pagingEnabled = YES;
     [self.view addSubview:view];
   }
-  return _tableView;
+  return _contentView;
 }
 
-- (MPPieView *)pieView
-{
-  if(_pieView == nil)
-  {
-    _pieView = [[MPPieView alloc] init];
-    _pieView.data = self.modelArray;
-  }
-  return _pieView;
-}
 
-- (MPFormDatePicker *)datePicker
-{
-  if(_datePicker == nil)
-  {
-    MPFormDatePicker *picker = [[MPFormDatePicker alloc] init];
-    picker.delegate = self;
-    _datePicker = picker;
-    [self.view addSubview:picker];
-  }
-  return _datePicker;
-}
-
-- (NSArray *)modelArray
-{
-  if(_modelArray == nil)
-  {
-    RLMResults *results = [[MPBillManager shareManager] getOutcomeBillsInSameYearMonth:self.selectedDate];
-    _modelArray = [MPPieModel modelArrayWithBills:results];
-  }
-  return _modelArray;
-}
 
 @end

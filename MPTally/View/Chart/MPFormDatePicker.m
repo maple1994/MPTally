@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSDate *currentDate;
 /// 日历对象
 @property (strong, nonatomic) NSCalendar *calendar;
+/// 切换收入 or 支出
+@property (nonatomic, strong) UIButton *switchStateButton;
 
 @end
 
@@ -53,6 +55,11 @@
   [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.leading.trailing.bottom.equalTo(self);
     make.height.mas_equalTo(1);
+  }];
+  [self.switchStateButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.trailing.equalTo(self).offset(-10);
+    make.centerY.equalTo(self);
+    make.width.mas_equalTo(30);
   }];
 }
 
@@ -87,6 +94,15 @@
   NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
   fmt.dateFormat = @"yyyy年MM月";
   return [fmt stringFromDate:date];
+}
+
+/// 切换状态
+- (void)switchStates
+{
+  if([self.delegate respondsToSelector:@selector(formDataPickerDidChangeStatus)])
+  {
+    [self.delegate formDataPickerDidChangeStatus];
+  }
 }
 
 #pragma mark - getter
@@ -159,6 +175,19 @@
     _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
   }
   return _calendar;
+}
+
+- (UIButton *)switchStateButton
+{
+  if(_switchStateButton == nil)
+  {
+    UIButton *button = [[UIButton alloc] init];
+    [button setImage:[UIImage imageNamed:@"exchange"] forState:UIControlStateNormal];
+    _switchStateButton = button;
+    [button addTarget:self action:@selector(switchStates) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+  }
+  return _switchStateButton;
 }
 
 @end

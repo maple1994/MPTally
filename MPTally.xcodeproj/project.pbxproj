@@ -40,6 +40,12 @@
 		F53ABDED1E88F5A2007D8239 /* MPPieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDEC1E88F5A2007D8239 /* MPPieModel.m */; };
 		F53ABDF11E88FCBF007D8239 /* MPBillsInCateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDEF1E88FCBF007D8239 /* MPBillsInCateTableViewCell.m */; };
 		F53ABDF21E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53ABDF01E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib */; };
+		F53ABDF61E893E6C007D8239 /* MPPieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDF51E893E6C007D8239 /* MPPieChartViewController.m */; };
+		F53ABE011E89403B007D8239 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDF91E89403B007D8239 /* UIView+Frame.m */; };
+		F53ABE021E89403B007D8239 /* YZDisplayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDFB1E89403B007D8239 /* YZDisplayTitleLabel.m */; };
+		F53ABE031E89403B007D8239 /* YZDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDFD1E89403B007D8239 /* YZDisplayViewController.m */; };
+		F53ABE041E89403B007D8239 /* YZFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABE001E89403B007D8239 /* YZFlowLayout.m */; };
+		F53ABE0A1E8940AE007D8239 /* MPLineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABE091E8940AE007D8239 /* MPLineChartViewController.m */; };
 		F53EDB7D1E80CC8A0075C807 /* HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */; };
 		F53EDB7E1E80CC8A0075C807 /* NSDate+HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7C1E80CC8A0075C807 /* NSDate+HooDatePicker.m */; };
 		F53EDB821E8104C60075C807 /* MPAccountBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB801E8104C60075C807 /* MPAccountBillTableViewCell.m */; };
@@ -188,6 +194,19 @@
 		F53ABDEE1E88FCBF007D8239 /* MPBillsInCateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBillsInCateTableViewCell.h; sourceTree = "<group>"; };
 		F53ABDEF1E88FCBF007D8239 /* MPBillsInCateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBillsInCateTableViewCell.m; sourceTree = "<group>"; };
 		F53ABDF01E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPBillsInCateTableViewCell.xib; sourceTree = "<group>"; };
+		F53ABDF41E893E6C007D8239 /* MPPieChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPieChartViewController.h; sourceTree = "<group>"; };
+		F53ABDF51E893E6C007D8239 /* MPPieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPieChartViewController.m; sourceTree = "<group>"; };
+		F53ABDF81E89403B007D8239 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		F53ABDF91E89403B007D8239 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		F53ABDFA1E89403B007D8239 /* YZDisplayTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayTitleLabel.h; sourceTree = "<group>"; };
+		F53ABDFB1E89403B007D8239 /* YZDisplayTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZDisplayTitleLabel.m; sourceTree = "<group>"; };
+		F53ABDFC1E89403B007D8239 /* YZDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayViewController.h; sourceTree = "<group>"; };
+		F53ABDFD1E89403B007D8239 /* YZDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZDisplayViewController.m; sourceTree = "<group>"; };
+		F53ABDFE1E89403B007D8239 /* YZDisplayViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayViewHeader.h; sourceTree = "<group>"; };
+		F53ABDFF1E89403B007D8239 /* YZFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFlowLayout.h; sourceTree = "<group>"; };
+		F53ABE001E89403B007D8239 /* YZFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFlowLayout.m; sourceTree = "<group>"; };
+		F53ABE081E8940AE007D8239 /* MPLineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLineChartViewController.h; sourceTree = "<group>"; };
+		F53ABE091E8940AE007D8239 /* MPLineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLineChartViewController.m; sourceTree = "<group>"; };
 		F53EDB791E80CC8A0075C807 /* HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HooDatePicker.h; sourceTree = "<group>"; };
 		F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HooDatePicker.m; sourceTree = "<group>"; };
 		F53EDB7B1E80CC8A0075C807 /* NSDate+HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HooDatePicker.h"; sourceTree = "<group>"; };
@@ -570,6 +589,10 @@
 				F52BCCAE1E6AF8F30036234E /* MPReportFormViewController.h */,
 				F52BCCAF1E6AF8F30036234E /* MPReportFormViewController.m */,
 				F5406E801E865B69001E9DAF /* MPTally-Bridging-Header.h */,
+				F53ABDF41E893E6C007D8239 /* MPPieChartViewController.h */,
+				F53ABDF51E893E6C007D8239 /* MPPieChartViewController.m */,
+				F53ABE081E8940AE007D8239 /* MPLineChartViewController.h */,
+				F53ABE091E8940AE007D8239 /* MPLineChartViewController.m */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -659,6 +682,22 @@
 				F53ABDF01E88FCBF007D8239 /* MPBillsInCateTableViewCell.xib */,
 			);
 			path = Chart;
+			sourceTree = "<group>";
+		};
+		F53ABDF71E89403B007D8239 /* YZDisplayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F53ABDF81E89403B007D8239 /* UIView+Frame.h */,
+				F53ABDF91E89403B007D8239 /* UIView+Frame.m */,
+				F53ABDFA1E89403B007D8239 /* YZDisplayTitleLabel.h */,
+				F53ABDFB1E89403B007D8239 /* YZDisplayTitleLabel.m */,
+				F53ABDFC1E89403B007D8239 /* YZDisplayViewController.h */,
+				F53ABDFD1E89403B007D8239 /* YZDisplayViewController.m */,
+				F53ABDFE1E89403B007D8239 /* YZDisplayViewHeader.h */,
+				F53ABDFF1E89403B007D8239 /* YZFlowLayout.h */,
+				F53ABE001E89403B007D8239 /* YZFlowLayout.m */,
+			);
+			path = YZDisplayViewController;
 			sourceTree = "<group>";
 		};
 		F53EDB781E80CC8A0075C807 /* HooDatePicker */ = {
@@ -756,6 +795,7 @@
 		F5ECA9AF1E6F063400007969 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				F53ABDF71E89403B007D8239 /* YZDisplayViewController */,
 				F5DFCDFA1E85018300185284 /* ColorCube */,
 				F53EDB781E80CC8A0075C807 /* HooDatePicker */,
 				F5AD3B081E6FB1AF003F7B69 /* MPCalendarView */,
@@ -1083,6 +1123,7 @@
 				F52BCCA11E6AF4740036234E /* MPNavigationController.m in Sources */,
 				F550AB481E802E9C0064C947 /* MPDatePickerView.m in Sources */,
 				F5BB3ACA1E83BF5100B4C1BB /* MPBillDetailBodyView.m in Sources */,
+				F53ABE041E89403B007D8239 /* YZFlowLayout.m in Sources */,
 				F53EDB7D1E80CC8A0075C807 /* HooDatePicker.m in Sources */,
 				F5AD3B0B1E6FB1AF003F7B69 /* MPCalendarView.m in Sources */,
 				F560E78D1E70EB2D007068CC /* MPBookModel.m in Sources */,
@@ -1094,12 +1135,16 @@
 				F52BCCAD1E6AF8AA0036234E /* MPBillTableViewController.m in Sources */,
 				F5DFCE001E85018300185284 /* CCLocalMaximum.m in Sources */,
 				F560E79C1E70F518007068CC /* MyUtils.m in Sources */,
+				F53ABE031E89403B007D8239 /* YZDisplayViewController.m in Sources */,
 				F5C9A0ED1E7EA5610084B97B /* MPEditAccountNameViewController.m in Sources */,
 				F53ABDF11E88FCBF007D8239 /* MPBillsInCateTableViewCell.m in Sources */,
+				F53ABE011E89403B007D8239 /* UIView+Frame.m in Sources */,
 				F560E7931E70ECA9007068CC /* MPCategoryManager.m in Sources */,
 				F5C9A0EA1E7E8A940084B97B /* UIColor+MPHex.m in Sources */,
 				F5F202F31E78CF8900F18F6E /* MPBookListCollectionViewCell.m in Sources */,
 				F550AB351E8005240064C947 /* MPAccountDetailHeaderView.m in Sources */,
+				F53ABDF61E893E6C007D8239 /* MPPieChartViewController.m in Sources */,
+				F53ABE021E89403B007D8239 /* YZDisplayTitleLabel.m in Sources */,
 				F560E7811E70D852007068CC /* MPEditRemarkViewController.m in Sources */,
 				F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */,
 				F5C9A0E01E7E7EC20084B97B /* MPAccountAddView.m in Sources */,
@@ -1134,6 +1179,7 @@
 				F560E7841E70DDF3007068CC /* FQPlaceholderTextView.m in Sources */,
 				F5C9A0F91E7EC8D90084B97B /* MPEditAccountTableViewCell.m in Sources */,
 				F52BCC9A1E6AF20F0036234E /* AppDelegate.m in Sources */,
+				F53ABE0A1E8940AE007D8239 /* MPLineChartViewController.m in Sources */,
 				F560E7901E70EC84007068CC /* MPBillManager.m in Sources */,
 				F555D3B91E7297720007AD24 /* MPTimeLineHeaderView.m in Sources */,
 			);

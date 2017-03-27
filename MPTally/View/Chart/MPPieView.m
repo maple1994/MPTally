@@ -102,7 +102,10 @@
   paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
   paragraphStyle.alignment = NSTextAlignmentCenter;
   
-  NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"总支出\n%.2lf", total]];
+  NSString *title = @"总支出";
+  if(self.isShowIncomeChart)
+    title = @"总收入";
+  NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%.2lf", title, total]];
 
   [centerText setAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:11],
                               NSForegroundColorAttributeName: [UIColor blackColor], NSParagraphStyleAttributeName: paragraphStyle}

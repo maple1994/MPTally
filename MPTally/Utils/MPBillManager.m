@@ -60,14 +60,18 @@ static id instance;
  */
 - (RLMResults *)getOutcomeBillsInSameYearMonth:(NSDate *)date
 {
-  // 获取当前的账本
-  MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
-  // 生成yyyy-MM格式的字符串
-  NSString *dateStr = [date getYearMonthDateString];
-  // 生成对应的谓语查询语句
-  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateStr BEGINSWITH %@ and book.bookID=%@ and isIncome=NO", dateStr, book.bookID];
-  RLMResults *results = [MPBillModel objectsWithPredicate:predicate];
-  return [results sortedResultsUsingKeyPath:@"category.categoryName" ascending:YES];
+  return [self getBillsInSameYearMonth:date isIncome:NO];
+}
+
+/**
+ 在当前账本下，获取指定年月的所有收入账单记录
+ 
+ @param date 指定年月的NSDate对象
+ @return MPBillModel账单列表
+ */
+- (RLMResults *)getIncomeBillsInSameYearMonth:(NSDate *)date
+{
+  return [self getBillsInSameYearMonth:date isIncome:YES];
 }
 
 #pragma mark Write
@@ -166,6 +170,25 @@ static id instance;
   // 再根据recordDate（记录时间）进行排序
   RLMSortDescriptor *desc2 = [RLMSortDescriptor sortDescriptorWithKeyPath:@"recordDate" ascending:NO];
   return [results sortedResultsUsingDescriptors:@[desc1, desc2]];
+}
+
+/**
+ 当前账本下，指定年月的账单列表
+
+ @param date 指定的年月
+ @param isIncome 收入 or 支出类型的账单
+ @return 筛选后的结果
+ */
+- (RLMResults *)getBillsInSameYearMonth:(NSDate *)date isIncome:(BOOL)isIncome
+{
+  // 获取当前的账本
+  MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
+  // 生成yyyy-MM格式的字符串
+  NSString *dateStr = [date getYearMonthDateString];
+  // 生成对应的谓语查询语句
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateStr BEGINSWITH %@ and book.bookID=%@ and isIncome=%li", dateStr, book.bookID, isIncome];
+  RLMResults *results = [MPBillModel objectsWithPredicate:predicate];
+  return [results sortedResultsUsingKeyPath:@"category.categoryName" ascending:YES];
 }
 
 @end

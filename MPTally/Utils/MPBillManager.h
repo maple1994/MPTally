@@ -32,6 +32,14 @@
 - (RLMResults *)getOutcomeBillsInSameYearMonth:(NSDate *)date;
 
 /**
+ 在当前账本下，获取指定年月的所有收入账单记录
+ 
+ @param date 指定年月的NSDate对象
+ @return MPBillModel账单列表
+ */
+- (RLMResults *)getIncomeBillsInSameYearMonth:(NSDate *)date;
+
+/**
  获取当前账本下的所有账单
 
  @return MPBillModel账单列表

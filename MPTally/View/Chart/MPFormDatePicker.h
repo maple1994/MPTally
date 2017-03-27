@@ -12,6 +12,10 @@
 /// 选择的日期
 - (void)formDatePickerDidSelectDate:(NSDate *)date;
 
+@optional
+/// 切换了状态
+- (void)formDataPickerDidChangeStatus;
+
 @end
 
 /// 报表时间选择器
