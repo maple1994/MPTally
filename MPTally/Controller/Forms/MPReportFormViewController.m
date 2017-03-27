@@ -23,6 +23,8 @@
 @property (nonatomic, weak) UITableView *tableView;
 /// 模型数组
 @property (nonatomic, strong) NSArray *modelArray;
+/// 选中的日期
+@property (nonatomic, strong) NSDate *selectedDate;
 
 @end
 
@@ -54,6 +56,12 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
   }];
 }
 
+/// 根据选择的日期进行更新数据
+- (void)resetDataByDate:(NSDate *)date
+{
+  
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -67,18 +75,41 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
   return cell;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+  return self.pieView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+  return 250;
+}
+
 #pragma mark - MPFormDatePickerDelegate
 - (void)formDatePickerDidSelectDate:(NSDate *)date
 {
-  
+  self.selectedDate = date;
+  self.modelArray = nil;
+  self.pieView.data = self.modelArray;
+  [self.tableView reloadData];
 }
 
 #pragma mark - datePicker
+- (NSDate *)selectedDate
+{
+  if(_selectedDate == nil)
+  {
+    _selectedDate = [NSDate date];
+  }
+  return _selectedDate;
+}
+
 - (UITableView *)tableView
 {
   if(_tableView == nil)
   {
     UITableView *view = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    view.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     view.delegate = self;
     view.dataSource = self;
     _tableView = view;
@@ -92,6 +123,7 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
   if(_pieView == nil)
   {
     _pieView = [[MPPieView alloc] init];
+    _pieView.data = self.modelArray;
   }
   return _pieView;
 }
@@ -112,7 +144,7 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
 {
   if(_modelArray == nil)
   {
-    RLMResults *results = [[MPBillManager shareManager] getOutcomeBillsInSameYearMonth:[NSDate date]];
+    RLMResults *results = [[MPBillManager shareManager] getOutcomeBillsInSameYearMonth:self.selectedDate];
     _modelArray = [MPPieModel modelArrayWithBills:results];
   }
   return _modelArray;

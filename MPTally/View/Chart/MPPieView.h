@@ -11,4 +11,7 @@
 /// 饼状图
 @interface MPPieView : UIView
 
+/// 饼状图模型数组
+@property (nonatomic, strong) NSArray *data;
+
 @end

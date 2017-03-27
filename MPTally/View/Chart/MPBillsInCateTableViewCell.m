@@ -26,7 +26,7 @@
   self.categoryImageView.image = [UIImage imageNamed:pieModel.category.categoryImageFileName];
   self.cateTitleLabel.text = pieModel.category.categoryName;
   self.sumLabel.text = [MyUtils numToString:pieModel.sum];
-  self.precentLabel.text = [NSString stringWithFormat:@"%.2lf%%", pieModel.precent * 100];
+  self.precentLabel.text = [NSString stringWithFormat:@"%.1lf%%", pieModel.precent * 100];
 }
 
 @end
