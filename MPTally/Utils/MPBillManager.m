@@ -52,6 +52,17 @@ static id instance;
   return [self sortTheResultsByDate:result];
 }
 
+/**
+ 获取当前账本下，指定年月的所有账单
+ 
+ @param yearMonth yyyy-MM格式的字符串
+ @return 查询结果
+ */
+- (RLMResults *)getBillsInYearMonth:(NSString *)yearMonth;
+{
+  return nil;
+}
+
 #pragma mark Write
 /**
  插入一条账单

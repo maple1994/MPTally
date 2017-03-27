@@ -24,6 +24,14 @@
 - (RLMResults *)getBillInAccount:(MPAccountModel *)account inAnMonth:(NSDate *)date;
 
 /**
+ 获取当前账本下，指定年月的所有账单
+
+ @param yearMonth yyyy-MM格式的字符串
+ @return 查询结果
+ */
+- (RLMResults *)getBillsInYearMonth:(NSString *)yearMonth;
+
+/**
  获取当前账本下的所有账单
 
  @return MPBillModel账单列表

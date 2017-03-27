@@ -7,31 +7,49 @@
 //
 
 #import "MPReportFormViewController.h"
+#import "MPFormDatePicker.h"
 
-@interface MPReportFormViewController ()
+@interface MPReportFormViewController ()<MPFormDatePickerDelegate>
+
+@property (nonatomic, strong) MPFormDatePicker *datePicker;
 
 @end
 
 @implementation MPReportFormViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  [self setupUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupUI
+{
+  self.view.backgroundColor = [UIColor whiteColor];
+  [self.datePicker mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.view).offset(64);
+    make.leading.trailing.equalTo(self.view);
+    make.height.mas_equalTo(40);
+  }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - MPFormDatePickerDelegate
+- (void)formDatePickerDidSelectDate:(NSDate *)date
+{
+  
 }
-*/
+
+#pragma mark - datePicker
+- (MPFormDatePicker *)datePicker
+{
+  if(_datePicker == nil)
+  {
+    MPFormDatePicker *picker = [[MPFormDatePicker alloc] init];
+    picker.delegate = self;
+    _datePicker = picker;
+    [self.view addSubview:picker];
+  }
+  return _datePicker;
+}
 
 @end

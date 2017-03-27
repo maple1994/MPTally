@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E16A33A88367558071A8F45 /* libPods-MPTallyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */; };
-		9A72D997207E2C6E2A7FFF88 /* libPods-MPTally.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D482B59F8CF55D80F46A72E8 /* libPods-MPTally.a */; };
-		F4383992E9243CE477366E09 /* libPods-MPTallyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EAD6B0B9D99168D4522450 /* libPods-MPTallyUITests.a */; };
+		3F0EF2393CDA467F363B443E /* Pods_MPTallyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0EFED9CCD173E8B7F03025 /* Pods_MPTallyUITests.framework */; };
+		5B2CB7D08E6AF53A96B684E1 /* Pods_MPTally.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2476D4B2BEEF8A88EF047A56 /* Pods_MPTally.framework */; };
+		A5FF3147DAB365A68983F540 /* Pods_MPTallyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCE6D85A7B05CD87A46161D /* Pods_MPTallyTests.framework */; };
 		F51BB8A11E7FF4C6007F1741 /* MPAccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51BB8A01E7FF4C6007F1741 /* MPAccountDetailViewController.m */; };
 		F52BCC501E6AEAF60036234E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCC4F1E6AEAF60036234E /* main.m */; };
 		F52BCC5B1E6AEAF60036234E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52BCC5A1E6AEAF60036234E /* Assets.xcassets */; };
@@ -35,6 +35,8 @@
 		F52BCCD01E6BF66F0036234E /* MPCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCCF1E6BF66F0036234E /* MPCategoryCollectionViewCell.m */; };
 		F52BCCD21E6BF75C0036234E /* MPCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */; };
 		F52BCCD51E6C08430036234E /* MPCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BCCD41E6C08430036234E /* MPCategoryModel.m */; };
+		F53ABDE71E88DEB7007D8239 /* MPPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDE61E88DEB7007D8239 /* MPPieView.m */; };
+		F53ABDEA1E88DFB2007D8239 /* MPFormDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDE91E88DFB2007D8239 /* MPFormDatePicker.m */; };
 		F53EDB7D1E80CC8A0075C807 /* HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */; };
 		F53EDB7E1E80CC8A0075C807 /* NSDate+HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7C1E80CC8A0075C807 /* NSDate+HooDatePicker.m */; };
 		F53EDB821E8104C60075C807 /* MPAccountBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB801E8104C60075C807 /* MPAccountBillTableViewCell.m */; };
@@ -121,11 +123,11 @@
 		206FAD940693780DE49F9B9E /* Pods-MPTally.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPTally.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MPTally/Pods-MPTally.debug.xcconfig"; sourceTree = "<group>"; };
 		23544DD4A27633AA1D8A16DA /* Pods-MPTallyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPTallyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MPTallyUITests/Pods-MPTallyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2449E00251DF1F0AB6B2BC41 /* Pods-MPTallyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPTallyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MPTallyTests/Pods-MPTallyTests.release.xcconfig"; sourceTree = "<group>"; };
+		2476D4B2BEEF8A88EF047A56 /* Pods_MPTally.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPTally.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6514137F560044753668E847 /* Pods-MPTallyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPTallyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MPTallyUITests/Pods-MPTallyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DCF2B45177FDB3871DA3D2B /* Pods-MPTally.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPTally.release.xcconfig"; path = "Pods/Target Support Files/Pods-MPTally/Pods-MPTally.release.xcconfig"; sourceTree = "<group>"; };
 		90374369BD6E12BE3C71D224 /* Pods-MPTallyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPTallyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MPTallyTests/Pods-MPTallyTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C8EAD6B0B9D99168D4522450 /* libPods-MPTallyUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D482B59F8CF55D80F46A72E8 /* libPods-MPTally.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTally.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCCE6D85A7B05CD87A46161D /* Pods_MPTallyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPTallyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51BB89F1E7FF4C6007F1741 /* MPAccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountDetailViewController.h; sourceTree = "<group>"; };
 		F51BB8A01E7FF4C6007F1741 /* MPAccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAccountDetailViewController.m; sourceTree = "<group>"; };
 		F52BCC4B1E6AEAF60036234E /* MPTally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPTally.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +176,10 @@
 		F52BCCD11E6BF75C0036234E /* MPCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		F52BCCD31E6C08430036234E /* MPCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCategoryModel.h; sourceTree = "<group>"; };
 		F52BCCD41E6C08430036234E /* MPCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCategoryModel.m; sourceTree = "<group>"; };
+		F53ABDE51E88DEB7007D8239 /* MPPieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPieView.h; sourceTree = "<group>"; };
+		F53ABDE61E88DEB7007D8239 /* MPPieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPieView.m; sourceTree = "<group>"; };
+		F53ABDE81E88DFB2007D8239 /* MPFormDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFormDatePicker.h; sourceTree = "<group>"; };
+		F53ABDE91E88DFB2007D8239 /* MPFormDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFormDatePicker.m; sourceTree = "<group>"; };
 		F53EDB791E80CC8A0075C807 /* HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HooDatePicker.h; sourceTree = "<group>"; };
 		F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HooDatePicker.m; sourceTree = "<group>"; };
 		F53EDB7B1E80CC8A0075C807 /* NSDate+HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HooDatePicker.h"; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 		F53EDB7F1E8104C60075C807 /* MPAccountBillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountBillTableViewCell.h; sourceTree = "<group>"; };
 		F53EDB801E8104C60075C807 /* MPAccountBillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAccountBillTableViewCell.m; sourceTree = "<group>"; };
 		F53EDB811E8104C60075C807 /* MPAccountBillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAccountBillTableViewCell.xib; sourceTree = "<group>"; };
+		F5406E801E865B69001E9DAF /* MPTally-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPTally-Bridging-Header.h"; sourceTree = "<group>"; };
 		F541E7921E7784BF00556D46 /* MPBookListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBookListView.h; sourceTree = "<group>"; };
 		F541E7931E7784BF00556D46 /* MPBookListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBookListView.m; sourceTree = "<group>"; };
 		F541E7961E77895800556D46 /* MPAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAccountTableViewCell.h; sourceTree = "<group>"; };
@@ -289,7 +296,7 @@
 		F5F202FB1E79386600F18F6E /* SVProgressHUD+MPTips.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD+MPTips.m"; sourceTree = "<group>"; };
 		F5FE7B391E763A0E003D1B6D /* MPDayBillModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDayBillModel.h; sourceTree = "<group>"; };
 		F5FE7B3A1E763A0E003D1B6D /* MPDayBillModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDayBillModel.m; sourceTree = "<group>"; };
-		FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPTallyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0EFED9CCD173E8B7F03025 /* Pods_MPTallyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPTallyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,7 +304,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A72D997207E2C6E2A7FFF88 /* libPods-MPTally.a in Frameworks */,
+				5B2CB7D08E6AF53A96B684E1 /* Pods_MPTally.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E16A33A88367558071A8F45 /* libPods-MPTallyTests.a in Frameworks */,
+				A5FF3147DAB365A68983F540 /* Pods_MPTallyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +320,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4383992E9243CE477366E09 /* libPods-MPTallyUITests.a in Frameworks */,
+				3F0EF2393CDA467F363B443E /* Pods_MPTallyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,9 +330,9 @@
 		65D1844870A2B8E9F376EBD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D482B59F8CF55D80F46A72E8 /* libPods-MPTally.a */,
-				FC3A543055DA3B668913FF79 /* libPods-MPTallyTests.a */,
-				C8EAD6B0B9D99168D4522450 /* libPods-MPTallyUITests.a */,
+				2476D4B2BEEF8A88EF047A56 /* Pods_MPTally.framework */,
+				DCCE6D85A7B05CD87A46161D /* Pods_MPTallyTests.framework */,
+				FA0EFED9CCD173E8B7F03025 /* Pods_MPTallyUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -462,6 +469,7 @@
 		F52BCC8A1E6AECB10036234E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F53ABDE21E88DE63007D8239 /* Chart */,
 				F541E7951E77894700556D46 /* Wallet */,
 				F560E7A21E7185B1007068CC /* Bill */,
 				F52BCCBF1E6BEEA70036234E /* CreateBill */,
@@ -551,6 +559,7 @@
 			children = (
 				F52BCCAE1E6AF8F30036234E /* MPReportFormViewController.h */,
 				F52BCCAF1E6AF8F30036234E /* MPReportFormViewController.m */,
+				F5406E801E865B69001E9DAF /* MPTally-Bridging-Header.h */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -626,6 +635,17 @@
 				F5AD3B1F1E703DB0003F7B69 /* MPAccountPickerTableViewCell.xib */,
 			);
 			path = CreateBill;
+			sourceTree = "<group>";
+		};
+		F53ABDE21E88DE63007D8239 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				F53ABDE51E88DEB7007D8239 /* MPPieView.h */,
+				F53ABDE61E88DEB7007D8239 /* MPPieView.m */,
+				F53ABDE81E88DFB2007D8239 /* MPFormDatePicker.h */,
+				F53ABDE91E88DFB2007D8239 /* MPFormDatePicker.m */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		F53EDB781E80CC8A0075C807 /* HooDatePicker */ = {
@@ -808,6 +828,7 @@
 					F52BCC4A1E6AEAF60036234E = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = LXULFV77XT;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					F52BCC631E6AEAF60036234E = {
@@ -1037,11 +1058,13 @@
 				F5C9A0F61E7EB5B80084B97B /* MPColorCollectionViewCell.m in Sources */,
 				F5ECA9A91E6EB36700007969 /* MPBaseCategoryCollectionViewController.m in Sources */,
 				F52BCCB31E6AF91E0036234E /* MPSettingTableViewController.m in Sources */,
+				F53ABDEA1E88DFB2007D8239 /* MPFormDatePicker.m in Sources */,
 				F5AD3B1E1E703D60003F7B69 /* MPAccountPickerTableViewCell.m in Sources */,
 				F5ECA9AC1E6EEB9300007969 /* MPCalculatorView.m in Sources */,
 				F52BCCB01E6AF8F30036234E /* MPReportFormViewController.m in Sources */,
 				F52BCC9E1E6AF2480036234E /* MPTabBarController.m in Sources */,
 				F5FE7B3B1E763A0E003D1B6D /* MPDayBillModel.m in Sources */,
+				F53ABDE71E88DEB7007D8239 /* MPPieView.m in Sources */,
 				F560E7A61E7185C6007068CC /* MPTimeLineItemTableViewCell.m in Sources */,
 				F52BCCA11E6AF4740036234E /* MPNavigationController.m in Sources */,
 				F550AB481E802E9C0064C947 /* MPDatePickerView.m in Sources */,
@@ -1242,6 +1265,7 @@
 			baseConfigurationReference = 206FAD940693780DE49F9B9E /* Pods-MPTally.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = LXULFV77XT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MPTally/Other/MPTally.pch";
@@ -1249,6 +1273,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maple.MPTally;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MPTally/Controller/Forms/MPTally-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				WARNING_CFLAGS = "-Wno-documentation";
 			};
 			name = Debug;
 		};
@@ -1257,6 +1285,7 @@
 			baseConfigurationReference = 8DCF2B45177FDB3871DA3D2B /* Pods-MPTally.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = LXULFV77XT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MPTally/Other/MPTally.pch";
@@ -1264,6 +1293,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maple.MPTally;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MPTally/Controller/Forms/MPTally-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				WARNING_CFLAGS = "-Wno-documentation";
 			};
 			name = Release;
 		};
