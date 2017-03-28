@@ -46,6 +46,9 @@
 		F53ABE031E89403B007D8239 /* YZDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABDFD1E89403B007D8239 /* YZDisplayViewController.m */; };
 		F53ABE041E89403B007D8239 /* YZFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABE001E89403B007D8239 /* YZFlowLayout.m */; };
 		F53ABE0A1E8940AE007D8239 /* MPLineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABE091E8940AE007D8239 /* MPLineChartViewController.m */; };
+		F53ABE0D1E895401007D8239 /* SymbolsValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABE0C1E895401007D8239 /* SymbolsValueFormatter.m */; };
+		F53ABE101E89551D007D8239 /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABE0F1E89551D007D8239 /* DateValueFormatter.m */; };
+		F53ABE131E8955B4007D8239 /* SetValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F53ABE121E8955B4007D8239 /* SetValueFormatter.m */; };
 		F53EDB7D1E80CC8A0075C807 /* HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */; };
 		F53EDB7E1E80CC8A0075C807 /* NSDate+HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB7C1E80CC8A0075C807 /* NSDate+HooDatePicker.m */; };
 		F53EDB821E8104C60075C807 /* MPAccountBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EDB801E8104C60075C807 /* MPAccountBillTableViewCell.m */; };
@@ -207,6 +210,12 @@
 		F53ABE001E89403B007D8239 /* YZFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFlowLayout.m; sourceTree = "<group>"; };
 		F53ABE081E8940AE007D8239 /* MPLineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLineChartViewController.h; sourceTree = "<group>"; };
 		F53ABE091E8940AE007D8239 /* MPLineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLineChartViewController.m; sourceTree = "<group>"; };
+		F53ABE0B1E895401007D8239 /* SymbolsValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolsValueFormatter.h; sourceTree = "<group>"; };
+		F53ABE0C1E895401007D8239 /* SymbolsValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolsValueFormatter.m; sourceTree = "<group>"; };
+		F53ABE0E1E89551D007D8239 /* DateValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
+		F53ABE0F1E89551D007D8239 /* DateValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
+		F53ABE111E8955B4007D8239 /* SetValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetValueFormatter.h; sourceTree = "<group>"; };
+		F53ABE121E8955B4007D8239 /* SetValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetValueFormatter.m; sourceTree = "<group>"; };
 		F53EDB791E80CC8A0075C807 /* HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HooDatePicker.h; sourceTree = "<group>"; };
 		F53EDB7A1E80CC8A0075C807 /* HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HooDatePicker.m; sourceTree = "<group>"; };
 		F53EDB7B1E80CC8A0075C807 /* NSDate+HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HooDatePicker.h"; sourceTree = "<group>"; };
@@ -593,6 +602,12 @@
 				F53ABDF51E893E6C007D8239 /* MPPieChartViewController.m */,
 				F53ABE081E8940AE007D8239 /* MPLineChartViewController.h */,
 				F53ABE091E8940AE007D8239 /* MPLineChartViewController.m */,
+				F53ABE0B1E895401007D8239 /* SymbolsValueFormatter.h */,
+				F53ABE0C1E895401007D8239 /* SymbolsValueFormatter.m */,
+				F53ABE0E1E89551D007D8239 /* DateValueFormatter.h */,
+				F53ABE0F1E89551D007D8239 /* DateValueFormatter.m */,
+				F53ABE111E8955B4007D8239 /* SetValueFormatter.h */,
+				F53ABE121E8955B4007D8239 /* SetValueFormatter.m */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -1132,6 +1147,7 @@
 				F52BCCB61E6AF93C0036234E /* MPAccountTableViewController.m in Sources */,
 				F541E7A51E7799A500556D46 /* MPTopBarView.m in Sources */,
 				F554FCE01E6C35A20032A60F /* MPIncomeCategoryViewController.m in Sources */,
+				F53ABE131E8955B4007D8239 /* SetValueFormatter.m in Sources */,
 				F52BCCAD1E6AF8AA0036234E /* MPBillTableViewController.m in Sources */,
 				F5DFCE001E85018300185284 /* CCLocalMaximum.m in Sources */,
 				F560E79C1E70F518007068CC /* MyUtils.m in Sources */,
@@ -1139,6 +1155,7 @@
 				F5C9A0ED1E7EA5610084B97B /* MPEditAccountNameViewController.m in Sources */,
 				F53ABDF11E88FCBF007D8239 /* MPBillsInCateTableViewCell.m in Sources */,
 				F53ABE011E89403B007D8239 /* UIView+Frame.m in Sources */,
+				F53ABE101E89551D007D8239 /* DateValueFormatter.m in Sources */,
 				F560E7931E70ECA9007068CC /* MPCategoryManager.m in Sources */,
 				F5C9A0EA1E7E8A940084B97B /* UIColor+MPHex.m in Sources */,
 				F5F202F31E78CF8900F18F6E /* MPBookListCollectionViewCell.m in Sources */,
@@ -1163,6 +1180,7 @@
 				F554FCE31E6C35B50032A60F /* MPOutcomeCategoryViewController.m in Sources */,
 				F5DFCDFF1E85018300185284 /* CCColorCube.m in Sources */,
 				F5C9A0F01E7EA71B0084B97B /* MPEditAccountMoneyViewController.m in Sources */,
+				F53ABE0D1E895401007D8239 /* SymbolsValueFormatter.m in Sources */,
 				F5F202F91E79290600F18F6E /* MPCreateBookView.m in Sources */,
 				F52BCC941E6AEF530036234E /* Foundation+Log.m in Sources */,
 				F52BCCC71E6BEF670036234E /* MPCreateBillHeaderView.m in Sources */,
