@@ -67,9 +67,11 @@
 /// 下一年 / 月
 - (void)next
 {
-  NSDate *nextMonth = [self.calendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:self.currentDate options:0];
-  self.currentDate = nextMonth;
-  [self.dateButton setTitle:[self stringFromDate:nextMonth] forState:UIControlStateNormal];
+  NSDate *next = [self.calendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:self.currentDate options:0];
+    if(_pickerMode == MPDatePickerYear)
+        next = [self.calendar dateByAddingUnit:NSCalendarUnitYear value:1 toDate:self.currentDate options:0];
+  self.currentDate = next;
+  [self.dateButton setTitle:[self stringFromDate:next] forState:UIControlStateNormal];
   if([self.delegate respondsToSelector:@selector(formDatePickerDidSelectDate:)])
   {
     [self.delegate formDatePickerDidSelectDate:self.currentDate];
@@ -79,9 +81,11 @@
 /// 上一年 / 月
 - (void)previous
 {
-  NSDate *preMonth = [self.calendar dateByAddingUnit:NSCalendarUnitMonth value:-1 toDate:self.currentDate options:0];
-  self.currentDate = preMonth;
-  [self.dateButton setTitle:[self stringFromDate:preMonth] forState:UIControlStateNormal];
+  NSDate *pre = [self.calendar dateByAddingUnit:NSCalendarUnitMonth value:-1 toDate:self.currentDate options:0];
+    if(_pickerMode == MPDatePickerYear)
+        pre = [self.calendar dateByAddingUnit:NSCalendarUnitYear value:-1 toDate:self.currentDate options:0];
+    self.currentDate = pre;
+  [self.dateButton setTitle:[self stringFromDate:pre] forState:UIControlStateNormal];
   if([self.delegate respondsToSelector:@selector(formDatePickerDidSelectDate:)])
   {
     [self.delegate formDatePickerDidSelectDate:self.currentDate];
@@ -93,6 +97,8 @@
 {
   NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
   fmt.dateFormat = @"yyyy年MM月";
+    if(_pickerMode == MPDatePickerYear)
+        fmt.dateFormat = @"yyyy年";
   return [fmt stringFromDate:date];
 }
 
@@ -103,6 +109,14 @@
   {
     [self.delegate formDataPickerDidChangeStatus];
   }
+}
+
+- (void)setPickerMode:(MPDatePickerMode)pickerMode
+{
+    _pickerMode = pickerMode;
+    if(_pickerMode == MPDatePickerYear)
+        self.switchStateButton.hidden = YES;
+    [self.dateButton setTitle:[self stringFromDate:self.currentDate] forState:UIControlStateNormal];
 }
 
 #pragma mark - getter

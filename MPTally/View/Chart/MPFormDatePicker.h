@@ -18,9 +18,17 @@
 
 @end
 
+typedef NS_ENUM(NSInteger, MPDatePickerMode)
+{
+    MPDatePickerYear = 1,     // 显示年
+    MPDatePickerYearMonth = 0 // 显示年月
+};
+
 /// 报表时间选择器
 @interface MPFormDatePicker : UIView
 
 @property (nonatomic, weak) id<MPFormDatePickerDelegate> delegate;
+/// 指定显示的格式，默认显示年月
+@property (nonatomic, assign) MPDatePickerMode pickerMode;
 
 @end

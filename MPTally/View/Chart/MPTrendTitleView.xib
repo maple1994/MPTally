@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MPTrendTitleView">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="94"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rNN-45-LRd" userLabel="Title1">
+                    <rect key="frame" x="0.0" y="0.0" width="79" height="94"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月份" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPb-Zh-Oc5">
+                            <rect key="frame" x="24" y="38.5" width="31" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="nPb-Zh-Oc5" firstAttribute="centerX" secondItem="rNN-45-LRd" secondAttribute="centerX" id="YDx-Y3-slP"/>
+                        <constraint firstItem="nPb-Zh-Oc5" firstAttribute="centerY" secondItem="rNN-45-LRd" secondAttribute="centerY" id="iiw-Hj-qwy"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIk-lX-j0R" userLabel="Title2">
+                    <rect key="frame" x="79" y="0.0" width="78.5" height="94"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收入" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izi-nC-yA7">
+                            <rect key="frame" x="24" y="38.5" width="31" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Izi-nC-yA7" firstAttribute="centerY" secondItem="bIk-lX-j0R" secondAttribute="centerY" id="BAr-Za-H9j"/>
+                        <constraint firstItem="Izi-nC-yA7" firstAttribute="centerX" secondItem="bIk-lX-j0R" secondAttribute="centerX" id="eRm-Ps-02g"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apj-Oo-gHQ" userLabel="Title3">
+                    <rect key="frame" x="157.5" y="0.0" width="79" height="94"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJT-AR-Jaf">
+                            <rect key="frame" x="24" y="38.5" width="31" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="EJT-AR-Jaf" firstAttribute="centerX" secondItem="apj-Oo-gHQ" secondAttribute="centerX" id="Xdh-sP-oIl"/>
+                        <constraint firstItem="EJT-AR-Jaf" firstAttribute="centerY" secondItem="apj-Oo-gHQ" secondAttribute="centerY" id="m95-Mf-4Bl"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpG-A1-gkP" userLabel="Title4">
+                    <rect key="frame" x="236.5" y="0.0" width="78.5" height="94"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rr-Pz-tl7">
+                            <rect key="frame" x="24" y="38.5" width="31" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="7Rr-Pz-tl7" firstAttribute="centerY" secondItem="gpG-A1-gkP" secondAttribute="centerY" id="QEP-e5-LhQ"/>
+                        <constraint firstItem="7Rr-Pz-tl7" firstAttribute="centerX" secondItem="gpG-A1-gkP" secondAttribute="centerX" id="RIW-8K-4ru"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bIk-lX-j0R" firstAttribute="leading" secondItem="rNN-45-LRd" secondAttribute="trailing" id="Bh4-dm-jUQ"/>
+                <constraint firstItem="gpG-A1-gkP" firstAttribute="leading" secondItem="apj-Oo-gHQ" secondAttribute="trailing" id="GDR-TQ-eYb"/>
+                <constraint firstItem="gpG-A1-gkP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MQf-Tk-ZNV"/>
+                <constraint firstItem="gpG-A1-gkP" firstAttribute="width" secondItem="rNN-45-LRd" secondAttribute="width" id="YZc-6C-Ch8"/>
+                <constraint firstItem="apj-Oo-gHQ" firstAttribute="leading" secondItem="bIk-lX-j0R" secondAttribute="trailing" id="d4F-EC-Qmr"/>
+                <constraint firstItem="bIk-lX-j0R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fbb-ix-8cg"/>
+                <constraint firstItem="apj-Oo-gHQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jEc-eB-jwV"/>
+                <constraint firstItem="apj-Oo-gHQ" firstAttribute="width" secondItem="rNN-45-LRd" secondAttribute="width" id="jHS-uj-zPw"/>
+                <constraint firstAttribute="bottom" secondItem="rNN-45-LRd" secondAttribute="bottom" id="lIu-kS-SQL"/>
+                <constraint firstAttribute="bottom" secondItem="bIk-lX-j0R" secondAttribute="bottom" id="oG1-NV-l5I"/>
+                <constraint firstItem="bIk-lX-j0R" firstAttribute="width" secondItem="rNN-45-LRd" secondAttribute="width" id="qzd-F4-gff"/>
+                <constraint firstItem="rNN-45-LRd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tZ0-x0-h9J"/>
+                <constraint firstAttribute="trailing" secondItem="gpG-A1-gkP" secondAttribute="trailing" id="uF9-OY-XbR"/>
+                <constraint firstAttribute="bottom" secondItem="apj-Oo-gHQ" secondAttribute="bottom" id="wMg-ZY-QMn"/>
+                <constraint firstItem="rNN-45-LRd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xhD-1l-qbN"/>
+                <constraint firstAttribute="bottom" secondItem="gpG-A1-gkP" secondAttribute="bottom" id="ytu-Yc-7o7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-142.5" y="-245"/>
+        </view>
+    </objects>
+</document>
