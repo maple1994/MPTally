@@ -11,6 +11,7 @@
 #import "MPTrendTitleView.h"
 #import "MPTrendTableViewCell.h"
 #import "MPFormDatePicker.h"
+#import "MPTrendModel.h"
 
 @interface MPLineChartViewController ()<UITableViewDelegate, UITableViewDataSource, MPFormDatePickerDelegate>
 
@@ -19,6 +20,10 @@
 @property (nonatomic, weak) MPFormDatePicker *datePicker;
 /// 标题栏
 @property (nonatomic, strong) MPTrendTitleView *titleView;
+/// 模型数组
+@property (nonatomic, strong) NSArray *modelArray;
+/// 当前选中的日期
+@property (nonatomic, strong) NSDate *selectedDate;
 
 @end
 
@@ -30,6 +35,7 @@ static NSString *TrendCellID = @"TrendCellID";
 {
     [super viewDidLoad];
     [self setupUI];
+    
 }
 
 - (void)setupUI
@@ -48,15 +54,23 @@ static NSString *TrendCellID = @"TrendCellID";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPTrendTableViewCell.class) bundle:nil] forCellReuseIdentifier:TrendCellID];
 }
 
+/// 显示没有数据时的界面
+- (void)showNotDataView
+{
+    UIView *view = [[UIView alloc] init];
+//    UILabel *la
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.modelArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MPTrendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TrendCellID];
+    cell.trendModel = self.modelArray[indexPath.row];
     return cell;
 }
 
@@ -74,7 +88,15 @@ static NSString *TrendCellID = @"TrendCellID";
 /// 选择的日期
 - (void)formDatePickerDidSelectDate:(NSDate *)date
 {
-    
+    [self resetData:date];
+}
+
+/// 重置数据
+- (void)resetData:(NSDate *)date
+{
+    self.selectedDate = date;
+    self.modelArray = nil;
+    [self.tableView reloadData];
 }
 
 #pragma mark - getter
@@ -111,6 +133,24 @@ static NSString *TrendCellID = @"TrendCellID";
         [self.view addSubview:picker];
     }
     return _datePicker;
+}
+
+- (NSArray *)modelArray
+{
+    if(_modelArray == nil)
+    {
+        _modelArray = [MPTrendModel modelArrayWithDate:self.selectedDate];
+    }
+    return _modelArray;
+}
+
+- (NSDate *)selectedDate
+{
+    if(_selectedDate == nil)
+    {
+        _selectedDate = [NSDate date];
+    }
+    return _selectedDate;
 }
 
 @end

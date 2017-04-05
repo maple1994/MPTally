@@ -21,8 +21,15 @@
 /**
  获取yyyy-MM格式的字符串date
 
- @return yyyy-MM字符创
+ @return yyyy-MM字符串
  */
 - (NSString *)getYearMonthDateString;
+
+/**
+ 获取yyyy格式的字符串date
+ 
+ @return yyyy字符串
+ */
+- (NSString *)getYearDateString;
 
 @end

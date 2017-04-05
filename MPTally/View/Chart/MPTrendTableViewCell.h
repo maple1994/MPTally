@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class MPTrendModel;
 @interface MPTrendTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) MPTrendModel *trendModel;
 
 @end

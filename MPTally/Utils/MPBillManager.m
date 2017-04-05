@@ -74,6 +74,24 @@ static id instance;
   return [self getBillsInSameYearMonth:date isIncome:YES];
 }
 
+/**
+ 在当前账本下，获取指定年的所有账单记录
+ 
+ @param date 指定年的NSDate对象
+ @return MPBillModel账单列表
+ */
+- (RLMResults *)getBillsInSameYear:(NSDate *)date
+{
+    // 获取当前的账本
+    MPBookModel *book = [[MPBookManager shareManager] getCurrentBook];
+    // 生成yyyy-MM格式的字符串
+    NSString *dateStr = [date getYearDateString];
+    // 生成对应的谓语查询语句
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateStr BEGINSWITH %@ and book.bookID=%@", dateStr, book.bookID];
+    RLMResults *results = [MPBillModel objectsWithPredicate:predicate];
+    return [results sortedResultsUsingKeyPath:@"dateStr" ascending:NO];
+}
+
 #pragma mark Write
 /**
  插入一条账单
