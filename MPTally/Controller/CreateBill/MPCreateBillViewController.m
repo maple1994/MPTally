@@ -224,6 +224,11 @@
 
 - (void)calculatorViewDidClickConfirm:(MPCalculatorView *)view
 {
+    if([self.resultView.results doubleValue] == 0)
+    {
+        [SVProgressHUD showTips:@"金额不能为0"];
+        return;
+    }
   MPBillModel *bill = [[MPBillModel alloc] init];
   bill.account = self.calculatorView.selectedAccount;
   bill.dateStr = [self.calculatorView.selectedDate dateFormattrString];

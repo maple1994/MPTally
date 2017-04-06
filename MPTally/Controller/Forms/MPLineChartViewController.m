@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSArray *modelArray;
 /// 当前选中的日期
 @property (nonatomic, strong) NSDate *selectedDate;
+/// 显示无内容的View
+@property (nonatomic, weak) UIView *noContentView;
 
 @end
 
@@ -58,7 +60,27 @@ static NSString *TrendCellID = @"TrendCellID";
 - (void)showNotDataView
 {
     UIView *view = [[UIView alloc] init];
-//    UILabel *la
+    view.backgroundColor = colorWithRGB(220, 220, 220);
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"报表没有数据哦~";
+    label.textColor = [UIColor grayColor];
+    [view addSubview:label];
+    [self.view addSubview:view];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(view);
+        make.centerY.equalTo(view).offset(-50);
+    }];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.datePicker.mas_bottom);
+        make.leading.trailing.bottom.equalTo(self.view);
+    }];
+    self.noContentView = view;
+}
+
+/// 移除无数据View
+- (void)removeNotDataView
+{
+    [self.noContentView removeFromSuperview];
 }
 
 #pragma mark - UITableViewDataSource
@@ -97,6 +119,14 @@ static NSString *TrendCellID = @"TrendCellID";
     self.selectedDate = date;
     self.modelArray = nil;
     [self.tableView reloadData];
+    if(self.modelArray.count == 0)
+    {
+        [self showNotDataView];
+    }
+    else
+    {
+        [self removeNotDataView];
+    }
 }
 
 #pragma mark - getter

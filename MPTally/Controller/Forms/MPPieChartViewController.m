@@ -27,6 +27,8 @@
 @property (nonatomic, strong) NSDate *selectedDate;
 /// 是否显示收入报表，默认为NO
 @property (nonatomic, assign, getter=isShowIncomeChart) BOOL showIncomeChart;
+/// 显示无内容的View
+@property (nonatomic, weak) UIView *noContentView;
 
 @end
 
@@ -65,6 +67,42 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
   self.modelArray = nil;
   self.pieView.data = self.modelArray;
   [self.tableView reloadData];
+    
+    if(self.modelArray.count == 0)
+    {
+        [self showNotDataView];
+    }
+    else
+    {
+        [self removeNotDataView];
+    }
+}
+
+/// 显示没有数据时的界面
+- (void)showNotDataView
+{
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = colorWithRGB(220, 220, 220);
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"报表没有数据哦~";
+    label.textColor = [UIColor grayColor];
+    [view addSubview:label];
+    [self.view addSubview:view];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(view);
+        make.centerY.equalTo(view).offset(-50);
+    }];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.datePicker.mas_bottom);
+        make.leading.trailing.bottom.equalTo(self.view);
+    }];
+    self.noContentView = view;
+}
+
+/// 移除无数据View
+- (void)removeNotDataView
+{
+    [self.noContentView removeFromSuperview];
 }
 
 #pragma mark - UITableViewDataSource
@@ -104,6 +142,15 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
   self.pieView.showIncomeChart = self.isShowIncomeChart;
   self.pieView.data = self.modelArray;
   [self.tableView reloadData];
+    
+    if(self.modelArray.count == 0)
+    {
+        [self showNotDataView];
+    }
+    else
+    {
+        [self removeNotDataView];
+    }
 }
 
 
