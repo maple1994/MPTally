@@ -24,6 +24,7 @@
 {
     [super viewDidLoad];
   MPTabBar *myTabBar = [[MPTabBar alloc] init];
+    myTabBar.tintColor = kNavTintColor;
   [self setValue:myTabBar forKey:@"tabBar"];
   [self addChildController];
 }
@@ -35,19 +36,19 @@
   MPAccountTableViewController *walletVC = [[MPAccountTableViewController alloc] init];
   MPReportFormViewController *formVC = [[MPReportFormViewController alloc] init];
   MPSettingTableViewController *settingVC = [[MPSettingTableViewController alloc] init];
-  [self setupChildController:billVC title:@"明细" imageName:@""];
-  [self setupChildController:walletVC title:@"钱包" imageName:@""];
-  [self setupChildController:formVC title:@"报表" imageName:@""];
-  [self setupChildController:settingVC title:@"设置" imageName:@""];
+  [self setupChildController:billVC title:@"明细" imageName:@"mingxi"];
+  [self setupChildController:walletVC title:@"钱包" imageName:@"qianbao"];
+  [self setupChildController:formVC title:@"报表" imageName:@"baobiao"];
+  [self setupChildController:settingVC title:@"设置" imageName:@"wode"];
 }
 
 
 - (void)setupChildController:(UIViewController *)controller title:(NSString *)title imageName:(NSString *)imageName
 {
-//  controller.view.backgroundColor = kRandomColor;
-  NSString *selectedImageName = [imageName stringByAppendingString:@"_selected"];
-  controller.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-  controller.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    NSString *openImageName = [NSString stringWithFormat:@"%@_open", imageName];
+    NSString *closeImageName = [NSString stringWithFormat:@"%@_close", imageName];
+  controller.tabBarItem.image = [[UIImage imageNamed:closeImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+  controller.tabBarItem.selectedImage = [[UIImage imageNamed:openImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
   controller.title = title;
   MPNavigationController *nav = [[MPNavigationController alloc] initWithRootViewController:controller];
   [self addChildViewController:nav];

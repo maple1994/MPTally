@@ -41,6 +41,7 @@ static NSString *WalletCellID = @"WalletCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.backgroundColor = colorWithRGB(245, 245, 245);
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPAccountTableViewCell.class) bundle:nil] forCellReuseIdentifier:WalletCellID];
   self.tableView.rowHeight = kRowHeight;
