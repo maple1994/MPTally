@@ -1519,14 +1519,14 @@ typedef NS_ENUM(NSInteger,ScrollViewTagValue) {
         // Button Cancel
         UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(kHooDatePickerPadding, 0.0, kHooDatePickerButtonHeaderWidth, kHooDatePickerHeaderHeight)];
         [cancelButton setTitle:kCancelButtonItemTitle forState:UIControlStateNormal];
-        [cancelButton setTitleColor:self.tintColor forState:UIControlStateNormal];
+        [cancelButton setTitleColor:kNavTintColor forState:UIControlStateNormal];
         [cancelButton addTarget:self action:@selector(actionButtonCancel:) forControlEvents:UIControlEventTouchUpInside];
         [_headerView addSubview:cancelButton];
         
         // Button confirm
         UIButton *sureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - kHooDatePickerButtonHeaderWidth - kHooDatePickerPadding, 0.0, kHooDatePickerButtonHeaderWidth, kHooDatePickerHeaderHeight)];
         [sureButton setTitle:kSureButtonItemTitle forState:UIControlStateNormal];
-        [sureButton setTitleColor:self.highlightColor forState:UIControlStateNormal];
+        [sureButton setTitleColor:kNavTintColor forState:UIControlStateNormal];
         [sureButton addTarget:self action:@selector(actionButtonValid:) forControlEvents:UIControlEventTouchUpInside];
         [_headerView addSubview:sureButton];
         

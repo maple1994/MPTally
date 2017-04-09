@@ -31,7 +31,12 @@
   _account = account;
   [_balanceButton setTitle:[MyUtils numToString:account.money] forState:UIControlStateNormal];
   self.backgroundColor = [UIColor colorWithHexString:account.colorStr];
-  [self calculateTotalSum:[NSDate date]];
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"M"];
+    NSString *value = [dateFormatter stringFromDate:date];
+    self.monthLabel.text = value;
+    [self calculateTotalSum:date];
 }
 
 /// 计算指定日期的收支
@@ -104,6 +109,8 @@
     NSDate *minDate = [dateFormatter dateFromString:@"1970-01-01"];
     
     [_datePicker setDate:[NSDate date] animated:YES];
+      _datePicker.tintColor = [UIColor lightGrayColor];
+      _datePicker.highlightColor = kNavTintColor;
     _datePicker.minimumDate = minDate;
     _datePicker.maximumDate = maxDate;
 
