@@ -310,6 +310,8 @@ static NSString *DayCellID = @"DayCellID";
 - (void)timeLineItemCellDidClickDelete:(MPTimeLineItemTableViewCell *)cell
 {
   [[MPBillManager shareManager] deleteBill:cell.bill];
+    // 发送表单数据改变的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBillsDataChangeNotification object:nil];
 }
 
 #pragma mark - MPBookListViewDelegate

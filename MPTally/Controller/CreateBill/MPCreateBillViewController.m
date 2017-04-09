@@ -245,6 +245,8 @@
   {
     [[MPBillManager shareManager] insertBill:bill];
   }
+    // 发送表单数据改变的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBillsDataChangeNotification object:nil];
   [self cancel];
 }
 

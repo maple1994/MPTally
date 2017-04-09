@@ -42,6 +42,12 @@ static NSString *TrendCellID = @"TrendCellID";
     self.lineView = [[MPLineView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 300)];
     self.tableView.tableHeaderView = self.lineView;
     self.lineView.datas = self.modelArray;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetData:) name:kBillsDataChangeNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupUI
@@ -120,7 +126,8 @@ static NSString *TrendCellID = @"TrendCellID";
 /// 重置数据
 - (void)resetData:(NSDate *)date
 {
-    self.selectedDate = date;
+    if([date isKindOfClass:[NSDate class]])
+        self.selectedDate = date;
     self.modelArray = nil;
     [self.tableView reloadData];
     self.lineView.datas = self.modelArray;

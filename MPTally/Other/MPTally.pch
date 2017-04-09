@@ -39,5 +39,6 @@
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 #define kSelectColor [UIColor colorWithRed:0.907 green:0.454 blue:0.000 alpha:1.000]
+#define kBillsDataChangeNotification @"BillsDataChangeNotification" // 表单数据发生变化的通知
 
 #endif /* MPTally_pch */

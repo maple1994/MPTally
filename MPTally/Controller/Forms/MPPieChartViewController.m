@@ -43,6 +43,12 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
   
   [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPBillsInCateTableViewCell.class) bundle:nil] forCellReuseIdentifier:ChartBillCellID];
   self.tableView.rowHeight = 50;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetDataByDate:) name:kBillsDataChangeNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupUI
@@ -63,7 +69,8 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
 /// 根据选择的日期进行更新数据
 - (void)resetDataByDate:(NSDate *)date
 {
-  self.selectedDate = date;
+    if([date isKindOfClass:[NSDate class]])
+      self.selectedDate = date;
   self.modelArray = nil;
   self.pieView.data = self.modelArray;
   [self.tableView reloadData];
