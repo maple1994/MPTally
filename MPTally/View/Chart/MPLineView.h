@@ -15,4 +15,7 @@
 /// 折线图
 @interface MPLineView : UIView
 
+/// 折线图数据,MPTrendModel模型数组
+@property (nonatomic, strong) NSArray *datas;
+
 @end

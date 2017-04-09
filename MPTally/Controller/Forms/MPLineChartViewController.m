@@ -26,6 +26,8 @@
 @property (nonatomic, strong) NSDate *selectedDate;
 /// 显示无内容的View
 @property (nonatomic, weak) UIView *noContentView;
+/// 折线图
+@property (nonatomic, strong) MPLineView *lineView;
 
 @end
 
@@ -37,7 +39,9 @@ static NSString *TrendCellID = @"TrendCellID";
 {
     [super viewDidLoad];
     [self setupUI];
-    
+    self.lineView = [[MPLineView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 300)];
+    self.tableView.tableHeaderView = self.lineView;
+    self.lineView.datas = self.modelArray;
 }
 
 - (void)setupUI
@@ -119,6 +123,7 @@ static NSString *TrendCellID = @"TrendCellID";
     self.selectedDate = date;
     self.modelArray = nil;
     [self.tableView reloadData];
+    self.lineView.datas = self.modelArray;
     if(self.modelArray.count == 0)
     {
         [self showNotDataView];
