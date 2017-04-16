@@ -48,6 +48,7 @@ static NSString *WalletCellID = @"WalletCellID";
   self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
   __weak typeof(self) weakSelf = self;
   self.token = [self.accountArray addNotificationBlock:^(RLMResults * _Nullable results, RLMCollectionChange * _Nullable change, NSError * _Nullable error) {
+      _accountArray = nil;
     [weakSelf.tableView reloadData];
   }];
 }

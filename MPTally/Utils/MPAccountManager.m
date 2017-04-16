@@ -57,7 +57,14 @@ static MPAccountManager *instance;
  */
 - (RLMResults *)getAccountList
 {
-  return [MPAccountModel allObjects];
+    RLMResults *result = [MPAccountModel allObjects];
+    if(result.count == 0)
+    {
+        // 加载默认的Account列表
+        [self loadAccountListFromPlist];
+        result = [MPAccountModel allObjects];
+    }
+  return result;
 }
 
 

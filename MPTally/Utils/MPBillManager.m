@@ -138,6 +138,15 @@ static id instance;
 }
 
 /**
+ 删除所有账单
+ */
+- (void)deleteAllBills
+{
+    [kRealm transactionWithBlock:^{
+        [kRealm deleteAllObjects];
+    }];
+}
+/**
  更新账单
  
  @param oldBill 旧账单

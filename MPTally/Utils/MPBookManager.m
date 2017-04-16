@@ -64,7 +64,13 @@ static MPBookManager *instance;
  */
 - (RLMResults *)getAllBook
 {
-  return [MPBookModel allObjects];
+    RLMResults *results = [MPBookModel allObjects];
+    if(results.count == 0)
+    {
+        [self loadDefultBook];
+        results = [MPBookModel allObjects];
+    }
+  return results;
 }
 
 #pragma mark - Write

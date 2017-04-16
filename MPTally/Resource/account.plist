@@ -3,28 +3,36 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>colorStr</key>
+		<string>9361A2</string>
 		<key>money</key>
 		<integer>0</integer>
 		<key>accountName</key>
 		<string>现金</string>
 	</dict>
-  <dict>
-    <key>money</key>
-    <integer>0</integer>
-    <key>accountName</key>
-    <string>储蓄卡</string>
-  </dict>
-  <dict>
-    <key>money</key>
-    <integer>0</integer>
-    <key>accountName</key>
-    <string>信用卡</string>
-  </dict>
-  <dict>
-    <key>money</key>
-    <integer>0</integer>
-    <key>accountName</key>
-    <string>支付宝</string>
-  </dict>
+	<dict>
+		<key>colorStr</key>
+		<string>AB92ED</string>
+		<key>money</key>
+		<integer>0</integer>
+		<key>accountName</key>
+		<string>储蓄卡</string>
+	</dict>
+	<dict>
+		<key>colorStr</key>
+		<string>5B7ED5</string>
+		<key>money</key>
+		<integer>0</integer>
+		<key>accountName</key>
+		<string>信用卡</string>
+	</dict>
+	<dict>
+		<key>colorStr</key>
+		<string>5D9CEC</string>
+		<key>money</key>
+		<integer>0</integer>
+		<key>accountName</key>
+		<string>支付宝</string>
+	</dict>
 </array>
 </plist>

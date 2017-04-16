@@ -77,4 +77,9 @@
  */
 - (void)updateOldBill:(MPBillModel *)oldBill withNewBill:(MPBillModel *)newBill;
 
+/**
+ 删除所有账单
+ */
+- (void)deleteAllBills;
+
 @end

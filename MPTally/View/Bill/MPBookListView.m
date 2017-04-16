@@ -37,8 +37,19 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
   if(self = [super init])
   {
     [self setupWithSize:size];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetBook) name:kResetAllDataNotification object:nil];
   }
   return self;
+}
+    
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+    
+- (void)resetBook
+{
+    _bookArray = nil;
 }
 
 /// 设置选中标志
@@ -206,7 +217,7 @@ static NSString *BookListNewCellID = @"BookListNewCellID";
 
 - (RLMResults *)dbResults
 {
-  return [MPBookModel allObjects];
+  return [[MPBookManager shareManager] getAllBook];
 }
 
 @end

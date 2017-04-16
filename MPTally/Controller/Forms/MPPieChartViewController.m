@@ -44,6 +44,7 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
   [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPBillsInCateTableViewCell.class) bundle:nil] forCellReuseIdentifier:ChartBillCellID];
   self.tableView.rowHeight = 50;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetDataByDate:) name:kBillsDataChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNotDataView) name:kResetAllDataNotification object:nil];
 }
 
 - (void)dealloc
@@ -88,6 +89,7 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
 /// 显示没有数据时的界面
 - (void)showNotDataView
 {
+    [self.noContentView removeFromSuperview];
     UIView *view = [[UIView alloc] init];
     view.backgroundColor = colorWithRGB(220, 220, 220);
     UILabel *label = [[UILabel alloc] init];
@@ -115,6 +117,10 @@ static NSString *ChartBillCellID = @"ChartBillCellID";
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if(self.modelArray.count == 0)
+    {
+        [self showNotDataView];
+    }
   return self.modelArray.count;
 }
 
