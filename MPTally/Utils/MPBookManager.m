@@ -10,7 +10,6 @@
 
 @implementation MPBookManager
 
-NSString static *CurrentBookKey = @"CurrentBookKey";
 static MPBookManager *instance;
 
 + (instancetype)shareManager

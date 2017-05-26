@@ -11,8 +11,7 @@
 
 @implementation MPAccountManager
 
-/// 默认账户的Key，用于偏好设置的key
-NSString static * DefaultAccountKey = @"DefaultAccountKey";
+
 static MPAccountManager *instance;
 
 #pragma mark - Public

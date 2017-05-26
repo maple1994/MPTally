@@ -57,8 +57,13 @@ static NSString *CellID = @"CellID";
 {
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"删除后数据将无法恢复，你确定要这么做吗？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        // 删除所有数据
         [[MPBillManager shareManager] deleteAllBills];
+        // 发送通知
         [[NSNotificationCenter defaultCenter] postNotificationName:kResetAllDataNotification object:nil];
+        // 清空偏好设置
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:DefaultAccountKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CurrentBookKey];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alertVC addAction:confirmAction];
