@@ -46,11 +46,15 @@
   }];
   [self.nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.leading.equalTo(self.dateButton.mas_trailing).offset(20);
-    make.centerY.equalTo(self.dateButton);
+      make.height.equalTo(self);
+      make.width.mas_equalTo(25);
+      make.top.equalTo(self);
   }];
   [self.previousButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.trailing.equalTo(self.dateButton.mas_leading).offset(-20);
-    make.centerY.equalTo(self.dateButton);
+      make.height.equalTo(self);
+      make.width.mas_equalTo(25);
+      make.top.equalTo(self);
   }];
   [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.leading.trailing.bottom.equalTo(self);
