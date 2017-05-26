@@ -205,6 +205,9 @@ static NSString *DayCellID = @"DayCellID";
         cell.timeLineTime = nil;
       }
     }
+      if (indexPath.row == self.timeLineModelArray.count - 1) {
+          cell.timeLineTime = nil;
+      }
     return cell;
 
   }
