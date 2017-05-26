@@ -333,6 +333,7 @@ static NSString *DayCellID = @"DayCellID";
   self.curYMDateStr = nil;
   [self resetData];
   [self setupnNotificationToken];
+    self.topBarView.title = book.bookName;
 }
 
 #pragma mark - TopBarViewDelegate

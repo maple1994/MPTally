@@ -21,5 +21,7 @@
 @interface MPTopBarView : UIView
 
 @property (nonatomic, weak) id<TopBarViewDelegate> delegate;
+/// 设置标题
+@property (nonatomic, copy) NSString *title;
 
 @end

@@ -42,6 +42,12 @@
   }
 }
 
+- (void)setTitle:(NSString *)title
+{
+    _title = title;
+    [_titleButton setTitle:title forState:UIControlStateNormal];
+}
+
 - (UIButton *)titleButton
 {
   if(_titleButton == nil)
