@@ -37,7 +37,7 @@ static NSString *BillCellID = @"BillCellID";
   [super viewDidLoad];
   [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(MPAccountBillTableViewCell.class) bundle:nil] forCellReuseIdentifier:BillCellID];
   [self setupUI];
-  [self setupNav];
+    [self setupNav: _accountModel.accountName];
 }
 
 - (void)setupUI
@@ -56,12 +56,12 @@ static NSString *BillCellID = @"BillCellID";
   }];
 }
 
-- (void)setupNav
+- (void)setupNav:(NSString *)title
 {
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
   self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
   UILabel *label = [[UILabel alloc] init];
-  label.text = _accountModel.accountName;
+  label.text = title;
   label.textColor = [UIColor whiteColor];
   [label sizeToFit];
   self.navigationItem.titleView = label;
@@ -78,6 +78,7 @@ static NSString *BillCellID = @"BillCellID";
   self.navigationController.navigationBar.shadowImage = [UIImage new];
   self.detailView.account = _accountModel;
   self.topbarView.backgroundColor = [UIColor colorWithHexString:_accountModel.colorStr];
+    [self setupNav: _accountModel.accountName];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

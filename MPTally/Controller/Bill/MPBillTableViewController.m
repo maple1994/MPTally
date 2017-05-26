@@ -67,6 +67,7 @@ static NSString *DayCellID = @"DayCellID";
   [self setupUI];
   self.tableView.rowHeight = kRowHeight;
   [self setupnNotificationToken];
+    self.navigationItem.title = @"";
   
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.showsVerticalScrollIndicator = NO;

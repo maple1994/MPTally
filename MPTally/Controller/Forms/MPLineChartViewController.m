@@ -60,7 +60,8 @@ static NSString *TrendCellID = @"TrendCellID";
     }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.datePicker.mas_bottom);
-        make.leading.trailing.bottom.equalTo(self.view);
+        make.leading.trailing.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-49);
     }];
     self.tableView.rowHeight = 50;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

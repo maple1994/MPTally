@@ -38,6 +38,13 @@
 
 - (void)done
 {
+    if (self.textView.text.length == 0) {
+        [SVProgressHUD showTips:@"账户名不能为空"];
+        return;
+    }else if (self.textView.text.length >= 10) {
+        [SVProgressHUD showTips:@"账户名长度不能超过10"];
+        return;
+    }
   self.accountName = self.textView.text;
   if(self.doneBlock)
     self.doneBlock(self.accountName);

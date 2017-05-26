@@ -62,7 +62,8 @@
   }];
   [self.switchStateButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.trailing.equalTo(self).offset(-10);
-    make.centerY.equalTo(self);
+      make.top.equalTo(self);
+      make.height.equalTo(self);
     make.width.mas_equalTo(30);
   }];
 }
